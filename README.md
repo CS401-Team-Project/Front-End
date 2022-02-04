@@ -1,13 +1,13 @@
 # Front-End
 
-## Installing Node & React Dependencies
-Reference: https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/
+## Installing Node 16.13.0
 ```
 sudo apt install curl
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
-nvm install node 
-npm install -g create-react-app react-scripts
+nvm install 16.13.0
 ```
+References: 
+- https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/
 
 ## Available Scripts
 
