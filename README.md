@@ -1,13 +1,16 @@
 # Front-End
 
-## Installing Node 16.13.0
+## Installation and Deployment
+### Install Node 16.13.0
 ```
 sudo apt install curl
 curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 nvm install 16.13.0
 ```
-References: 
-- https://tecadmin.net/how-to-install-nvm-on-ubuntu-20-04/
+
+### Install Dependencies: `npm install`
+
+### Deploy: `npm start`
 
 ## Available Scripts
 
