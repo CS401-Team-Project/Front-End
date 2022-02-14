@@ -8,9 +8,17 @@ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
 nvm install 16.13.0
 ```
 
-### Install Dependencies: `npm install`
+### Install Dependencies: 
+```
+npm install
 
-### Deploy: `npm start`
+npm install react-scripts -g
+```
+
+### Deploy: 
+```
+npm start
+```
 
 ## Available Scripts
 

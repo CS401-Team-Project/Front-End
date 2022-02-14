@@ -24,6 +24,7 @@ import {
 // third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
+import { GoogleLogin } from 'react-google-login';
 
 // project imports
 import useScriptRef from 'hooks/useScriptRef';
@@ -44,8 +45,22 @@ const FirebaseLogin = ({ ...others }) => {
     const customization = useSelector((state) => state.customization);
     const [checked, setChecked] = useState(true);
 
+    // TODO: Add Google client ID
+    const googleClientId = 'YOUR_CLIENT_ID.apps.google...';
+
+    // TODO: Remove this
     const googleHandler = async () => {
-        console.error('Login');
+        console.error('Login Google Handler');
+    };
+
+    const onGoogleSuccess = (res) => {
+        console.log('[Login Success] currentUser: ', res.profileObj);
+        // TODO: send to back-end and redirect to dashboard
+    };
+
+    const onGoogleFailure = (res) => {
+        console.log('[Login Failure] Error: ', res);
+        // TODO: Error Handling
     };
 
     const [showPassword, setShowPassword] = useState(false);
@@ -60,25 +75,35 @@ const FirebaseLogin = ({ ...others }) => {
     return (
         <>
             <Grid container direction="column" justifyContent="center" spacing={2}>
-                <Grid item xs={12}>
+                <Grid item xs={12} align="center">
                     <AnimateButton>
-                        <Button
-                            disableElevation
-                            fullWidth
-                            onClick={googleHandler}
-                            size="large"
-                            variant="outlined"
-                            sx={{
-                                color: 'grey.700',
-                                backgroundColor: theme.palette.grey[50],
-                                borderColor: theme.palette.grey[100]
-                            }}
-                        >
-                            <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
-                                <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
-                            </Box>
-                            Sign in with Google
-                        </Button>
+                        <GoogleLogin
+                            clientId={googleClientId}
+                            buttonText={'Login with Google'}
+                            onSuccess={onGoogleSuccess}
+                            onFailure={onGoogleFailure}
+                            cookiePolicy={'single_host_origin'}
+                            style={{ margin: '100px auto' }}
+                            isSignedIn={true}
+                        />
+
+                        {/* <Button
+                                disableElevation
+                                fullWidth
+                                onClick={googleHandler}
+                                size="large"
+                                variant="outlined"
+                                sx={{
+                                    color: 'grey.700',
+                                    backgroundColor: theme.palette.grey[100],
+                                    borderColor: theme.palette.grey[100]
+                                }}
+                                >
+                                <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
+                                    <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
+                                </Box>
+                                Sign in with Google
+                            </Button> */}
                     </AnimateButton>
                 </Grid>
                 <Grid item xs={12}>
