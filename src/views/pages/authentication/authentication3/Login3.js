@@ -10,6 +10,7 @@ import AuthCardWrapper from '../AuthCardWrapper';
 import AuthLogin from '../auth-forms/AuthLogin';
 import Logo from 'ui-component/Logo';
 import AuthFooter from 'ui-component/cards/AuthFooter';
+import config from 'config';
 
 // assets
 
@@ -69,7 +70,7 @@ const Login = () => {
                                         <Grid item container direction="column" alignItems="center" xs={12}>
                                             <Typography
                                                 component={Link}
-                                                to="/pages/register/register3"
+                                                to={config.basename + config.paths.auth.register}
                                                 variant="subtitle1"
                                                 sx={{ textDecoration: 'none' }}
                                             >

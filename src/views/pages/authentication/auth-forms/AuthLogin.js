@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -41,13 +42,26 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 const FirebaseLogin = ({ ...others }) => {
     const theme = useTheme();
     const scriptedRef = useScriptRef();
+    const navigate = useNavigate();
     const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
     const customization = useSelector((state) => state.customization);
     const [checked, setChecked] = useState(true);
 
     const onGoogleSuccess = (res) => {
         console.log('[Google Login Success] currentUser: ', res.profileObj);
-        // TODO: send to back-end and redirect to dashboard
+        // TODO: API Call to check if user has already registered on the back-end
+        let isRegistered = true;
+
+        if (!isRegistered) {
+            console.log('User is not registered.');
+            // TODO: If user is not registered, display dialog to register
+            navigate(config.basename + config.paths.register);
+            return;
+        }
+
+        // If user is already registered, then redirect to dashboard
+        console.log('User is already registered. Logging in...');
+        navigate(config.basename + config.defaultPath);
     };
 
     const onGoogleFailure = (res) => {

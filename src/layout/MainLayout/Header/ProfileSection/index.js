@@ -29,12 +29,14 @@ import {
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import { GoogleLogout } from 'react-google-login';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import UpgradePlanCard from './UpgradePlanCard';
 import User1 from 'assets/images/users/user-round.svg';
+import config from 'config';
 
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
@@ -283,6 +285,7 @@ const ProfileSection = () => {
                                                         }
                                                     />
                                                 </ListItemButton>
+
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     selected={selectedIndex === 4}
