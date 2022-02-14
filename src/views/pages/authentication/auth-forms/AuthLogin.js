@@ -29,12 +29,12 @@ import { GoogleLogin } from 'react-google-login';
 // project imports
 import useScriptRef from 'hooks/useScriptRef';
 import AnimateButton from 'ui-component/extended/AnimateButton';
+import config from 'config';
 
 // assets
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
-import Google from 'assets/images/icons/social-google.svg';
+// import Google from 'assets/images/icons/social-google.svg';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
@@ -45,21 +45,13 @@ const FirebaseLogin = ({ ...others }) => {
     const customization = useSelector((state) => state.customization);
     const [checked, setChecked] = useState(true);
 
-    // TODO: Add Google client ID
-    const googleClientId = 'YOUR_CLIENT_ID.apps.google...';
-
-    // TODO: Remove this
-    const googleHandler = async () => {
-        console.error('Login Google Handler');
-    };
-
     const onGoogleSuccess = (res) => {
-        console.log('[Login Success] currentUser: ', res.profileObj);
+        console.log('[Google Login Success] currentUser: ', res.profileObj);
         // TODO: send to back-end and redirect to dashboard
     };
 
     const onGoogleFailure = (res) => {
-        console.log('[Login Failure] Error: ', res);
+        console.log('[Google Login Failure] Error: ', res);
         // TODO: Error Handling
     };
 
@@ -78,7 +70,7 @@ const FirebaseLogin = ({ ...others }) => {
                 <Grid item xs={12} align="center">
                     <AnimateButton>
                         <GoogleLogin
-                            clientId={googleClientId}
+                            clientId={config.googleClientId}
                             buttonText={'Login with Google'}
                             onSuccess={onGoogleSuccess}
                             onFailure={onGoogleFailure}

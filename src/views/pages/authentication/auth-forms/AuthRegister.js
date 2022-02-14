@@ -29,9 +29,10 @@ import { GoogleLogin } from 'react-google-login';
 
 // project imports
 import useScriptRef from 'hooks/useScriptRef';
-import Google from 'assets/images/icons/social-google.svg';
 import AnimateButton from 'ui-component/extended/AnimateButton';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
+import config from 'config';
+// import Google from 'assets/images/icons/social-google.svg';
 
 // assets
 import Visibility from '@mui/icons-material/Visibility';
@@ -50,20 +51,13 @@ const FirebaseRegister = ({ ...others }) => {
     const [strength, setStrength] = useState(0);
     const [level, setLevel] = useState();
 
-    const googleClientId = 'YOUR_CLIENT_ID.apps.google...';
-
-    // TODO: Remove this
-    const googleHandler = async () => {
-        console.error('Register Google Handler');
-    };
-
     const onGoogleSuccess = (res) => {
-        console.log('[Signup Success] currentUser: ', res.profileObj);
+        console.log('[Google Signup Success] currentUser: ', res.profileObj);
         // TODO: send to back-end and redirect to dashboard
     };
 
     const onGoogleFailure = (res) => {
-        console.log('[Signup Failure] Error: ', res);
+        console.log('[Google Signup Failure] Error: ', res);
         // TODO: Error Handling
     };
 
@@ -91,7 +85,7 @@ const FirebaseRegister = ({ ...others }) => {
                 <Grid item xs={12} align="center">
                     <AnimateButton>
                         <GoogleLogin
-                            clientId={googleClientId}
+                            clientId={config.googleClientId}
                             buttonText={'Sign up with Google'}
                             onSuccess={onGoogleSuccess}
                             onFailure={onGoogleFailure}
