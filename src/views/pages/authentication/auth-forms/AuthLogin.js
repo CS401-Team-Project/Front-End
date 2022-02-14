@@ -54,8 +54,9 @@ const FirebaseLogin = ({ ...others }) => {
 
         if (!isRegistered) {
             console.log('User is not registered.');
-            // TODO: If user is not registered, display dialog to register
-            navigate(config.basename + config.paths.register);
+            // TODO: Possibly change this to a prettier dialog
+            const response = confirm("It looks like you don't have an account yet.\nWould you like to register?");
+            if (response) navigate(config.basename + config.paths.auth.register);
             return;
         }
 
@@ -67,6 +68,7 @@ const FirebaseLogin = ({ ...others }) => {
     const onGoogleFailure = (res) => {
         console.log('[Google Login Failure] Error: ', res);
         // TODO: Error Handling
+        alert('Google OAuth Failed');
     };
 
     const [showPassword, setShowPassword] = useState(false);

@@ -71,6 +71,7 @@ const FirebaseRegister = ({ ...others }) => {
     const onGoogleFailure = (res) => {
         console.log('[Google Signup Failure] Error: ', res);
         // TODO: Error Handling
+        alert('Google OAuth Failed');
     };
 
     const handleClickShowPassword = () => {
