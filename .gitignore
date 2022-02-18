@@ -25,6 +25,9 @@ yarn-error.log*
 # Package Lock
 package-lock.json
 
+# Yarn Lock
+yarn.lock
+
 # IDE's
 .idea/
 .vscode/
