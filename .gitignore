@@ -28,3 +28,6 @@ package-lock.json
 # IDE's
 .idea/
 .vscode/
+
+# Mac OS
+.DS_Store

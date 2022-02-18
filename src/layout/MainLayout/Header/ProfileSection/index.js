@@ -29,12 +29,14 @@ import {
 
 // third-party
 import PerfectScrollbar from 'react-perfect-scrollbar';
+import { GoogleLogout, useGoogleLogin } from 'react-google-login';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
 import Transitions from 'ui-component/extended/Transitions';
 import UpgradePlanCard from './UpgradePlanCard';
 import User1 from 'assets/images/users/user-round.svg';
+import config from 'config';
 
 // assets
 import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
@@ -51,12 +53,39 @@ const ProfileSection = () => {
     const [notification, setNotification] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [open, setOpen] = useState(false);
+    const [auth, setAuth] = useState({});
     /**
      * anchorRef is used on different componets and specifying one type leads to other components throwing an error
      * */
     const anchorRef = useRef(null);
-    const handleLogout = async () => {
-        console.log('Logout');
+
+    const { signIn } = useGoogleLogin({
+        clientId: config.googleClientId,
+        onSuccess: (response) => {
+            console.log('Login Success');
+            // TODO: Remove this printout of the response
+            console.log(response);
+            setAuth(response);
+        },
+        onFailure: (response) => {
+            console.log('Login Failure');
+            // TODO: Remove this printout of the response
+            console.log(response);
+            setAuth(response);
+        },
+        isSignedIn: true
+    });
+
+    console.log(auth);
+
+    const onLogoutSuccess = async () => {
+        console.log('Logout Success');
+        setAuth({});
+    };
+
+    const onLogoutFailure = async () => {
+        console.log('ERROR: Logout Failure');
+        alert('Logout Failure');
     };
 
     const handleClose = (event) => {
@@ -283,16 +312,25 @@ const ProfileSection = () => {
                                                         }
                                                     />
                                                 </ListItemButton>
-                                                <ListItemButton
-                                                    sx={{ borderRadius: `${customization.borderRadius}px` }}
-                                                    selected={selectedIndex === 4}
-                                                    onClick={handleLogout}
-                                                >
-                                                    <ListItemIcon>
-                                                        <IconLogout stroke={1.5} size="1.3rem" />
-                                                    </ListItemIcon>
-                                                    <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
-                                                </ListItemButton>
+
+                                                <GoogleLogout
+                                                    clientId={config.googleClientId}
+                                                    buttonText="Logout"
+                                                    onLogoutSuccess={onLogoutSuccess}
+                                                    onFailure={onLogoutFailure}
+                                                    render={(renderProps) => (
+                                                        <ListItemButton
+                                                            sx={{ borderRadius: `${customization.borderRadius}px` }}
+                                                            selected={selectedIndex === 4}
+                                                            onClick={renderProps.onClick}
+                                                        >
+                                                            <ListItemIcon>
+                                                                <IconLogout stroke={1.5} size="1.3rem" />
+                                                            </ListItemIcon>
+                                                            <ListItemText primary={<Typography variant="body2">Logout</Typography>} />
+                                                        </ListItemButton>
+                                                    )}
+                                                />
                                             </List>
                                         </Box>
                                     </PerfectScrollbar>
