@@ -8,8 +8,8 @@ const config = {
     googleClientId: '996982688294-rqhcr4d5b6m3vk0e3ur2no457iqql2u5.apps.googleusercontent.com',
     paths: {
         auth: {
-            login: '/pages/login/login3',
-            register: '/pages/register/register3'
+            login: '/login',
+            register: '/register'
         }
     }
 };
