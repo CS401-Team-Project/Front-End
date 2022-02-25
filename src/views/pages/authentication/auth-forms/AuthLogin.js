@@ -62,7 +62,7 @@ const FirebaseLogin = ({ ...others }) => {
 
         // If user is already registered, then redirect to dashboard
         console.log('User is already registered. Logging in...');
-        navigate(config.basename + config.defaultPath);
+        navigate(config.basename + config.paths.app);
     };
 
     const onGoogleFailure = (res) => {

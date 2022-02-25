@@ -76,11 +76,10 @@ const ProfileSection = () => {
         isSignedIn: true
     });
 
-    console.log(auth);
-
     const onLogoutSuccess = async () => {
         console.log('Logout Success');
         setAuth({});
+        navigate(config.basename + config.paths.landing);
     };
 
     const onLogoutFailure = async () => {
