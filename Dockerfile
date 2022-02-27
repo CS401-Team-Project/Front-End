@@ -5,6 +5,9 @@ FROM node:16.14.0-bullseye
 EXPOSE 3000
 EXPOSE 35729
 
+# Set current user
+USER $user
+
 # Set working directory
 WORKDIR /app
 
