@@ -11,8 +11,6 @@ nvm install 16.13.0
 ### Install Dependencies: 
 ```
 npm install
-
-npm install react-scripts -g
 ```
 
 ### Deploy: 
