@@ -1,63 +1,63 @@
-import PropTypes from 'prop-types';
-import { forwardRef } from 'react';
+import PropTypes from "prop-types";
+import { forwardRef } from "react";
 
 // material-ui
-import { Collapse, Fade, Box, Grow, Slide, Zoom } from '@mui/material';
+import { Collapse, Fade, Box, Grow, Slide, Zoom } from "@mui/material";
 
 // ==============================|| TRANSITIONS ||============================== //
 
 const Transitions = forwardRef(({ children, position, type, direction, ...others }, ref) => {
     let positionSX = {
-        transformOrigin: '0 0 0'
+        transformOrigin: "0 0 0"
     };
 
     switch (position) {
-        case 'top-right':
+        case "top-right":
             positionSX = {
-                transformOrigin: 'top right'
+                transformOrigin: "top right"
             };
             break;
-        case 'top':
+        case "top":
             positionSX = {
-                transformOrigin: 'top'
+                transformOrigin: "top"
             };
             break;
-        case 'bottom-left':
+        case "bottom-left":
             positionSX = {
-                transformOrigin: 'bottom left'
+                transformOrigin: "bottom left"
             };
             break;
-        case 'bottom-right':
+        case "bottom-right":
             positionSX = {
-                transformOrigin: 'bottom right'
+                transformOrigin: "bottom right"
             };
             break;
-        case 'bottom':
+        case "bottom":
             positionSX = {
-                transformOrigin: 'bottom'
+                transformOrigin: "bottom"
             };
             break;
-        case 'top-left':
+        case "top-left":
         default:
             positionSX = {
-                transformOrigin: '0 0 0'
+                transformOrigin: "0 0 0"
             };
             break;
     }
 
     return (
         <Box ref={ref}>
-            {type === 'grow' && (
+            {type === "grow" && (
                 <Grow {...others}>
                     <Box sx={positionSX}>{children}</Box>
                 </Grow>
             )}
-            {type === 'collapse' && (
+            {type === "collapse" && (
                 <Collapse {...others} sx={positionSX}>
                     {children}
                 </Collapse>
             )}
-            {type === 'fade' && (
+            {type === "fade" && (
                 <Fade
                     {...others}
                     timeout={{
@@ -69,7 +69,7 @@ const Transitions = forwardRef(({ children, position, type, direction, ...others
                     <Box sx={positionSX}>{children}</Box>
                 </Fade>
             )}
-            {type === 'slide' && (
+            {type === "slide" && (
                 <Slide
                     {...others}
                     timeout={{
@@ -82,7 +82,7 @@ const Transitions = forwardRef(({ children, position, type, direction, ...others
                     <Box sx={positionSX}>{children}</Box>
                 </Slide>
             )}
-            {type === 'zoom' && (
+            {type === "zoom" && (
                 <Zoom {...others}>
                     <Box sx={positionSX}>{children}</Box>
                 </Zoom>
@@ -93,15 +93,15 @@ const Transitions = forwardRef(({ children, position, type, direction, ...others
 
 Transitions.propTypes = {
     children: PropTypes.node,
-    type: PropTypes.oneOf(['grow', 'fade', 'collapse', 'slide', 'zoom']),
-    position: PropTypes.oneOf(['top-left', 'top-right', 'top', 'bottom-left', 'bottom-right', 'bottom']),
-    direction: PropTypes.oneOf(['up', 'down', 'left', 'right'])
+    type: PropTypes.oneOf(["grow", "fade", "collapse", "slide", "zoom"]),
+    position: PropTypes.oneOf(["top-left", "top-right", "top", "bottom-left", "bottom-right", "bottom"]),
+    direction: PropTypes.oneOf(["up", "down", "left", "right"])
 };
 
 Transitions.defaultProps = {
-    type: 'grow',
-    position: 'top-left',
-    direction: 'up'
+    type: "grow",
+    position: "top-left",
+    direction: "up"
 };
 
 export default Transitions;

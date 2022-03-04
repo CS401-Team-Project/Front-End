@@ -1,5 +1,5 @@
 // material-ui
-import { useTheme, styled } from '@mui/material/styles';
+import { useTheme, styled } from "@mui/material/styles";
 import {
     Avatar,
     Button,
@@ -15,20 +15,20 @@ import {
     ListItemText,
     Stack,
     Typography
-} from '@mui/material';
+} from "@mui/material";
 
 // assets
-import { IconBrandTelegram, IconBuildingStore, IconMailbox, IconPhoto } from '@tabler/icons';
-import User1 from 'assets/images/users/user-round.svg';
+import { IconBrandTelegram, IconBuildingStore, IconMailbox, IconPhoto } from "@tabler/icons";
+import User1 from "assets/images/users/user-round.svg";
 
 // styles
-const ListItemWrapper = styled('div')(({ theme }) => ({
-    cursor: 'pointer',
+const ListItemWrapper = styled("div")(({ theme }) => ({
+    cursor: "pointer",
     padding: 16,
-    '&:hover': {
+    "&:hover": {
         background: theme.palette.primary.light
     },
-    '& .MuiListItem-root': {
+    "& .MuiListItem-root": {
         padding: 0
     }
 }));
@@ -40,13 +40,13 @@ const NotificationList = () => {
 
     const chipSX = {
         height: 24,
-        padding: '0 6px'
+        padding: "0 6px"
     };
     const chipErrorSX = {
         ...chipSX,
         color: theme.palette.orange.dark,
         backgroundColor: theme.palette.orange.light,
-        marginRight: '5px'
+        marginRight: "5px"
     };
 
     const chipWarningSX = {
@@ -65,20 +65,20 @@ const NotificationList = () => {
     return (
         <List
             sx={{
-                width: '100%',
+                width: "100%",
                 maxWidth: 330,
                 py: 0,
-                borderRadius: '10px',
-                [theme.breakpoints.down('md')]: {
+                borderRadius: "10px",
+                [theme.breakpoints.down("md")]: {
                     maxWidth: 300
                 },
-                '& .MuiListItemSecondaryAction-root': {
+                "& .MuiListItemSecondaryAction-root": {
                     top: 22
                 },
-                '& .MuiDivider-root': {
+                "& .MuiDivider-root": {
                     my: 0
                 },
-                '& .list-container': {
+                "& .list-container": {
                     pl: 7
                 }
             }}
@@ -123,7 +123,7 @@ const NotificationList = () => {
                             sx={{
                                 color: theme.palette.success.dark,
                                 backgroundColor: theme.palette.success.light,
-                                border: 'none',
+                                border: "none",
                                 borderColor: theme.palette.success.main
                             }}
                         >
@@ -162,7 +162,7 @@ const NotificationList = () => {
                             sx={{
                                 color: theme.palette.primary.dark,
                                 backgroundColor: theme.palette.primary.light,
-                                border: 'none',
+                                border: "none",
                                 borderColor: theme.palette.primary.main
                             }}
                         >

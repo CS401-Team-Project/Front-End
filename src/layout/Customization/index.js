@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
     Drawer,
     Fab,
@@ -15,17 +15,17 @@ import {
     Slider,
     Tooltip,
     Typography
-} from '@mui/material';
-import { IconSettings } from '@tabler/icons';
+} from "@mui/material";
+import { IconSettings } from "@tabler/icons";
 
 // third-party
-import PerfectScrollbar from 'react-perfect-scrollbar';
+import PerfectScrollbar from "react-perfect-scrollbar";
 
 // project imports
-import SubCard from 'ui-component/cards/SubCard';
-import AnimateButton from 'ui-component/extended/AnimateButton';
-import { SET_BORDER_RADIUS, SET_FONT_FAMILY } from 'store/actions';
-import { gridSpacing } from 'store/constant';
+import SubCard from "ui-component/cards/SubCard";
+import AnimateButton from "ui-component/extended/AnimateButton";
+import { SET_BORDER_RADIUS, SET_FONT_FAMILY } from "store/actions";
+import { gridSpacing } from "store/constant";
 
 // concat 'px'
 function valueText(value) {
@@ -58,14 +58,14 @@ const Customization = () => {
     let initialFont;
     switch (customization.fontFamily) {
         case `'Inter', sans-serif`:
-            initialFont = 'Inter';
+            initialFont = "Inter";
             break;
         case `'Poppins', sans-serif`:
-            initialFont = 'Poppins';
+            initialFont = "Poppins";
             break;
         case `'Roboto', sans-serif`:
         default:
-            initialFont = 'Roboto';
+            initialFont = "Roboto";
             break;
     }
 
@@ -74,13 +74,13 @@ const Customization = () => {
     useEffect(() => {
         let newFont;
         switch (fontFamily) {
-            case 'Inter':
+            case "Inter":
                 newFont = `'Inter', sans-serif`;
                 break;
-            case 'Poppins':
+            case "Poppins":
                 newFont = `'Poppins', sans-serif`;
                 break;
-            case 'Roboto':
+            case "Roboto":
             default:
                 newFont = `'Roboto', sans-serif`;
                 break;
@@ -100,12 +100,12 @@ const Customization = () => {
                     color="secondary"
                     sx={{
                         borderRadius: 0,
-                        borderTopLeftRadius: '50%',
-                        borderBottomLeftRadius: '50%',
-                        borderTopRightRadius: '50%',
-                        borderBottomRightRadius: '4px',
-                        top: '25%',
-                        position: 'fixed',
+                        borderTopLeftRadius: "50%",
+                        borderBottomLeftRadius: "50%",
+                        borderTopRightRadius: "50%",
+                        borderBottomRightRadius: "4px",
+                        top: "25%",
+                        position: "fixed",
                         right: 10,
                         zIndex: theme.zIndex.speedDial
                     }}
@@ -145,8 +145,8 @@ const Customization = () => {
                                             control={<Radio />}
                                             label="Roboto"
                                             sx={{
-                                                '& .MuiSvgIcon-root': { fontSize: 28 },
-                                                '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
+                                                "& .MuiSvgIcon-root": { fontSize: 28 },
+                                                "& .MuiFormControlLabel-label": { color: theme.palette.grey[900] }
                                             }}
                                         />
                                         <FormControlLabel
@@ -154,8 +154,8 @@ const Customization = () => {
                                             control={<Radio />}
                                             label="Poppins"
                                             sx={{
-                                                '& .MuiSvgIcon-root': { fontSize: 28 },
-                                                '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
+                                                "& .MuiSvgIcon-root": { fontSize: 28 },
+                                                "& .MuiFormControlLabel-label": { color: theme.palette.grey[900] }
                                             }}
                                         />
                                         <FormControlLabel
@@ -163,8 +163,8 @@ const Customization = () => {
                                             control={<Radio />}
                                             label="Inter"
                                             sx={{
-                                                '& .MuiSvgIcon-root': { fontSize: 28 },
-                                                '& .MuiFormControlLabel-label': { color: theme.palette.grey[900] }
+                                                "& .MuiSvgIcon-root": { fontSize: 28 },
+                                                "& .MuiFormControlLabel-label": { color: theme.palette.grey[900] }
                                             }}
                                         />
                                     </RadioGroup>
@@ -194,8 +194,8 @@ const Customization = () => {
                                             max={24}
                                             color="secondary"
                                             sx={{
-                                                '& .MuiSlider-valueLabel': {
-                                                    color: 'secondary.light'
+                                                "& .MuiSlider-valueLabel": {
+                                                    color: "secondary.light"
                                                 }
                                             }}
                                         />
