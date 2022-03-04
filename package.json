@@ -2,7 +2,7 @@
   "name": "Smart-Ledger",
   "version": "0.0.1",
   "private": true,
-  "homepage": "https://github.com/CS401-Team-Project/Smart-Ledger",
+  "homepage": "/",
   "dependencies": {
     "@emotion/cache": "^11.4.0",
     "@emotion/react": "^11.4.0",
@@ -42,17 +42,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-react"
-    ]
+    "eject": "react-scripts eject",
+    "lint": "npx eslint src",
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "npx prettier src --check",
+    "prettier:fix": "npm run prettier -- --write",
+    "format": "npm run prettier:fix && npm run lint:fix"
   },
   "browserslist": {
     "production": [
@@ -67,20 +62,12 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "^7.14.8",
-    "@babel/eslint-parser": "^7.15.8",
-    "eslint": "^7.27.0",
-    "eslint-config-airbnb-typescript": "^12.3.1",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-config-react-app": "6.0.0",
-    "eslint-import-resolver-typescript": "2.4.0",
-    "eslint-plugin-flowtype": "^5.7.2",
-    "eslint-plugin-import": "^2.23.3",
-    "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-react": "^7.26.1",
-    "eslint-plugin-react-hooks": "4.0.8",
-    "prettier": "^2.2.1",
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-react": "^7.29.3",
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "^2.5.1",
     "sass": "^1.42.1"
   }
 }
