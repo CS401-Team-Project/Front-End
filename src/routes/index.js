@@ -1,10 +1,10 @@
-import { useRoutes } from 'react-router-dom';
+import { useRoutes } from "react-router-dom";
 
 // routes
-import LandingRoutes from './LandingRoutes';
-import MainRoutes from './MainRoutes';
-import AuthenticationRoutes from './AuthenticationRoutes';
-import config from 'config';
+import LandingRoutes from "./LandingRoutes";
+import MainRoutes from "./MainRoutes";
+import AuthenticationRoutes from "./AuthenticationRoutes";
+import config from "config";
 
 // ==============================|| ROUTING RENDER ||============================== //
 

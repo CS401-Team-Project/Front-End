@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from "react";
 
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
     Avatar,
     Box,
@@ -25,21 +25,21 @@ import {
     Stack,
     Switch,
     Typography
-} from '@mui/material';
+} from "@mui/material";
 
 // third-party
-import PerfectScrollbar from 'react-perfect-scrollbar';
-import { GoogleLogout, useGoogleLogin } from 'react-google-login';
+import PerfectScrollbar from "react-perfect-scrollbar";
+import { GoogleLogout, useGoogleLogin } from "react-google-login";
 
 // project imports
-import MainCard from 'ui-component/cards/MainCard';
-import Transitions from 'ui-component/extended/Transitions';
-import UpgradePlanCard from './UpgradePlanCard';
-import User1 from 'assets/images/users/user-round.svg';
-import config from 'config';
+import MainCard from "ui-component/cards/MainCard";
+import Transitions from "ui-component/extended/Transitions";
+import UpgradePlanCard from "./UpgradePlanCard";
+import User1 from "assets/images/users/user-round.svg";
+import config from "config";
 
 // assets
-import { IconLogout, IconSearch, IconSettings, IconUser } from '@tabler/icons';
+import { IconLogout, IconSearch, IconSettings, IconUser } from "@tabler/icons";
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -49,7 +49,7 @@ const ProfileSection = () => {
     const navigate = useNavigate();
 
     const [sdm, setSdm] = useState(true);
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState("");
     const [notification, setNotification] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [open, setOpen] = useState(false);
@@ -62,13 +62,13 @@ const ProfileSection = () => {
     const { signIn } = useGoogleLogin({
         clientId: config.googleClientId,
         onSuccess: (response) => {
-            console.log('Login Success');
+            console.log("Login Success");
             // TODO: Remove this printout of the response
             console.log(response);
             setAuth(response);
         },
         onFailure: (response) => {
-            console.log('Login Failure');
+            console.log("Login Failure");
             // TODO: Remove this printout of the response
             console.log(response);
             setAuth(response);
@@ -76,15 +76,18 @@ const ProfileSection = () => {
         isSignedIn: true
     });
 
+    console.log(auth);
+    console.log(signIn);
+
     const onLogoutSuccess = async () => {
-        console.log('Logout Success');
+        console.log("Logout Success");
         setAuth({});
         navigate(config.basename + config.paths.landing);
     };
 
     const onLogoutFailure = async () => {
-        console.log('ERROR: Logout Failure');
-        alert('Logout Failure');
+        console.log("ERROR: Logout Failure");
+        alert("Logout Failure");
     };
 
     const handleClose = (event) => {
@@ -94,11 +97,11 @@ const ProfileSection = () => {
         setOpen(false);
     };
 
-    const handleListItemClick = (event, index, route = '') => {
+    const handleListItemClick = (event, index, route = "") => {
         setSelectedIndex(index);
         handleClose(event);
 
-        if (route && route !== '') {
+        if (route && route !== "") {
             navigate(route);
         }
     };
@@ -119,21 +122,21 @@ const ProfileSection = () => {
         <>
             <Chip
                 sx={{
-                    height: '48px',
-                    alignItems: 'center',
-                    borderRadius: '27px',
-                    transition: 'all .2s ease-in-out',
+                    height: "48px",
+                    alignItems: "center",
+                    borderRadius: "27px",
+                    transition: "all .2s ease-in-out",
                     borderColor: theme.palette.primary.light,
                     backgroundColor: theme.palette.primary.light,
                     '&[aria-controls="menu-list-grow"], &:hover': {
                         borderColor: theme.palette.primary.main,
                         background: `${theme.palette.primary.main}!important`,
                         color: theme.palette.primary.light,
-                        '& svg': {
+                        "& svg": {
                             stroke: theme.palette.primary.light
                         }
                     },
-                    '& .MuiChip-label': {
+                    "& .MuiChip-label": {
                         lineHeight: 0
                     }
                 }}
@@ -142,11 +145,11 @@ const ProfileSection = () => {
                         src={User1}
                         sx={{
                             ...theme.typography.mediumAvatar,
-                            margin: '8px 0 8px 8px !important',
-                            cursor: 'pointer'
+                            margin: "8px 0 8px 8px !important",
+                            cursor: "pointer"
                         }}
                         ref={anchorRef}
-                        aria-controls={open ? 'menu-list-grow' : undefined}
+                        aria-controls={open ? "menu-list-grow" : undefined}
                         aria-haspopup="true"
                         color="inherit"
                     />
@@ -154,7 +157,7 @@ const ProfileSection = () => {
                 label={<IconSettings stroke={1.5} size="1.5rem" color={theme.palette.primary.main} />}
                 variant="outlined"
                 ref={anchorRef}
-                aria-controls={open ? 'menu-list-grow' : undefined}
+                aria-controls={open ? "menu-list-grow" : undefined}
                 aria-haspopup="true"
                 onClick={handleToggle}
                 color="primary"
@@ -169,7 +172,7 @@ const ProfileSection = () => {
                 popperOptions={{
                     modifiers: [
                         {
-                            name: 'offset',
+                            name: "offset",
                             options: {
                                 offset: [0, 14]
                             }
@@ -193,7 +196,7 @@ const ProfileSection = () => {
                                             <Typography variant="subtitle2">Project Admin</Typography>
                                         </Stack>
                                         <OutlinedInput
-                                            sx={{ width: '100%', pr: 1, pl: 2, my: 2 }}
+                                            sx={{ width: "100%", pr: 1, pl: 2, my: 2 }}
                                             id="input-search-profile"
                                             value={value}
                                             onChange={(e) => setValue(e.target.value)}
@@ -205,12 +208,12 @@ const ProfileSection = () => {
                                             }
                                             aria-describedby="search-helper-text"
                                             inputProps={{
-                                                'aria-label': 'weight'
+                                                "aria-label": "weight"
                                             }}
                                         />
                                         <Divider />
                                     </Box>
-                                    <PerfectScrollbar style={{ height: '100%', maxHeight: 'calc(100vh - 250px)', overflowX: 'hidden' }}>
+                                    <PerfectScrollbar style={{ height: "100%", maxHeight: "calc(100vh - 250px)", overflowX: "hidden" }}>
                                         <Box sx={{ p: 2 }}>
                                             <UpgradePlanCard />
                                             <Divider />
@@ -260,15 +263,15 @@ const ProfileSection = () => {
                                             <List
                                                 component="nav"
                                                 sx={{
-                                                    width: '100%',
+                                                    width: "100%",
                                                     maxWidth: 350,
                                                     minWidth: 300,
                                                     backgroundColor: theme.palette.background.paper,
-                                                    borderRadius: '10px',
-                                                    [theme.breakpoints.down('md')]: {
-                                                        minWidth: '100%'
+                                                    borderRadius: "10px",
+                                                    [theme.breakpoints.down("md")]: {
+                                                        minWidth: "100%"
                                                     },
-                                                    '& .MuiListItemButton-root': {
+                                                    "& .MuiListItemButton-root": {
                                                         mt: 0.5
                                                     }
                                                 }}
@@ -276,7 +279,7 @@ const ProfileSection = () => {
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     selected={selectedIndex === 0}
-                                                    onClick={(event) => handleListItemClick(event, 0, '/user/account-profile/profile1')}
+                                                    onClick={(event) => handleListItemClick(event, 0, "/user/account-profile/profile1")}
                                                 >
                                                     <ListItemIcon>
                                                         <IconSettings stroke={1.5} size="1.3rem" />
@@ -286,7 +289,7 @@ const ProfileSection = () => {
                                                 <ListItemButton
                                                     sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                     selected={selectedIndex === 1}
-                                                    onClick={(event) => handleListItemClick(event, 1, '/user/social-profile/posts')}
+                                                    onClick={(event) => handleListItemClick(event, 1, "/user/social-profile/posts")}
                                                 >
                                                     <ListItemIcon>
                                                         <IconUser stroke={1.5} size="1.3rem" />

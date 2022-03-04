@@ -1,6 +1,6 @@
 // material-ui
-import { Card, CardContent, Grid } from '@mui/material';
-import Skeleton from '@mui/material/Skeleton';
+import { Card, CardContent, Grid } from "@mui/material";
+import Skeleton from "@mui/material/Skeleton";
 
 // ==============================|| SKELETON - EARNING CARD ||============================== //
 

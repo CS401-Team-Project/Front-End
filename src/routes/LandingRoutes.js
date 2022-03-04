@@ -1,17 +1,17 @@
-import { lazy } from 'react';
+import { lazy } from "react";
 
 // project imports
-import Loadable from 'ui-component/Loadable';
+import Loadable from "ui-component/Loadable";
 
-const LandingPage = Loadable(lazy(() => import('views/pages/landing-page')));
+const LandingPage = Loadable(lazy(() => import("views/pages/landing-page")));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
 const LandingRoutes = {
-    path: '/',
+    path: "/",
     children: [
         {
-            path: '/',
+            path: "/",
             element: <LandingPage />
         }
     ]

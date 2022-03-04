@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
     Box,
     Button,
@@ -18,23 +18,22 @@ import {
     InputLabel,
     OutlinedInput,
     Stack,
-    Typography,
-    useMediaQuery
-} from '@mui/material';
+    Typography
+} from "@mui/material";
 
 // third party
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import { GoogleLogin } from 'react-google-login';
+import * as Yup from "yup";
+import { Formik } from "formik";
+import { GoogleLogin } from "react-google-login";
 
 // project imports
-import useScriptRef from 'hooks/useScriptRef';
-import AnimateButton from 'ui-component/extended/AnimateButton';
-import config from 'config';
+import useScriptRef from "hooks/useScriptRef";
+import AnimateButton from "ui-component/extended/AnimateButton";
+import config from "config";
 
 // assets
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 // import Google from 'assets/images/icons/social-google.svg';
 
 // ============================|| FIREBASE - LOGIN ||============================ //
@@ -43,17 +42,17 @@ const FirebaseLogin = ({ ...others }) => {
     const theme = useTheme();
     const scriptedRef = useScriptRef();
     const navigate = useNavigate();
-    const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
+    // const matchDownSM = useMediaQuery(theme.breakpoints.down("md"));
     const customization = useSelector((state) => state.customization);
     const [checked, setChecked] = useState(true);
 
     const onGoogleSuccess = (res) => {
-        console.log('[Google Login Success] currentUser: ', res.profileObj);
+        console.log("[Google Login Success] currentUser: ", res.profileObj);
         // TODO: API Call to check if user has already registered on the back-end
         let isRegistered = true;
 
         if (!isRegistered) {
-            console.log('User is not registered.');
+            console.log("User is not registered.");
             // TODO: Possibly change this to a prettier dialog
             const response = confirm("It looks like you don't have an account yet.\nWould you like to register?");
             if (response) navigate(config.basename + config.paths.auth.register);
@@ -61,14 +60,14 @@ const FirebaseLogin = ({ ...others }) => {
         }
 
         // If user is already registered, then redirect to dashboard
-        console.log('User is already registered. Logging in...');
+        console.log("User is already registered. Logging in...");
         navigate(config.basename + config.paths.app);
     };
 
     const onGoogleFailure = (res) => {
-        console.log('[Google Login Failure] Error: ', res);
+        console.log("[Google Login Failure] Error: ", res);
         // TODO: Error Handling
-        alert('Google OAuth Failed');
+        alert("Google OAuth Failed");
     };
 
     const [showPassword, setShowPassword] = useState(false);
@@ -87,11 +86,11 @@ const FirebaseLogin = ({ ...others }) => {
                     <AnimateButton>
                         <GoogleLogin
                             clientId={config.googleClientId}
-                            buttonText={'Login with Google'}
+                            buttonText={"Login with Google"}
                             onSuccess={onGoogleSuccess}
                             onFailure={onGoogleFailure}
-                            cookiePolicy={'single_host_origin'}
-                            style={{ margin: '100px auto' }}
+                            cookiePolicy={"single_host_origin"}
+                            style={{ margin: "100px auto" }}
                             isSignedIn={true}
                         />
 
@@ -117,8 +116,8 @@ const FirebaseLogin = ({ ...others }) => {
                 <Grid item xs={12}>
                     <Box
                         sx={{
-                            alignItems: 'center',
-                            display: 'flex'
+                            alignItems: "center",
+                            display: "flex"
                         }}
                     >
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
@@ -126,7 +125,7 @@ const FirebaseLogin = ({ ...others }) => {
                         <Button
                             variant="outlined"
                             sx={{
-                                cursor: 'unset',
+                                cursor: "unset",
                                 m: 2,
                                 py: 0.5,
                                 px: 7,
@@ -153,13 +152,13 @@ const FirebaseLogin = ({ ...others }) => {
 
             <Formik
                 initialValues={{
-                    email: 'info@codedthemes.com',
-                    password: '123456',
+                    email: "info@codedthemes.com",
+                    password: "123456",
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
-                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                    password: Yup.string().max(255).required('Password is required')
+                    email: Yup.string().email("Must be a valid email").max(255).required("Email is required"),
+                    password: Yup.string().max(255).required("Password is required")
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
@@ -206,7 +205,7 @@ const FirebaseLogin = ({ ...others }) => {
                             <InputLabel htmlFor="outlined-adornment-password-login">Password</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password-login"
-                                type={showPassword ? 'text' : 'password'}
+                                type={showPassword ? "text" : "password"}
                                 value={values.password}
                                 name="password"
                                 onBlur={handleBlur}
@@ -245,7 +244,7 @@ const FirebaseLogin = ({ ...others }) => {
                                 }
                                 label="Remember me"
                             />
-                            <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: 'none', cursor: 'pointer' }}>
+                            <Typography variant="subtitle1" color="secondary" sx={{ textDecoration: "none", cursor: "pointer" }}>
                                 Forgot Password?
                             </Typography>
                         </Stack>

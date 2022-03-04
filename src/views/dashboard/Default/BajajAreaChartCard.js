@@ -1,16 +1,16 @@
-import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
-import { Card, Grid, Typography } from '@mui/material';
+import { useTheme } from "@mui/material/styles";
+import { Card, Grid, Typography } from "@mui/material";
 
 // third-party
-import ApexCharts from 'apexcharts';
-import Chart from 'react-apexcharts';
+import ApexCharts from "apexcharts";
+import Chart from "react-apexcharts";
 
 // project imports
-import chartData from './chart-data/bajaj-area-chart';
+import chartData from "./chart-data/bajaj-area-chart";
 
 // ===========================|| DASHBOARD DEFAULT - BAJAJ AREA CHART CARD ||=========================== //
 
@@ -26,15 +26,15 @@ const BajajAreaChartCard = () => {
             ...chartData.options,
             colors: [orangeDark],
             tooltip: {
-                theme: 'light'
+                theme: "light"
             }
         };
-        ApexCharts.exec(`support-chart`, 'updateOptions', newSupportChart);
+        ApexCharts.exec(`support-chart`, "updateOptions", newSupportChart);
     }, [navType, orangeDark]);
 
     return (
-        <Card sx={{ bgcolor: 'secondary.light' }}>
-            <Grid container sx={{ p: 2, pb: 0, color: '#fff' }}>
+        <Card sx={{ bgcolor: "secondary.light" }}>
+            <Grid container sx={{ p: 2, pb: 0, color: "#fff" }}>
                 <Grid item xs={12}>
                     <Grid container alignItems="center" justifyContent="space-between">
                         <Grid item>

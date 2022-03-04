@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 // material-ui
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
     Box,
     Button,
@@ -20,23 +20,23 @@ import {
     TextField,
     Typography,
     useMediaQuery
-} from '@mui/material';
+} from "@mui/material";
 
 // third party
-import * as Yup from 'yup';
-import { Formik } from 'formik';
-import { GoogleLogin } from 'react-google-login';
+import * as Yup from "yup";
+import { Formik } from "formik";
+import { GoogleLogin } from "react-google-login";
 
 // project imports
-import useScriptRef from 'hooks/useScriptRef';
-import AnimateButton from 'ui-component/extended/AnimateButton';
-import { strengthColor, strengthIndicator } from 'utils/password-strength';
-import config from 'config';
+import useScriptRef from "hooks/useScriptRef";
+import AnimateButton from "ui-component/extended/AnimateButton";
+import { strengthColor, strengthIndicator } from "utils/password-strength";
+import config from "config";
 // import Google from 'assets/images/icons/social-google.svg';
 
 // assets
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 // ===========================|| FIREBASE - REGISTER ||=========================== //
 
@@ -44,7 +44,7 @@ const FirebaseRegister = ({ ...others }) => {
     const theme = useTheme();
     const scriptedRef = useScriptRef();
     const navigate = useNavigate();
-    const matchDownSM = useMediaQuery(theme.breakpoints.down('md'));
+    const matchDownSM = useMediaQuery(theme.breakpoints.down("md"));
     const customization = useSelector((state) => state.customization);
     const [showPassword, setShowPassword] = useState(false);
     const [checked, setChecked] = useState(true);
@@ -53,25 +53,25 @@ const FirebaseRegister = ({ ...others }) => {
     const [level, setLevel] = useState();
 
     const onGoogleSuccess = (res) => {
-        console.log('[Google Signup Success] currentUser: ', res.profileObj);
+        console.log("[Google Signup Success] currentUser: ", res.profileObj);
         // TODO: API Call to check if user has already registered on the back-end
         let isRegistered = true;
 
         if (!isRegistered) {
-            console.log('User is not yet registered.');
+            console.log("User is not yet registered.");
             // TODO: If user is not registered, handle registration on the back-end
             return;
         }
 
         // If user is already registered, then redirect to dashboard
-        console.log('User is already registered. Logging in...');
+        console.log("User is already registered. Logging in...");
         navigate(config.basename + config.paths.app);
     };
 
     const onGoogleFailure = (res) => {
-        console.log('[Google Signup Failure] Error: ', res);
+        console.log("[Google Signup Failure] Error: ", res);
         // TODO: Error Handling
-        alert('Google OAuth Failed');
+        alert("Google OAuth Failed");
     };
 
     const handleClickShowPassword = () => {
@@ -89,7 +89,7 @@ const FirebaseRegister = ({ ...others }) => {
     };
 
     useEffect(() => {
-        changePassword('123456');
+        changePassword("123456");
     }, []);
 
     return (
@@ -99,11 +99,11 @@ const FirebaseRegister = ({ ...others }) => {
                     <AnimateButton>
                         <GoogleLogin
                             clientId={config.googleClientId}
-                            buttonText={'Sign up with Google'}
+                            buttonText={"Sign up with Google"}
                             onSuccess={onGoogleSuccess}
                             onFailure={onGoogleFailure}
-                            cookiePolicy={'single_host_origin'}
-                            style={{ margin: '100px auto' }}
+                            cookiePolicy={"single_host_origin"}
+                            style={{ margin: "100px auto" }}
                             isSignedIn={true}
                         />
                         {/* <Button
@@ -125,12 +125,12 @@ const FirebaseRegister = ({ ...others }) => {
                     </AnimateButton>
                 </Grid>
                 <Grid item xs={12}>
-                    <Box sx={{ alignItems: 'center', display: 'flex' }}>
+                    <Box sx={{ alignItems: "center", display: "flex" }}>
                         <Divider sx={{ flexGrow: 1 }} orientation="horizontal" />
                         <Button
                             variant="outlined"
                             sx={{
-                                cursor: 'unset',
+                                cursor: "unset",
                                 m: 2,
                                 py: 0.5,
                                 px: 7,
@@ -156,13 +156,13 @@ const FirebaseRegister = ({ ...others }) => {
 
             <Formik
                 initialValues={{
-                    email: '',
-                    password: '',
+                    email: "",
+                    password: "",
                     submit: null
                 }}
                 validationSchema={Yup.object().shape({
-                    email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-                    password: Yup.string().max(255).required('Password is required')
+                    email: Yup.string().email("Must be a valid email").max(255).required("Email is required"),
+                    password: Yup.string().max(255).required("Password is required")
                 })}
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
@@ -232,7 +232,7 @@ const FirebaseRegister = ({ ...others }) => {
                             <InputLabel htmlFor="outlined-adornment-password-register">Password</InputLabel>
                             <OutlinedInput
                                 id="outlined-adornment-password-register"
-                                type={showPassword ? 'text' : 'password'}
+                                type={showPassword ? "text" : "password"}
                                 value={values.password}
                                 name="password"
                                 label="Password"
@@ -270,7 +270,7 @@ const FirebaseRegister = ({ ...others }) => {
                                         <Grid item>
                                             <Box
                                                 style={{ backgroundColor: level?.color }}
-                                                sx={{ width: 85, height: 8, borderRadius: '7px' }}
+                                                sx={{ width: 85, height: 8, borderRadius: "7px" }}
                                             />
                                         </Grid>
                                         <Grid item>

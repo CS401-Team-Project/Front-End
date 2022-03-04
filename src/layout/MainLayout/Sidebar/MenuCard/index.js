@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 // material-ui
-import { styled, useTheme } from '@mui/material/styles';
+import { styled, useTheme } from "@mui/material/styles";
 import {
     Avatar,
     Card,
@@ -14,17 +14,17 @@ import {
     ListItemText,
     Typography,
     linearProgressClasses
-} from '@mui/material';
+} from "@mui/material";
 
 // assets
-import TableChartOutlinedIcon from '@mui/icons-material/TableChartOutlined';
+import TableChartOutlinedIcon from "@mui/icons-material/TableChartOutlined";
 
 // styles
 const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
     height: 10,
     borderRadius: 30,
     [`&.${linearProgressClasses.colorPrimary}`]: {
-        backgroundColor: '#fff'
+        backgroundColor: "#fff"
     },
     [`& .${linearProgressClasses.bar}`]: {
         borderRadius: 5,
@@ -34,18 +34,18 @@ const BorderLinearProgress = styled(LinearProgress)(({ theme }) => ({
 
 const CardStyle = styled(Card)(({ theme }) => ({
     background: theme.palette.primary.light,
-    marginBottom: '22px',
-    overflow: 'hidden',
-    position: 'relative',
-    '&:after': {
+    marginBottom: "22px",
+    overflow: "hidden",
+    position: "relative",
+    "&:after": {
         content: '""',
-        position: 'absolute',
-        width: '157px',
-        height: '157px',
+        position: "absolute",
+        width: "157px",
+        height: "157px",
         background: theme.palette.primary[200],
-        borderRadius: '50%',
-        top: '-105px',
-        right: '-96px'
+        borderRadius: "50%",
+        top: "-105px",
+        right: "-96px"
     }
 }));
 
@@ -96,10 +96,10 @@ const MenuCard = () => {
                                     ...theme.typography.commonAvatar,
                                     ...theme.typography.largeAvatar,
                                     color: theme.palette.primary.main,
-                                    border: 'none',
+                                    border: "none",
                                     borderColor: theme.palette.primary.main,
-                                    background: '#fff',
-                                    marginRight: '12px'
+                                    background: "#fff",
+                                    marginRight: "12px"
                                 }}
                             >
                                 <TableChartOutlinedIcon fontSize="inherit" />
