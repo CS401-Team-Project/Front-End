@@ -59,7 +59,7 @@ const FirebaseLogin = ({ ...others }) => {
             return;
         }
 
-        // If user is already registered, then redirect to dashboard
+        // If user is already registered, then redirect to overview
         console.log("User is already registered. Logging in...");
         navigate(config.basename + config.paths.app);
     };
