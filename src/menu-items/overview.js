@@ -25,7 +25,7 @@ const overview = {
             breadcrumbs: true
         },
         {
-            id: "groups",
+            id: "my-groups",
             title: "My Groups",
             type: "item",
             url: "/app/groups",

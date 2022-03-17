@@ -6,29 +6,31 @@ import { IconUsers } from "@tabler/icons";
 const groups = {
     id: "groups",
     title: "Groups",
-    // caption: "Pages Caption",
     type: "group",
     children: [
         {
             id: "group1",
             title: "Group 1",
             type: "item",
+            url: "/app/group?id=1",
             icon: IconUsers,
-            url: "/app/group?id=1"
+            breadcrumbs: true
         },
         {
             id: "group2",
             title: "Group 2",
             type: "item",
+            url: "/app/group?id=2",
             icon: IconUsers,
-            url: "/app/group?id=2"
+            breadcrumbs: true
         },
         {
             id: "group3",
             title: "Group 3",
             type: "item",
+            url: "/app/group?id=3",
             icon: IconUsers,
-            url: "/app/group?id=3"
+            breadcrumbs: true
         }
     ]
 };
