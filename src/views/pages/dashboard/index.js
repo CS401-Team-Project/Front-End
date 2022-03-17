@@ -4,17 +4,17 @@ import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 
 // project imports
-import EarningCard from "./EarningCard";
-import PopularCard from "./PopularCard";
-import TotalOrderLineChartCard from "./TotalOrderLineChartCard";
-import TotalIncomeDarkCard from "./TotalIncomeDarkCard";
-import TotalIncomeLightCard from "./TotalIncomeLightCard";
-import TotalGrowthBarChart from "./TotalGrowthBarChart";
+import EarningCard from "./components/EarningCard";
+import PopularCard from "./components/PopularCard";
+import TotalOrderLineChartCard from "./components/TotalOrderLineChartCard";
+import TotalIncomeDarkCard from "./components/TotalIncomeDarkCard";
+import TotalIncomeLightCard from "./components/TotalIncomeLightCard";
+import TotalGrowthBarChart from "./components/TotalGrowthBarChart";
 import { gridSpacing } from "store/constant";
 
 // ==============================|| DEFAULT DASHBOARD ||============================== //
 
-const Dashboard = () => {
+const Index = () => {
     const [isLoading, setLoading] = useState(true);
     useEffect(() => {
         setLoading(false);
@@ -56,4 +56,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Index;
