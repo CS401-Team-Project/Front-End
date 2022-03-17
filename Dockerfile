@@ -12,12 +12,19 @@ WORKDIR /app
 ENV PATH /app/node_modules/.bin:$PATH
 
 # Copy package files and install app dependencies
-COPY package.json /app/package.json
+# COPY package.json /app/package.json
+
+# NEW
+COPY package.json .
+
 RUN npm install
-RUN npm install react-scripts -g
+# RUN npm install react-scripts -g
+
+# NEW
+COPY . .
 
 # Add React app to working directory
-ADD . /app
+# ADD . /app
 
 # Start the React app
 CMD ["npm", "start"]
