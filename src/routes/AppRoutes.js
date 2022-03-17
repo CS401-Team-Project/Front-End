@@ -4,10 +4,13 @@ import { lazy } from "react";
 import MainLayout from "layout/MainLayout";
 import Loadable from "ui-component/Loadable";
 
-// dashboard routing
-const DashboardDefault = Loadable(lazy(() => import("views/dashboard/Default")));
+// overview routing
+const Dashboard = Loadable(lazy(() => import("views/dashboard/Default")));
+const Activity = Loadable(lazy(() => import("views/pages/activity")));
+const Groups = Loadable(lazy(() => import("views/pages/groups")));
+const Group = Loadable(lazy(() => import("views/pages/group")));
 
-// utilities routing
+// management routing
 const UtilsTypography = Loadable(lazy(() => import("views/utilities/Typography")));
 const UtilsColor = Loadable(lazy(() => import("views/utilities/Color")));
 const UtilsShadow = Loadable(lazy(() => import("views/utilities/Shadow")));
@@ -19,13 +22,25 @@ const SamplePage = Loadable(lazy(() => import("views/sample-page")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
-const MainRoutes = {
+const AppRoutes = {
     path: "/app",
     element: <MainLayout />,
     children: [
         {
             path: "/",
-            element: <DashboardDefault />
+            element: <Dashboard />
+        },
+        {
+            path: "/activity",
+            element: <Activity />
+        },
+        {
+            path: "/groups",
+            element: <Groups />
+        },
+        {
+            path: "/group",
+            element: <Group />
         },
         {
             path: "/utils/util-typography",
@@ -54,4 +69,4 @@ const MainRoutes = {
     ]
 };
 
-export default MainRoutes;
+export default AppRoutes;
