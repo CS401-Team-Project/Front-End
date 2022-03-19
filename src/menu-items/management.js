@@ -4,12 +4,12 @@ import { IconUser, IconSettings } from "@tabler/icons";
 // ==============================|| UTILITIES MENU ITEMS ||============================== //
 
 const management = {
-    id: "Management",
+    id: "menu-manage",
     title: "Management",
     type: "group",
     children: [
         {
-            id: "profile",
+            id: "manage-profile",
             title: "My Profile",
             type: "item",
             url: "/app/profile",
@@ -17,7 +17,7 @@ const management = {
             breadcrumbs: false
         },
         {
-            id: "settings",
+            id: "manage-settings",
             title: "Settings",
             type: "item",
             url: "/app/settings",

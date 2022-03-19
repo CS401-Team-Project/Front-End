@@ -4,12 +4,12 @@ import { IconDashboard, IconActivity, IconUsers } from "@tabler/icons";
 // ==============================|| DASHBOARD MENU ITEMS ||============================== //
 
 const overview = {
-    id: "overview",
+    id: "menu-overview",
     title: "Overview",
     type: "group",
     children: [
         {
-            id: "default",
+            id: "overview-default",
             title: "Dashboard",
             type: "item",
             url: "/app",
@@ -17,7 +17,7 @@ const overview = {
             breadcrumbs: true
         },
         {
-            id: "activity",
+            id: "overview-activity",
             title: "Activity",
             type: "item",
             url: "/app/activity",
@@ -25,7 +25,7 @@ const overview = {
             breadcrumbs: true
         },
         {
-            id: "my-groups",
+            id: "overview-groups",
             title: "My Groups",
             type: "item",
             url: "/app/groups",
