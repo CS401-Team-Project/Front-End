@@ -1,0 +1,21 @@
+name: Node.js Version Bump
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Automated Version Bump'
+        uses: 'phips28/gh-action-bump-version@master'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          minor-wording: 'add,adds,new'
+          major-wording: 'MAJOR,cut-major'
+          patch-wording: 'fix,fixes,patch,patches'     # Providing patch-wording will override commits
+          rc-wording: 'RELEASE,alpha'
+          tag-prefix: 'v'
