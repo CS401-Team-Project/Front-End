@@ -1,5 +1,7 @@
 # Front-End
 
+[![FE-Build](https://github.com/CS401-Team-Project/Front-End/actions/workflows/node.yml/badge.svg)](https://github.com/CS401-Team-Project/Front-End/actions/workflows/node.yml)
+
 ## Installation and Deployment
 
 Note: These instructions are for local deployment of the **front-end only**.  
