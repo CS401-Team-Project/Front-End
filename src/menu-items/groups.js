@@ -4,12 +4,12 @@ import { IconUsers } from "@tabler/icons";
 // ==============================|| EXTRA PAGES MENU ITEMS ||============================== //
 
 const groups = {
-    id: "groups",
+    id: "menu-groups",
     title: "Groups",
     type: "group",
     children: [
         {
-            id: "group1",
+            id: "groups-g1",
             title: "Group 1",
             type: "item",
             url: "/app/group?id=1",
@@ -17,7 +17,7 @@ const groups = {
             breadcrumbs: true
         },
         {
-            id: "group2",
+            id: "groups-g2",
             title: "Group 2",
             type: "item",
             url: "/app/group?id=2",
@@ -25,7 +25,7 @@ const groups = {
             breadcrumbs: true
         },
         {
-            id: "group3",
+            id: "groups-g3",
             title: "Group 3",
             type: "item",
             url: "/app/group?id=3",
