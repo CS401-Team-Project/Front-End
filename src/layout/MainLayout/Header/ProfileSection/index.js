@@ -8,38 +8,30 @@ import { useTheme } from "@mui/material/styles";
 import {
     Avatar,
     Box,
-    Card,
-    CardContent,
     Chip,
     ClickAwayListener,
     Divider,
-    Grid,
-    InputAdornment,
     List,
     ListItemButton,
     ListItemIcon,
     ListItemText,
-    OutlinedInput,
     Paper,
     Popper,
     Stack,
-    Switch,
     Typography
 } from "@mui/material";
 
 // third-party
-import PerfectScrollbar from "react-perfect-scrollbar";
 import { GoogleLogout, useGoogleLogin } from "react-google-login";
 
 // project imports
 import MainCard from "ui-component/cards/MainCard";
 import Transitions from "ui-component/extended/Transitions";
-import UpgradePlanCard from "./UpgradePlanCard";
 import User1 from "assets/images/users/user-round.svg";
 import config from "config";
 
 // assets
-import { IconLogout, IconSearch, IconSettings, IconUser } from "@tabler/icons";
+import { IconLogout, IconSettings } from "@tabler/icons";
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -48,9 +40,9 @@ const ProfileSection = () => {
     const customization = useSelector((state) => state.customization);
     const navigate = useNavigate();
 
-    const [sdm, setSdm] = useState(true);
-    const [value, setValue] = useState("");
-    const [notification, setNotification] = useState(false);
+    // const [sdm, setSdm] = useState(true);
+    // const [value, setValue] = useState("");
+    // const [notification, setNotification] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [open, setOpen] = useState(false);
     const [auth, setAuth] = useState({});
@@ -194,9 +186,6 @@ const ProfileSection = () => {
                                                     margin: "8px 0 8px 8px !important",
                                                     cursor: "pointer"
                                                 }}
-                                                ref={anchorRef}
-                                                aria-controls={open ? "menu-list-grow" : undefined}
-                                                aria-haspopup="true"
                                                 color="inherit"
                                             />
                                             <Stack>
@@ -297,7 +286,7 @@ const ProfileSection = () => {
                                             <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 0}
-                                                onClick={(event) => handleListItemClick(event, 0, "/user/account-profile/profile1")}
+                                                onClick={(event) => handleListItemClick(event, 0, "/app/settings")}
                                             >
                                                 <ListItemIcon>
                                                     <IconSettings stroke={1.5} size="1.3rem" />
