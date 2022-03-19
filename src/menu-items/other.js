@@ -1,5 +1,5 @@
 // assets
-import { IconBrandChrome, IconHelp, IconPalette, IconShadow, IconTypography, IconWindmill } from "@tabler/icons";
+import { IconPalette, IconShadow, IconTypography, IconWindmill } from "@tabler/icons";
 
 // ==============================|| SAMPLE PAGE & DOCUMENTATION MENU ITEMS ||============================== //
 

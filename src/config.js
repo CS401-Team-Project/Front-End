@@ -12,6 +12,16 @@ const config = {
             login: "/login",
             register: "/register"
         }
+    },
+    links: {
+        github: {
+            name: "GitHub",
+            url: "https://github.com/CS401-Team-Project/"
+        },
+        domain: {
+            name: "sl.absolutzero.org",
+            url: "https://sl.absolutzero.org"
+        }
     }
 };
 
