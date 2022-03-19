@@ -53,24 +53,24 @@ const other = {
                     breadcrumbs: false
                 }
             ]
-        },
-        {
-            id: "sample-page",
-            title: "Sample Page",
-            type: "item",
-            url: "/app/sample-page",
-            icon: IconBrandChrome,
-            breadcrumbs: false
-        },
-        {
-            id: "documentation",
-            title: "Documentation",
-            type: "item",
-            url: "https://codedthemes.gitbook.io/berry/",
-            icon: IconHelp,
-            external: true,
-            target: true
         }
+        // {
+        //     id: "sample-page",
+        //     title: "Sample Page",
+        //     type: "item",
+        //     url: "/app/sample-page",
+        //     icon: IconBrandChrome,
+        //     breadcrumbs: false
+        // },
+        // {
+        //     id: "documentation",
+        //     title: "Documentation",
+        //     type: "item",
+        //     url: "https://codedthemes.gitbook.io/berry/",
+        //     icon: IconHelp,
+        //     external: true,
+        //     target: true
+        // }
     ]
 };
 
