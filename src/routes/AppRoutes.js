@@ -9,7 +9,6 @@ const Dashboard = Loadable(lazy(() => import("views/pages/dashboard")));
 const Activity = Loadable(lazy(() => import("views/pages/activity")));
 const Groups = Loadable(lazy(() => import("views/pages/groups")));
 const Group = Loadable(lazy(() => import("views/pages/group")));
-const Profile = Loadable(lazy(() => import("views/pages/profile")));
 const Settings = Loadable(lazy(() => import("views/pages/settings")));
 
 // management routing
@@ -43,10 +42,6 @@ const AppRoutes = {
         {
             path: "/group",
             element: <Group />
-        },
-        {
-            path: "/profile",
-            element: <Profile />
         },
         {
             path: "/settings",
