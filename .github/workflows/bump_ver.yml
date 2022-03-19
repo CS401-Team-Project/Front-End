@@ -1,4 +1,4 @@
-name: Node.js Version Bump
+name: Front-End - Version Bump
 
 on:
   pull_request:
