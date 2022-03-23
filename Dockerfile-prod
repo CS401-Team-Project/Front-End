@@ -1,26 +1,39 @@
+############################################################
+#                          NODE                            #
+############################################################
 # Pull latest official node image
-FROM node:16.14.0-bullseye as build
+FROM node:16.14.0-alpine as build
+# Set environment variables
+ENV PATH /app/node_modules/.bin:$PATH
 
-# Set working directory
+# Create working directory for node user and group
+RUN mkdir /app
+RUN chown -R node:node /app
+
+# Set working directory and copy local contents
 WORKDIR /app
+RUN ls -al
+COPY ./ ./
 
-COPY package*.json ./
-
+# Switch user to node and install dependencies
+USER node
 RUN npm install
-RUN npm install react-scripts -g
-
-COPY . .
 
 RUN npm run build
 
+############################################################
+#                         NGINX                            #
+############################################################
 # Create image based on nginx and deploy our built React app
 FROM nginx:1.17-alpine
-
+# Copy statically-built files to webroot
 COPY --from=build /app/build /usr/share/nginx/html
-
+# Remove default configuration
 RUN rm /etc/nginx/conf.d/default.conf
+# Copy new configuration
 COPY nginx.conf /etc/nginx/conf.d
-
+# Expose port 80 (HTTP)
 EXPOSE 80
-
+EXPOSE 443
+# Run nginx
 CMD ["nginx", "-g", "daemon off;"]
