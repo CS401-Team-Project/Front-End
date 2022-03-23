@@ -5,15 +5,14 @@
 FROM node:16.14.0-alpine
 # Set environment variables
 ENV PATH /app/node_modules/.bin:$PATH
-
-# Create working directory for node user and group
-RUN mkdir /app
-RUN chown -R node:node /app
+RUN ls -al
 
 # Set working directory and copy local contents
 WORKDIR /app
-RUN ls -al
 COPY ./ ./
+RUN ls -al
+RUN chown -R node:node /app
+RUN ls -al
 
 # Switch user to node and install dependencies
 USER node
