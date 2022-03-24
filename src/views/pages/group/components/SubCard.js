@@ -11,7 +11,7 @@ const SubCard = forwardRef(({ children, content, contentClass, darkTitle, second
     const theme = useTheme();
 
     var cardStyle = {
-        height: "192px"
+        height: "400px"
     };
 
     return (

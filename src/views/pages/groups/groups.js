@@ -1,15 +1,16 @@
+// Group Page uses Group1.js, Group2.js, MainContent
 // project imports
 import MainCard from "ui-component/cards/MainCard";
-import TotalIncomeDarkCard from "./TotalIncomeDarkCard";
-import TotalIncomeLightCard from "./TotalIncomeLightCard";
+import Group1 from "./Group1";
+import Group2 from "./Group2";
 
 // ==============================|| TYPOGRAPHY ||============================== //
 
 const Groups = () => {
     return (
         <MainCard>
-            <TotalIncomeDarkCard />
-            <TotalIncomeLightCard />
+            <Group1 />
+            <Group2 />
         </MainCard>
     );
 };
