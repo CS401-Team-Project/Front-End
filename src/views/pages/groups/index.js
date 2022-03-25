@@ -1,8 +1,8 @@
 // Group Page uses Group1.js, Group2.js, MainContent
 // project imports
 import MainCard from "ui-component/cards/MainCard";
-import Group1 from "./Group1";
-import Group2 from "./Group2";
+import Group1 from "./components/Group1";
+import Group2 from "./components/Group2";
 
 // ==============================|| TYPOGRAPHY ||============================== //
 

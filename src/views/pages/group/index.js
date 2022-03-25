@@ -14,7 +14,7 @@ const Group = () => {
             <Grid item xs={8.8}>
                 <Grid container rowSpacing={2}>
                     <Grid item xs={12}>
-                        <Summary />
+                        <Summary title="Group Information" />
                     </Grid>
                     <Grid item xs={12}>
                         <QuickAction />
