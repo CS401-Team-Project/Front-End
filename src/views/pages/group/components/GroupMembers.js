@@ -13,11 +13,11 @@ const GroupMembers = () => {
             <SubCard title="Group Members">
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <Grid container spacing={2}>
-                            <Grid item xs={4}>
+                        <Grid container spacing={1}>
+                            <Grid item xs={3.5}>
                                 <Button variant="contained">Leave Group</Button>
                             </Grid>
-                            <Grid item xs={4}>
+                            <Grid item xs={3.5}>
                                 <Button variant="contained">Edit Group</Button>
                             </Grid>
                         </Grid>

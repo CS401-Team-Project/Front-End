@@ -19,7 +19,7 @@ const QuickAction = () => {
                         <Button variant="contained">Remove Expenses</Button>
                     </Grid>
                 </Grid>
-                <Grid item container spacing={4}>
+                <Grid item container columnSpacing={3.5}>
                     <Grid item>
                         <Button variant="contained">Settle Expenses</Button>
                     </Grid>
