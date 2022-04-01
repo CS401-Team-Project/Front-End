@@ -2,8 +2,9 @@ name: Front-End - Version Bump
    
 on:
   push:
+  pull_request:
     branches:
-      - main   
+      - master
    
 jobs:
   build:
