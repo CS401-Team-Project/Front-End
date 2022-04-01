@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material";
 
 // project imports
-import Summary from "./components/Summary";
-import GroupContent from "./components/GroupContent";
+import GroupInformation from "./components/GroupInformation";
+import GroupMembers from "./components/GroupMembers";
 import QuickAction from "./components/QuickAction";
 import Transactions from "./components/Transactions";
 
@@ -10,19 +10,15 @@ import Transactions from "./components/Transactions";
 
 const Group = () => {
     return (
-        <Grid container rowSpacing={2} columnSpacing={2}>
-            <Grid item xs={8.8}>
-                <Grid container rowSpacing={2}>
-                    <Grid item xs={12}>
-                        <Summary title="Group Information" />
-                    </Grid>
-                    <Grid item xs={12}>
-                        <QuickAction />
-                    </Grid>
-                </Grid>
+        <Grid container spacing={2}>
+            <Grid item xs={4}>
+                <GroupInformation />
             </Grid>
-            <Grid item xs={3.2}>
-                <GroupContent title="Group Members"></GroupContent>
+            <Grid item xs={4}>
+                <QuickAction />
+            </Grid>
+            <Grid item xs={4}>
+                <GroupMembers />
             </Grid>
             <Grid item xs={12}>
                 <Transactions />

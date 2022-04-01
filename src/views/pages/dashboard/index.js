@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 
 // project imports
-import EarningCard from "./components/EarningCard";
+import YouOweCard from "./fe-components/YouOweCard";
+import YouAreOwedCard from "./fe-components/YouAreOwedCard";
 // import PopularCard from "./components/PopularCard";
 // import TotalOrderLineChartCard from "./components/TotalOrderLineChartCard";
 // import TotalIncomeDarkCard from "./components/TotalIncomeDarkCard";
@@ -25,7 +26,14 @@ const Index = () => {
             <Grid item xs={12}>
                 <Grid container spacing={gridSpacing}>
                     <Grid item lg={12} md={12} sm={12}>
-                        <EarningCard isLoading={isLoading} />
+                        <YouOweCard isLoading={isLoading} />
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item xs={12}>
+                <Grid container spacing={gridSpacing}>
+                    <Grid item lg={12} md={12} sm={12}>
+                        <YouAreOwedCard isLoading={isLoading} />
                     </Grid>
                 </Grid>
             </Grid>

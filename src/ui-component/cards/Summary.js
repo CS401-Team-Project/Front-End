@@ -6,7 +6,7 @@ import SubCard from "./SubCard";
 
 const Summary = () => {
     return (
-        <SubCard title="<Group Name>">
+        <SubCard title="Summary">
             <Typography variant="body2">
                 Lorem tesipsum dolor sit amen, consenter nipissing eli, sed do elusion tempos incident ut laborers et doolie magna
                 alissa. Ut enif ad minim venice, quin nostrum exercitation illampu laborings nisi ut liquid ex ea commons construal.
