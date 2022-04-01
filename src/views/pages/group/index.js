@@ -1,21 +1,23 @@
-// project imports
 import { Grid } from "@mui/material";
-import { gridSpacing } from "../../store/constant";
-import Summary from "../../ui-component/cards/Summary";
-import MainContent from "../../ui-component/cards/MainContent";
+
+// project imports
+import { gridSpacing } from "store/constant";
+import Summary from "ui-component/cards/Summary";
+import MainContent from "ui-component/cards/MainContent";
+
 // ==============================|| TYPOGRAPHY ||============================== //
 
-const Groups = () => {
+const Group = () => {
     return (
         <Grid container spacing={gridSpacing}>
             <Grid item>
                 <Summary />
             </Grid>
             <Grid item>
-                <MainContent title="Joined Groups" />
+                <MainContent title="Transactions" />
             </Grid>
         </Grid>
     );
 };
 
-export default Groups;
+export default Group;
