@@ -2,7 +2,7 @@ const GroupData = [
     {
         id: 1,
         name: "Group 1",
-        description: "Lorem ipsum",
+        description: "Lorem ipsum dolor sit amen, consenter nipissing eli, sed do elusion tempos incident",
         members: [
             "Dian Martin",
             "Tyler Beichler",
