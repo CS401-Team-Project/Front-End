@@ -15,7 +15,7 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 
 import { Button } from "@mui/material";
-// import TransactionData from "../TransactionData";
+//import TransactionData from "../TransactionData";
 //import ItemData from "../ItemData";
 
 function createData(title, date, amount, owed_by) {
@@ -108,9 +108,7 @@ Row.propTypes = {
                 date: PropTypes.string.isRequired
             })
         ).isRequired,
-        title: PropTypes.string.isRequired,
-        price: PropTypes.number.isRequired,
-        protein: PropTypes.number.isRequired
+        title: PropTypes.string.isRequired
     }).isRequired
 };
 
