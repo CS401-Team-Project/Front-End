@@ -1,6 +1,6 @@
 // material-ui
-import { Grid, Button } from "@mui/material";
-import SubCard from "./SubCard";
+import { Button, Grid } from "@mui/material";
+import SubCard from "ui-component/cards/SubCard";
 
 // ==============================|| CUSTOM SUB CARD ||============================== //
 

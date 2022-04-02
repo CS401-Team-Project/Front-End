@@ -6,7 +6,7 @@ import testApi from "api/test";
 import { styled } from "@mui/material/styles";
 import StateHandler from "ui-component/StateHandler";
 import MainCard from "../../../ui-component/cards/MainCard";
-import SubCard from "../group/components/SubCard";
+import SubCard from "../../../ui-component/cards/SubCard";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
