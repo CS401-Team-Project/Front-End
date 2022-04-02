@@ -1,5 +1,3 @@
-import useApi from "~/hooks/useApi";
-import testApi from "~/api/test";
 import { useState } from "react";
 import {
     Box,
@@ -17,6 +15,9 @@ import {
     TextField,
     Typography
 } from "@mui/material";
+
+import useApi from "hooks/useApi";
+import testApi from "api/test";
 
 const TestPost = () => {
     // This API performs an operation between two numbers
@@ -58,7 +59,7 @@ const TestPost = () => {
                     <Typography variant="h4" p={2}>
                         Inputs:
                     </Typography>
-                    <Stack spacing={2}>
+                    <Stack spacing={2} direction="row">
                         <TextField
                             required
                             type="number"
@@ -68,7 +69,14 @@ const TestPost = () => {
                             onChange={handleTextInputChange}
                             value={calcState.n1}
                         />
-                        <Select labelId="op" name="op" value={calcState.op} label="Operation" onChange={handleTextInputChange}>
+                        <Select
+                            labelId="op"
+                            name="op"
+                            value={calcState.op}
+                            label="Operation"
+                            onChange={handleTextInputChange}
+                            sx={{ width: 300 }}
+                        >
                             <MenuItem value="add">Addition</MenuItem>
                             <MenuItem value="sub">Subtraction</MenuItem>
                             <MenuItem value="mul">Multiplication</MenuItem>

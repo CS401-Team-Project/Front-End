@@ -1,35 +1,45 @@
-import { useApiClient } from "../../../hooks/useApiClient";
-import config from "../../../config";
+import { useEffect } from "react";
+import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Stack, Typography } from "@mui/material";
 
-const TestApiClient = () => {
-    const { response, loading, error } = useApiClient({
-        method: "GET",
-        url: "/test"
-    });
+import useApi from "hooks/useApi";
+import testApi from "api/test";
+import TestPost from "views/pages/api-test/TestPost";
+
+const ApiTest = () => {
+    // This API simply returns a string
+    const getTest = useApi(testApi.getTest);
+
+    useEffect(() => {
+        getTest.request();
+    }, []);
 
     return (
-        <div className="App">
+        <Stack spacing={2}>
             <h1>API Client Tests</h1>
-            <p>Base API URL: {config.links.api}</p>
+            <p>Base API URL: {process.env.REACT_APP_API_ENDPOINT}</p>
 
-            {(() => {
-                switch (true) {
-                    case loading === true: {
-                        return <p>Loading</p>;
-                    }
-                    case error !== undefined: {
-                        return <p>Error Message: {error.message}</p>;
-                    }
-                    case response === undefined: {
-                        return <p>No response</p>;
-                    }
-                    default: {
-                        return <p>Response: {response.status}</p>;
-                    }
-                }
-            })()}
-        </div>
+            <Card variant="outlined" sx={{ maxWidth: 500 }}>
+                <CardHeader title="/test_get" subheader="Test GET API Endpoint" />
+                <CardContent>
+                    {getTest.loading && <CircularProgress />}
+                    {!getTest.loading && <Typography>{getTest.data}</Typography>}
+                </CardContent>
+
+                <CardActions>
+                    <Button
+                        variant="contained"
+                        onClick={() => {
+                            getTest.request();
+                        }}
+                    >
+                        Refresh
+                    </Button>
+                </CardActions>
+            </Card>
+
+            <TestPost />
+        </Stack>
     );
 };
 
-export default TestApiClient;
+export default ApiTest;
