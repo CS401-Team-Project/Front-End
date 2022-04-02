@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Stack, Typography } from "@mui/material";
+import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Divider, Stack, Typography } from "@mui/material";
 
 import useApi from "hooks/useApi";
 import testApi from "api/test";
@@ -20,16 +20,17 @@ const ApiTest = () => {
 
             <Card variant="outlined" sx={{ maxWidth: 500 }}>
                 <CardHeader title="/test_get" subheader="Test GET API Endpoint" />
+                <Divider />
                 <CardContent>
                     {getTest.loading && <CircularProgress />}
                     {!getTest.loading && <Typography>{getTest.data}</Typography>}
                 </CardContent>
-
+                <Divider />
                 <CardActions>
                     <Button
                         variant="contained"
                         onClick={() => {
-                            getTest.request();
+                            getTest.requestSlow();
                         }}
                     >
                         Refresh

@@ -7,7 +7,7 @@ import {
     CardContent,
     CardHeader,
     Chip,
-    CircularProgress,
+    Divider,
     MenuItem,
     Paper,
     Select,
@@ -18,6 +18,16 @@ import {
 
 import useApi from "hooks/useApi";
 import testApi from "api/test";
+import { styled } from "@mui/material/styles";
+import StateHandler from "ui-component/StateHandler";
+
+const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary
+}));
 
 const TestPost = () => {
     // This API performs an operation between two numbers
@@ -25,8 +35,8 @@ const TestPost = () => {
     // Supported ops: add, sub, mul, div
     const calcApi = useApi(testApi.postTest);
     const [calcState, setCalcState] = useState({
-        n1: 0,
-        n2: 0,
+        n1: "",
+        n2: "",
         op: "add"
     });
 
@@ -40,9 +50,15 @@ const TestPost = () => {
         console.log("calcState:", calcState);
     };
 
+    const makeRequest = () => {
+        // Note: this artificially delays the response, to demonstrate the use of the StateHandler with Loading state
+        calcApi.requestSlow(calcState.n1, calcState.n2, calcState.op);
+    };
+
     return (
         <Card variant="outlined" sx={{ maxWidth: 500 }}>
             <CardHeader title="/test_post" subheader="Test POST API Endpoint" />
+            <Divider />
             <CardContent component={Stack} spacing={2}>
                 <Paper variant="outlined" sx={{ p: 1 }}>
                     <Typography variant="h4" p={2}>
@@ -94,18 +110,22 @@ const TestPost = () => {
                         />
                     </Stack>
                 </Paper>
-
-                {calcApi.loading && <CircularProgress />}
-                {calcApi.data && <Typography>{calcApi.data}</Typography>}
+                <Paper variant="outlined" sx={{ p: 1 }}>
+                    <Typography variant="h4" p={2}>
+                        Result:
+                    </Typography>
+                    <Stack justifyContent="center">
+                        <Item>
+                            <StateHandler apiState={calcApi} retryHandler={makeRequest}>
+                                <Chip label={calcState.n1 + " " + calcState.op + " " + calcState.n2 + " = " + calcApi.data} />
+                            </StateHandler>
+                        </Item>
+                    </Stack>
+                </Paper>
             </CardContent>
-
+            <Divider />
             <CardActions>
-                <Button
-                    variant="contained"
-                    onClick={() => {
-                        calcApi.request(calcState.n1, calcState.n2, calcState.op);
-                    }}
-                >
+                <Button variant="contained" onClick={makeRequest}>
                     Get Answer
                 </Button>
             </CardActions>

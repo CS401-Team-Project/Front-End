@@ -20,8 +20,9 @@ export default (apiFunc) => {
             setData(result.data);
             console.log("RESULT:", result);
             console.log(result.data);
+            setError(null);
         } catch (err) {
-            setError(err.message || "Unexpected error!");
+            setError(err.name + ": " + err.message || "Unexpected error!");
             console.log("ERROR:", err.message);
         } finally {
             setLoading(false);
@@ -29,5 +30,12 @@ export default (apiFunc) => {
         }
     };
 
-    return { data, error, loading, request };
+    const requestSlow = async (...args) => {
+        setLoading(true);
+        // simulate a slow request
+        await new Promise((resolve) => setTimeout(resolve, 2000));
+        request(...args);
+    };
+
+    return { data, error, loading, request, requestSlow };
 };
