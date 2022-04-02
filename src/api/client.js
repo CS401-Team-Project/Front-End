@@ -1,8 +1,9 @@
 import axios from "axios";
 
-const apiClient = axios.create({
+const client = axios.create({
     // Later read this URL from an environment variable
     baseURL: process.env.REACT_APP_API_ENDPOINT || "http://sl.absolutzero.org/api"
+    // headers: { "Content-Type": "application/json" }
 });
 
-export default apiClient;
+export default client;
