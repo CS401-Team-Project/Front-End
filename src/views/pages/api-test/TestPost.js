@@ -43,7 +43,7 @@ const TestPost = () => {
     };
 
     return (
-        <MainCard title="/test_post">
+        <MainCard title="/test_post" component={Stack} component_props={{ spacing: 2 }}>
             <SubCard variant="outlined" sx={{ p: 1 }}>
                 <Typography variant="h4" p={2}>
                     States:
