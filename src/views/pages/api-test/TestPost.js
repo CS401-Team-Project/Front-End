@@ -6,6 +6,7 @@ import testApi from "api/test";
 import { styled } from "@mui/material/styles";
 import StateHandler from "ui-component/StateHandler";
 import MainCard from "../../../ui-component/cards/MainCard";
+import SubCard from "../group/components/SubCard";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -43,7 +44,7 @@ const TestPost = () => {
 
     return (
         <MainCard title="/test_post">
-            <Paper variant="outlined" sx={{ p: 1 }}>
+            <SubCard variant="outlined" sx={{ p: 1 }}>
                 <Typography variant="h4" p={2}>
                     States:
                 </Typography>
@@ -52,7 +53,7 @@ const TestPost = () => {
                     <Chip label={"N2: " + calcState.n2} />
                     <Chip label={"OP: " + calcState.op} />
                 </Box>
-            </Paper>
+            </SubCard>
 
             <Paper variant="outlined" sx={{ p: 1 }}>
                 <Typography variant="h4" p={2}>
