@@ -5,23 +5,25 @@ import { Typography } from "@mui/material";
 import MainCard from "ui-component/cards/MainCard";
 import useApi from "hooks/useApi";
 import userApi from "api/user";
+import StateHandler from "ui-component/StateHandler";
 
 const TestProfile = () => {
     const user = useApi(userApi.user_info);
 
     useEffect(() => {
-        user.request();
+        user.request("token", "sub");
     }, []);
     console.log(user);
 
+    const retry = () => {
+        user.requestSlow("token", "sub");
+    };
+
     return (
         <MainCard title="Settings">
-            <Typography variant="body2">
-                Lorem ipsum dolor sit amen, consenter nipissing eli, sed do elusion tempos incident ut laborers et doolie magna alissa. Ut
-                enif ad minim venice, quin nostrum exercitation illampu laborings nisi ut liquid ex ea commons construal. Duos aube grue
-                dolor in reprehended in voltage veil esse colum doolie eu fujian bulla parian. Exceptive sin ocean cuspidate non president,
-                sunk in culpa qui officiate descent molls anim id est labours.
-            </Typography>
+            <StateHandler api={user} retryHandler={retry}>
+                <Typography variant="body2">Email: {user.data.email}</Typography>
+            </StateHandler>
         </MainCard>
     );
 };

@@ -2,11 +2,11 @@
 import { Alert, CircularProgress, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
 import RefreshIcon from "@mui/icons-material/Refresh";
-const StateHandler = ({ apiState, retryHandler, ...props }) => {
-    if (apiState.loading) {
+const StateHandler = ({ api, retryHandler, ...props }) => {
+    if (api.loading) {
         return <CircularProgress />;
     }
-    if (apiState.error) {
+    if (api.error) {
         return (
             <Alert
                 severity="error"
@@ -18,18 +18,18 @@ const StateHandler = ({ apiState, retryHandler, ...props }) => {
                     )
                 }
             >
-                {apiState.error}
+                {api.error}
             </Alert>
         );
     }
-    if (apiState.data === null) {
+    if (api.data === null) {
         return <Alert severity="info">Nothing here yet!</Alert>;
     }
     return props.children;
 };
 
 StateHandler.propTypes = {
-    apiState: PropTypes.oneOfType([PropTypes.object]),
+    api: PropTypes.oneOfType([PropTypes.object]),
     retryHandler: PropTypes.func,
     children: PropTypes.oneOfType([PropTypes.object])
 };

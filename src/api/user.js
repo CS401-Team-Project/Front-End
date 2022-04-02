@@ -2,7 +2,11 @@
 import client from "./client";
 
 // const getTest = () => client.get("/test_get");
-const user_info = () => client.post("/user/info");
+const user_info = (token, sub) =>
+    client.post("/user/info", {
+        token: token,
+        sub: sub
+    });
 
 export default {
     //getTest,

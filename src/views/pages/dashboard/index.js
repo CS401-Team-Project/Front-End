@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 
 // project imports
-import YouOweCard from "./fe-components/YouOweCard";
-import YouAreOwedCard from "./fe-components/YouAreOwedCard";
+import YouOweCard from "./components/YouOweCard";
+import YouAreOwedCard from "./components/YouAreOwedCard";
 // import PopularCard from "./components/PopularCard";
 // import TotalOrderLineChartCard from "./components/TotalOrderLineChartCard";
 // import TotalIncomeDarkCard from "./components/TotalIncomeDarkCard";
