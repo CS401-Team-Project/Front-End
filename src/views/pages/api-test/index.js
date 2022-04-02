@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, Divider, Stack, Typography } from "@mui/material";
-
+import { Button, CardContent, CircularProgress, Stack, Typography } from "@mui/material";
 import useApi from "hooks/useApi";
 import testApi from "api/test";
-import TestPost from "views/pages/api-test/TestPost";
-import TestProfile from "views/pages/api-test/TestProfile";
+import TestProfile from "./TestProfile";
+import TestPost from "./TestPost";
+import MainCard from "ui-component/cards/MainCard";
 
 const ApiTest = () => {
     // This API simply returns a string
@@ -19,25 +19,20 @@ const ApiTest = () => {
             <h1>API Client Tests</h1>
             <p>Base API URL: {process.env.REACT_APP_API_ENDPOINT}</p>
 
-            <Card variant="outlined" sx={{ maxWidth: 500 }}>
-                <CardHeader title="/test_get" subheader="Test GET API Endpoint" />
-                <Divider />
+            <MainCard title="/test_get">
                 <CardContent>
                     {getTest.loading && <CircularProgress />}
                     {!getTest.loading && <Typography>{getTest.data}</Typography>}
                 </CardContent>
-                <Divider />
-                <CardActions>
-                    <Button
-                        variant="contained"
-                        onClick={() => {
-                            getTest.requestSlow();
-                        }}
-                    >
-                        Refresh
-                    </Button>
-                </CardActions>
-            </Card>
+                <Button
+                    variant="contained"
+                    onClick={() => {
+                        getTest.requestSlow();
+                    }}
+                >
+                    Refresh
+                </Button>
+            </MainCard>
 
             <TestProfile />
             <TestPost />

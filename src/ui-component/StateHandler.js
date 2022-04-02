@@ -2,6 +2,8 @@
 import { Alert, CircularProgress, IconButton } from "@mui/material";
 import PropTypes from "prop-types";
 import RefreshIcon from "@mui/icons-material/Refresh";
+import { ErrorBoundary } from "react-error-boundary";
+
 const StateHandler = ({ api, retryHandler, ...props }) => {
     if (api.loading) {
         return <CircularProgress />;
@@ -25,7 +27,8 @@ const StateHandler = ({ api, retryHandler, ...props }) => {
     if (api.data === null) {
         return <Alert severity="info">Nothing here yet!</Alert>;
     }
-    return props.children;
+
+    return <ErrorBoundary>{props.children}</ErrorBoundary>;
 };
 
 StateHandler.propTypes = {

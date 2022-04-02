@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { Typography } from "@mui/material";
 
 // project imports
 import MainCard from "ui-component/cards/MainCard";
@@ -13,16 +12,16 @@ const TestProfile = () => {
     useEffect(() => {
         user.request("token", "sub");
     }, []);
-    console.log(user);
+    // console.log(user);
 
     const retry = () => {
         user.requestSlow("token", "sub");
     };
 
     return (
-        <MainCard title="Settings">
+        <MainCard title="/user/info">
             <StateHandler api={user} retryHandler={retry}>
-                <Typography variant="body2">Email: {user.data.email}</Typography>
+                {/*<Typography variant="body2">Email: {user.data.email}</Typography>*/}
             </StateHandler>
         </MainCard>
     );

@@ -1,25 +1,11 @@
 import { useState } from "react";
-import {
-    Box,
-    Button,
-    Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    Chip,
-    Divider,
-    MenuItem,
-    Paper,
-    Select,
-    Stack,
-    TextField,
-    Typography
-} from "@mui/material";
+import { Box, Button, Chip, MenuItem, Paper, Select, Stack, TextField, Typography } from "@mui/material";
 
 import useApi from "hooks/useApi";
 import testApi from "api/test";
 import { styled } from "@mui/material/styles";
 import StateHandler from "ui-component/StateHandler";
+import MainCard from "../../../ui-component/cards/MainCard";
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
@@ -56,80 +42,73 @@ const TestPost = () => {
     };
 
     return (
-        <Card variant="outlined" sx={{ maxWidth: 500 }}>
-            <CardHeader title="/test_post" subheader="Test POST API Endpoint" />
-            <Divider />
-            <CardContent component={Stack} spacing={2}>
-                <Paper variant="outlined" sx={{ p: 1 }}>
-                    <Typography variant="h4" p={2}>
-                        States:
-                    </Typography>
-                    <Box textAlign="center">
-                        <Chip label={"N1: " + calcState.n1} />
-                        <Chip label={"N2: " + calcState.n2} />
-                        <Chip label={"OP: " + calcState.op} />
-                    </Box>
-                </Paper>
+        <MainCard title="/test_post">
+            <Paper variant="outlined" sx={{ p: 1 }}>
+                <Typography variant="h4" p={2}>
+                    States:
+                </Typography>
+                <Box textAlign="center">
+                    <Chip label={"N1: " + calcState.n1} />
+                    <Chip label={"N2: " + calcState.n2} />
+                    <Chip label={"OP: " + calcState.op} />
+                </Box>
+            </Paper>
 
-                <Paper variant="outlined" sx={{ p: 1 }}>
-                    <Typography variant="h4" p={2}>
-                        Inputs:
-                    </Typography>
-                    <Stack spacing={2} direction="row">
-                        <TextField
-                            required
-                            type="number"
-                            name="n1"
-                            label="n1"
-                            variant="outlined"
-                            onChange={handleTextInputChange}
-                            value={calcState.n1}
-                        />
-                        <Select
-                            labelId="op"
-                            name="op"
-                            value={calcState.op}
-                            label="Operation"
-                            onChange={handleTextInputChange}
-                            sx={{ width: 300 }}
-                        >
-                            <MenuItem value="add">Addition</MenuItem>
-                            <MenuItem value="sub">Subtraction</MenuItem>
-                            <MenuItem value="mul">Multiplication</MenuItem>
-                            <MenuItem value="div">Division</MenuItem>
-                            <MenuItem value="invalid">Invalid</MenuItem>
-                        </Select>
-                        <TextField
-                            required
-                            type="number"
-                            name="n2"
-                            label="n2"
-                            variant="outlined"
-                            onChange={handleTextInputChange}
-                            value={calcState.n2}
-                        />
-                    </Stack>
-                </Paper>
-                <Paper variant="outlined" sx={{ p: 1 }}>
-                    <Typography variant="h4" p={2}>
-                        Result:
-                    </Typography>
-                    <Stack justifyContent="center">
-                        <Item>
-                            <StateHandler api={calcApi} retryHandler={makeRequest}>
-                                <Chip label={calcState.n1 + " " + calcState.op + " " + calcState.n2 + " = " + calcApi.data} />
-                            </StateHandler>
-                        </Item>
-                    </Stack>
-                </Paper>
-            </CardContent>
-            <Divider />
-            <CardActions>
-                <Button variant="contained" onClick={makeRequest}>
-                    Get Answer
-                </Button>
-            </CardActions>
-        </Card>
+            <Paper variant="outlined" sx={{ p: 1 }}>
+                <Typography variant="h4" p={2}>
+                    Inputs:
+                </Typography>
+                <Stack spacing={2} direction="row">
+                    <TextField
+                        required
+                        type="number"
+                        name="n1"
+                        label="n1"
+                        variant="outlined"
+                        onChange={handleTextInputChange}
+                        value={calcState.n1}
+                    />
+                    <Select
+                        labelId="op"
+                        name="op"
+                        value={calcState.op}
+                        label="Operation"
+                        onChange={handleTextInputChange}
+                        sx={{ width: 300 }}
+                    >
+                        <MenuItem value="add">Addition</MenuItem>
+                        <MenuItem value="sub">Subtraction</MenuItem>
+                        <MenuItem value="mul">Multiplication</MenuItem>
+                        <MenuItem value="div">Division</MenuItem>
+                        <MenuItem value="invalid">Invalid</MenuItem>
+                    </Select>
+                    <TextField
+                        required
+                        type="number"
+                        name="n2"
+                        label="n2"
+                        variant="outlined"
+                        onChange={handleTextInputChange}
+                        value={calcState.n2}
+                    />
+                </Stack>
+            </Paper>
+            <Paper variant="outlined" sx={{ p: 1 }}>
+                <Typography variant="h4" p={2}>
+                    Result:
+                </Typography>
+                <Stack justifyContent="center">
+                    <Item>
+                        <StateHandler api={calcApi} retryHandler={makeRequest}>
+                            <Chip label={calcState.n1 + " " + calcState.op + " " + calcState.n2 + " = " + calcApi.data} />
+                        </StateHandler>
+                    </Item>
+                </Stack>
+            </Paper>
+            <Button variant="contained" onClick={makeRequest}>
+                Get Answer
+            </Button>
+        </MainCard>
     );
 };
 
