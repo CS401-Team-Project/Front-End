@@ -11,7 +11,8 @@ const GroupData = [
             "Lillian Coar",
             "Andrei Cozma",
             "Jacob Leonard",
-            "Hunter Price"
+            "Hunter Price",
+            "Dian Martin1"
         ]
     }
 ];

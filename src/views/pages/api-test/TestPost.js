@@ -16,7 +16,7 @@ import {
     Typography
 } from "@mui/material";
 
-import useApi from "hooks/useApi";
+import use_Api from "hooks/useApi";
 import testApi from "api/test";
 import { styled } from "@mui/material/styles";
 import StateHandler from "ui-component/StateHandler";
@@ -33,7 +33,7 @@ const TestPost = () => {
     // This API performs an operation between two numbers
     // Parameters: n1, n2, op
     // Supported ops: add, sub, mul, div
-    const calcApi = useApi(testApi.postTest);
+    const calcApi = use_Api(testApi.postTest);
     const [calcState, setCalcState] = useState({
         n1: "",
         n2: "",

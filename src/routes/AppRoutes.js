@@ -8,7 +8,7 @@ import Loadable from "ui-component/Loadable";
 const Dashboard = Loadable(lazy(() => import("views/pages/dashboard")));
 const Activity = Loadable(lazy(() => import("views/pages/activity")));
 const Groups = Loadable(lazy(() => import("views/pages/groups")));
-const Group = Loadable(lazy(() => import("views/pages/group")));
+const Group = Loadable(lazy(() => import("views/pages/group_p")));
 const Settings = Loadable(lazy(() => import("views/pages/settings")));
 
 // management routing
@@ -40,7 +40,7 @@ const AppRoutes = {
             element: <Groups />
         },
         {
-            path: "/group",
+            path: "/group_p",
             element: <Group />
         },
         {

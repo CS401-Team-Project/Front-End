@@ -48,7 +48,7 @@ const NavGroup = ({ item }) => {
                 {items}
             </List>
 
-            {/* group divider */}
+            {/* group_p divider */}
             <Divider sx={{ mt: 0.25, mb: 1.25 }} />
         </>
     );
