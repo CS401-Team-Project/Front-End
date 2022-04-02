@@ -4,6 +4,7 @@ import { Button, Card, CardActions, CardContent, CardHeader, CircularProgress, D
 import useApi from "hooks/useApi";
 import testApi from "api/test";
 import TestPost from "views/pages/api-test/TestPost";
+import TestProfile from "views/pages/api-test/TestProfile";
 
 const ApiTest = () => {
     // This API simply returns a string
@@ -38,6 +39,7 @@ const ApiTest = () => {
                 </CardActions>
             </Card>
 
+            <TestProfile />
             <TestPost />
         </Stack>
     );

@@ -116,7 +116,7 @@ const TestPost = () => {
                     </Typography>
                     <Stack justifyContent="center">
                         <Item>
-                            <StateHandler apiState={calcApi} retryHandler={makeRequest}>
+                            <StateHandler api={calcApi} retryHandler={makeRequest}>
                                 <Chip label={calcState.n1 + " " + calcState.op + " " + calcState.n2 + " = " + calcApi.data} />
                             </StateHandler>
                         </Item>
