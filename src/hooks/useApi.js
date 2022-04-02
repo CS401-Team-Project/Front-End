@@ -7,19 +7,25 @@ import { useState } from "react";
  - axios already support generic request in one parameter, no need to call specialized ones
  **/
 export default (apiFunc) => {
-    const [data, setData] = useState(undefined);
-    const [error, setError] = useState(undefined);
-    const [loading, setLoading] = useState(true);
+    const [data, setData] = useState(null);
+    const [error, setError] = useState(null);
+    const [loading, setLoading] = useState(false);
 
     const request = async (...args) => {
         setLoading(true);
         try {
+            console.log("===================================>");
+            console.log("API CALL:", apiFunc.name, args);
             const result = await apiFunc(...args);
             setData(result.data);
-        } catch (error) {
-            setError(error.message || "Unexpected error!");
+            console.log("RESULT:", result);
+            console.log(result.data);
+        } catch (err) {
+            setError(err.message || "Unexpected error!");
+            console.log("ERROR:", err.message);
         } finally {
             setLoading(false);
+            console.log("<===================================");
         }
     };
 
