@@ -1,5 +1,3 @@
-const API_ENDPOINT = process.env.API_ENDPOINT || 'http://sl.absolutzero.org/api';
-
 const config = {
     // basename: only at build time to set, and Don't add '/' at end off BASENAME for breadcrumbs, also Don't put only '/' use blank('') instead,
     // like '/berry-material-react/react/default'
@@ -23,8 +21,7 @@ const config = {
         domain: {
             name: "sl.absolutzero.org",
             url: "https://sl.absolutzero.org"
-        },
-        api: process.env.API_ENDPOINT || 'http://sl.absolutzero.org/api'
+        }
     }
 };
 
