@@ -1,12 +1,13 @@
 name: Front-End - Version Bump
-
+   
 on:
+  push:
   pull_request:
-    branches: [ main ]
-
+    branches:
+      - main
+   
 jobs:
-  build:
-
+  bump-ver:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,8 +16,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
+          major-wording: 'major,cut-major'
           minor-wording: 'add,adds,new'
-          major-wording: 'MAJOR,cut-major'
           patch-wording: 'fix,fixes,patch,patches'     # Providing patch-wording will override commits
-          rc-wording: 'RELEASE,alpha'
+          rc-wording: 'rc,release,alpha'
           tag-prefix: 'v'

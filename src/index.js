@@ -12,6 +12,8 @@ import { store } from "store";
 // style + assets
 import "assets/scss/style.scss";
 
+require("dotenv").config();
+
 // ==============================|| REACT DOM RENDER  ||============================== //
 
 ReactDOM.render(

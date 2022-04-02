@@ -8,6 +8,7 @@ const LandingPage = Loadable(lazy(() => import("views/pages/landing")));
 // login option 3 routing
 const AuthLogin3 = Loadable(lazy(() => import("views/pages/authentication/authentication3/Login3")));
 const AuthRegister3 = Loadable(lazy(() => import("views/pages/authentication/authentication3/Register3")));
+const ApiTest = Loadable(lazy(() => import("views/pages/api-test")));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
@@ -26,6 +27,10 @@ const DefaultRoutes = {
         {
             path: "/register",
             element: <AuthRegister3 />
+        },
+        {
+            path: "/api-test",
+            element: <ApiTest />
         }
     ]
 };
