@@ -29,9 +29,7 @@ const Login = () => {
                             <AuthCardWrapper>
                                 <Grid container spacing={2} alignItems="center" justifyContent="center">
                                     <Grid item sx={{ mb: 3 }}>
-                                        <Link to="#">
-                                            <Logo />
-                                        </Link>
+                                        <Logo />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <Grid
@@ -47,14 +45,14 @@ const Login = () => {
                                                         gutterBottom
                                                         variant={matchDownSM ? "h3" : "h2"}
                                                     >
-                                                        Hi, Welcome Back
+                                                        Login or Register
                                                     </Typography>
                                                     <Typography
                                                         variant="caption"
                                                         fontSize="16px"
                                                         textAlign={matchDownSM ? "center" : "inherit"}
                                                     >
-                                                        Enter your credentials to continue
+                                                        At this moment we only support Google Authentication.
                                                     </Typography>
                                                 </Stack>
                                             </Grid>

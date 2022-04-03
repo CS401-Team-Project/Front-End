@@ -1,3 +1,5 @@
+// noinspection JSCheckFunctionSignatures
+
 import { lazy } from "react";
 
 // project imports
@@ -5,11 +7,11 @@ import MainLayout from "ui/layout/MainLayout";
 import Loadable from "ui/components/Loadable";
 
 // overview routing
-const Dashboard = Loadable(lazy(() => import("ui/pages/dashboard")));
+const Dashboard = Loadable(lazy(() => import("ui/pages/dash")));
 const Activity = Loadable(lazy(() => import("ui/pages/activity")));
 const Groups = Loadable(lazy(() => import("ui/pages/groups")));
 const Group = Loadable(lazy(() => import("ui/pages/group")));
-const Settings = Loadable(lazy(() => import("ui/pages/settings")));
+const Settings = Loadable(lazy(() => import("ui/pages/prefs")));
 
 // management routing
 const UtilsTypography = Loadable(lazy(() => import("ui/pages/misc/Typography")));
@@ -20,6 +22,9 @@ const UtilsTablerIcons = Loadable(lazy(() => import("ui/pages/misc/TablerIcons")
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import("ui/pages/misc/sample-page")));
+
+// api test page routing
+const ApiTest = Loadable(lazy(() => import("ui/pages/misc/api-test")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -44,7 +49,7 @@ const AppRoutes = {
             element: <Group />
         },
         {
-            path: "/settings",
+            path: "/prefs",
             element: <Settings />
         },
         {
@@ -70,6 +75,10 @@ const AppRoutes = {
         {
             path: "/sample-page",
             element: <SamplePage />
+        },
+        {
+            path: "/api-test",
+            element: <ApiTest />
         }
     ]
 };

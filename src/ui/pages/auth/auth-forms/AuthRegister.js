@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // material-ui
@@ -18,9 +18,7 @@ import config from "config";
 const FirebaseRegister = () => {
     const navigate = useNavigate();
 
-    // eslint-disable-next-line
     const [strength, setStrength] = useState(0);
-    // eslint-disable-next-line
     const [level, setLevel] = useState();
 
     const onGoogleSuccess = (res) => {
@@ -69,22 +67,6 @@ const FirebaseRegister = () => {
                             style={{ margin: "100px auto" }}
                             isSignedIn={true}
                         />
-                        {/* <Button
-                                variant="outlined"
-                                fullWidth
-                                onClick={googleHandler}
-                                size="large"
-                                sx={{
-                                    color: 'grey.700',
-                                    backgroundColor: theme.palette.grey[100],
-                                    borderColor: theme.palette.grey[100]
-                                }}
-                            >
-                                <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
-                                    <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
-                                </Box>
-                                Sign up with Google
-                            </Button> */}
                     </AnimateButton>
                     <br />
                 </Grid>
