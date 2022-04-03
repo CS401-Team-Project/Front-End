@@ -45,11 +45,11 @@ const addItem = (token, transaction_id, items_list) =>
     });
 
 /* Doc: https://github.com/CS401-Team-Project/Back-End/blob/main/API-DOCS/TRANSACTION.md#transactionremove-item-1 */
-const removeItem = (token, transaction_id, data) =>
+const removeItem = (token, transaction_id, transaction_data) =>
     client.post("/transaction/remove-item", {
         token: token,
         id: transaction_id,
-        data: data
+        data: transaction_data
     });
 
 /* Doc: https://github.com/CS401-Team-Project/Back-End/blob/main/API-DOCS/TRANSACTION.md#iteminfo-1 */
