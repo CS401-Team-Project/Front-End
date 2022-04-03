@@ -1,14 +1,15 @@
 import { Link } from "react-router-dom";
 
-// material-ui
+// material-views
 import { useTheme } from "@mui/material/styles";
-import { Button, Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
+import { Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 
 // project imports
 import Logo from "ui-component/Logo";
 import AuthFooter from "ui-component/cards/AuthFooter";
-import config from "config";
-import AnimateButton from "../../../ui-component/extended/AnimateButton";
+import AuthWrapper from "./AuthWrapper";
+import AuthCardWrapper from "./AuthCardWrapper";
+import AuthLogin from "./AuthLogin";
 
 // assets
 
@@ -19,71 +20,48 @@ const Login = () => {
     const matchDownSM = useMediaQuery(theme.breakpoints.down("md"));
 
     return (
-        // <AuthWrapper1>
-        <Grid container direction="column" justifyContent="flex-end" sx={{ minHeight: "100vh" }}>
-            <Grid item xs={12}>
-                <Grid container justifyContent="center" alignItems="center" sx={{ minHeight: "calc(100vh - 68px)" }}>
-                    <Grid item sx={{ m: { xs: 1, sm: 3 }, mb: 0 }}>
-                        <Grid container spacing={2} alignItems="center" justifyContent="center">
-                            <Grid item sx={{ mb: 3 }}>
-                                <Link to="#">
-                                    <Logo width={300} />
-                                </Link>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Grid
-                                    container
-                                    direction={matchDownSM ? "column-reverse" : "row"}
-                                    alignItems="center"
-                                    justifyContent="center"
-                                >
-                                    <Grid item>
-                                        <Stack alignItems="center" justifyContent="center" spacing={1}>
-                                            <Typography
-                                                color={theme.palette.secondary.main}
-                                                gutterBottom
-                                                variant={matchDownSM ? "h3" : "h2"}
-                                            >
-                                                Hi, Welcome to Smart Ledger!
-                                            </Typography>
-                                            <Typography variant="caption" fontSize="16px" textAlign={matchDownSM ? "center" : "inherit"}>
-                                                Keep track of your shared expenses and balances with housemates, trips, groups, friends, and
-                                                family.
-                                            </Typography>
-                                        </Stack>
-                                    </Grid>
-                                </Grid>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <Divider />
-                            </Grid>
-                            <Grid container spacing={2} alignItems="center" justifyContent="center">
-                                <Grid item sx={{ mt: 2 }}>
-                                    <AnimateButton>
-                                        <Button
-                                            component={Link}
-                                            to={config.basename + config.paths.auth.login}
-                                            disableElevation
-                                            fullWidth
-                                            size="large"
-                                            type="submit"
-                                            variant="contained"
-                                            color="secondary"
-                                        >
-                                            Get Started
-                                        </Button>
-                                    </AnimateButton>
-                                </Grid>
-                            </Grid>
+        <AuthWrapper>
+            <Grid container direction="column" justifyContent="flex-end" sx={{ minHeight: "100vh" }}>
+                <Grid item xs={12}>
+                    <Grid container justifyContent="center" alignItems="center" sx={{ minHeight: "calc(100vh - 68px)" }}>
+                        <Grid item sx={{ m: { xs: 1, sm: 3 }, mb: 0 }}>
+                            <AuthCardWrapper>
+                                <Stack spacing={3}>
+                                    <Link to="#">
+                                        <Logo />
+                                    </Link>
+                                    <Divider />
+
+                                    <Stack alignItems="center" justifyContent="center" spacing={1}>
+                                        <Typography color={theme.palette.secondary.dark} gutterBottom variant={matchDownSM ? "h3" : "h2"}>
+                                            Hi, Welcome to Smart Ledger!
+                                        </Typography>
+                                        <Typography variant="caption" fontSize="16px" textAlign="center">
+                                            Keep track of your shared expenses and balances with housemates, trips, groups, friends, and
+                                            family.
+                                        </Typography>
+                                    </Stack>
+                                    <Stack spacing={1} alignItems="center" justifyContent="center">
+                                        <Typography color={theme.palette.secondary.main} gutterBottom variant="h3" textAlign="center">
+                                            Log in or register
+                                        </Typography>
+
+                                        <AuthLogin />
+                                    </Stack>
+                                    <Divider />
+                                    <Typography variant="caption" fontSize="14px" textAlign="center">
+                                        At this moment we only support Google Authentication
+                                    </Typography>
+                                </Stack>
+                            </AuthCardWrapper>
                         </Grid>
                     </Grid>
                 </Grid>
+                <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
+                    <AuthFooter />
+                </Grid>
             </Grid>
-            <Grid item xs={12} sx={{ m: 3, mt: 1 }}>
-                <AuthFooter />
-            </Grid>
-        </Grid>
-        // </AuthWrapper1>
+        </AuthWrapper>
     );
 };
 
