@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 // material-ui
 import { useTheme } from "@mui/material/styles";
 import { Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
@@ -8,9 +6,8 @@ import { Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 import AuthWrapper1 from "../AuthWrapper1";
 import AuthCardWrapper from "../AuthCardWrapper";
 import AuthLogin from "../auth-forms/AuthLogin";
-import Logo from "ui/components/Logo";
 import AuthFooter from "ui/components/cards/AuthFooter";
-import config from "config";
+import LogoSection from "ui/layout/MainLayout/LogoSection";
 
 // assets
 
@@ -28,54 +25,59 @@ const Login = () => {
                         <Grid item sx={{ m: { xs: 1, sm: 3 }, mb: 0 }}>
                             <AuthCardWrapper>
                                 <Grid container spacing={2} alignItems="center" justifyContent="center">
-                                    <Grid item sx={{ mb: 3 }}>
-                                        <Logo />
+                                    <Grid item sx={{ m: 1 }}>
+                                        <LogoSection />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Grid
-                                            container
-                                            direction={matchDownSM ? "column-reverse" : "row"}
-                                            alignItems="center"
-                                            justifyContent="center"
-                                        >
-                                            <Grid item>
-                                                <Stack alignItems="center" justifyContent="center" spacing={1}>
-                                                    <Typography
-                                                        color={theme.palette.secondary.main}
-                                                        gutterBottom
-                                                        variant={matchDownSM ? "h3" : "h2"}
-                                                    >
-                                                        Login or Register
-                                                    </Typography>
-                                                    <Typography
-                                                        variant="caption"
-                                                        fontSize="16px"
-                                                        textAlign={matchDownSM ? "center" : "inherit"}
-                                                    >
-                                                        At this moment we only support Google Authentication.
-                                                    </Typography>
-                                                </Stack>
-                                            </Grid>
-                                        </Grid>
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <AuthLogin />
-                                    </Grid>
+
                                     <Grid item xs={12}>
                                         <Divider />
                                     </Grid>
-                                    <Grid item xs={12}>
-                                        <Grid item container direction="column" alignItems="center" xs={12}>
+
+                                    <Grid
+                                        container
+                                        item
+                                        sx={{ mt: 2, mb: 2 }}
+                                        direction={matchDownSM ? "column-reverse" : "row"}
+                                        alignItems="center"
+                                        justifyContent="center"
+                                    >
+                                        <Stack spacing={2}>
                                             <Typography
-                                                component={Link}
-                                                to={config.basename + config.paths.auth.register}
-                                                variant="subtitle1"
-                                                sx={{ textDecoration: "none" }}
+                                                color={theme.palette.secondary.main}
+                                                gutterBottom
+                                                variant={matchDownSM ? "h3" : "h2"}
                                             >
-                                                Don&apos;t have an account?
+                                                Select an option to Login or Register
                                             </Typography>
-                                        </Grid>
+
+                                            <Grid item>
+                                                <AuthLogin />
+                                            </Grid>
+                                        </Stack>
                                     </Grid>
+
+                                    <Grid item xs={12}>
+                                        <Divider />
+                                    </Grid>
+
+                                    <Grid item alignItems="center" justifyContent="center">
+                                        <Typography variant="caption" fontSize="16px" textAlign={matchDownSM ? "center" : "inherit"}>
+                                            At this moment we only support Google Authentication
+                                        </Typography>
+                                    </Grid>
+
+                                    {/*<Grid item xs={12}>*/}
+                                    {/*    <Grid item container direction="column" alignItems="center" xs={12}>*/}
+                                    {/*        <Typography*/}
+                                    {/*            component={Link}*/}
+                                    {/*            to={config.basename + config.paths.auth.register}*/}
+                                    {/*            variant="subtitle1"*/}
+                                    {/*            sx={{ textDecoration: "none" }}*/}
+                                    {/*        >*/}
+                                    {/*            Don&apos;t have an account?*/}
+                                    {/*        </Typography>*/}
+                                    {/*    </Grid>*/}
+                                    {/*</Grid>*/}
                                 </Grid>
                             </AuthCardWrapper>
                         </Grid>

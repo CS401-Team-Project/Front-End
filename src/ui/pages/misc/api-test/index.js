@@ -22,10 +22,9 @@ const ApiTest = () => {
 
     return (
         <Stack spacing={2}>
-            <h1>API Client Tests</h1>
-            <p>Base API URL: {process.env.REACT_APP_API_ENDPOINT}</p>
+            <MainCard title="API URL Base">{process.env.REACT_APP_API_ENDPOINT}</MainCard>
 
-            <MainCard title="/test_get" component={Stack} component_props={{ spacing: 2 }}>
+            <MainCard title="/test_get" contentProps={{ component: Stack, spacing: 2 }}>
                 <StateHandler api={getTest} retryHandler={load}>
                     <Typography>{getTest.data}</Typography>
                 </StateHandler>

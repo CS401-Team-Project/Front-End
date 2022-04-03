@@ -47,33 +47,14 @@ const FirebaseLogin = () => {
                     <AnimateButton>
                         <GoogleLogin
                             clientId={config.googleClientId}
-                            buttonText={"Login with Google"}
+                            buttonText={"Google Account"}
                             onSuccess={onGoogleSuccess}
                             onFailure={onGoogleFailure}
                             cookiePolicy={"single_host_origin"}
                             style={{ margin: "100px auto" }}
                             isSignedIn={true}
                         />
-
-                        {/* <Button
-                                disableElevation
-                                fullWidth
-                                onClick={googleHandler}
-                                size="large"
-                                variant="outlined"
-                                sx={{
-                                    color: 'grey.700',
-                                    backgroundColor: theme.palette.grey[100],
-                                    borderColor: theme.palette.grey[100]
-                                }}
-                                >
-                                <Box sx={{ mr: { xs: 1, sm: 2, width: 20 } }}>
-                                    <img src={Google} alt="google" width={16} height={16} style={{ marginRight: matchDownSM ? 8 : 16 }} />
-                                </Box>
-                                Sign in with Google
-                            </Button> */}
                     </AnimateButton>
-                    <br></br>
                 </Grid>
             </Grid>
         </>
