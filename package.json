@@ -1,6 +1,6 @@
 {
-  "name": "Smart-Ledger",
-  "version": "0.2.9",
+  "name": "smart-ledger",
+  "version": "0.2.11",
   "private": true,
   "homepage": "/",
   "dependencies": {
