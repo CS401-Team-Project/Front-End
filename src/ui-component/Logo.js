@@ -1,17 +1,19 @@
-import PropTypes from "prop-types";
-import logoDark from "assets/images/logo-complete-dark.svg";
-import logo from "assets/images/logo-complete.svg";
+import { Stack } from "@mui/material";
+import { IconReceipt } from "@tabler/icons";
+import MuiTypography from "@mui/material/Typography";
+import { useTheme } from "@mui/material/styles";
 
-const Logo = (props) => {
-    return <img src={logo} alt="Smart Ledger" width={props.width} />;
+const Logo = () => {
+    const theme = useTheme();
+
+    return (
+        <Stack direction="row" spacing={1}>
+            <IconReceipt size={32} color={theme.palette.secondary.main} />
+            <MuiTypography align="center" noWrap={true} fontWeight={500} fontSize={24} color="black">
+                Smart Ledger
+            </MuiTypography>
+        </Stack>
+    );
 };
 
 export default Logo;
-
-Logo.defaultProps = {
-    width: 175
-};
-
-Logo.propTypes = {
-    width: PropTypes.number
-};
