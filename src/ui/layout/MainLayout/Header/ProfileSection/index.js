@@ -68,9 +68,6 @@ const ProfileSection = () => {
         isSignedIn: true
     });
 
-    console.log(auth);
-    console.log(signIn);
-
     const onLogoutSuccess = async () => {
         console.log("Logout Success");
         setAuth({});

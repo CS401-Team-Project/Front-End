@@ -6,16 +6,49 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Button } from "@mui/material";
 import Collapse from "@mui/material/Collapse";
-import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import PropTypes from "prop-types";
 
-const Transaction = (props) => {
-    const { row } = props;
+const Transaction = (id) => {
     const [open, setOpen] = React.useState(false);
+
+    // TODO: Get this from API call
+    const info = {
+        title: "Transaction 1",
+        desc: "This is a transaction description",
+        date_purchased: "2020-01-01",
+        date_created: "2020-01-02",
+        created_by: "John Doe",
+        date_modified: "2020-01-03",
+        modified_by: "Jane Doe",
+        total_price: 123.45,
+        vendor: "Vendor 1",
+        items: [
+            {
+                item_id: 123,
+                person: "John Doe",
+                name: "Item 1",
+                quantity: 1,
+                item_cost: 1.23
+            },
+            {
+                item_id: 1234,
+                person: "Jane Doe",
+                name: "Item 2",
+                quantity: 2,
+                item_cost: 12.34
+            },
+            {
+                item_id: 12345,
+                person: "Johnny Doe",
+                name: "Item 3",
+                quantity: 3,
+                item_cost: 123.45
+            }
+        ]
+    };
 
     return (
         <React.Fragment>
@@ -26,41 +59,40 @@ const Transaction = (props) => {
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                    {row.title}
+                    {info.title}
                 </TableCell>
-                <TableCell>{row.date}</TableCell>
-                <TableCell>{row.amount}</TableCell>
-                <TableCell>{row.owed_by}</TableCell>
+                <TableCell>{info.date_purchased}</TableCell>
+                <TableCell>{info.vendor}</TableCell>
+                <TableCell>{info.created_by}</TableCell>
+                <TableCell>{info.total_price}</TableCell>
                 <TableCell>
                     <Button variant="contained">Edit</Button>
                 </TableCell>
             </TableRow>
             <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={5}>
                     <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box sx={{ margin: 1 }}>
-                            <Typography variant="h6" gutterBottom component="div">
-                                Items
-                            </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Amount ($)</TableCell>
-                                        <TableCell>Item</TableCell>
-                                        <TableCell>Owed By</TableCell>
+                        <Table aria-label="purchases">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Item</TableCell>
+                                    <TableCell>Quantity</TableCell>
+
+                                    <TableCell>Price ($)</TableCell>
+                                    <TableCell>Owed By</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {info.items.map((item) => (
+                                    <TableRow key={id + "_" + item.item_id}>
+                                        <TableCell>{item.name}</TableCell>
+                                        <TableCell>{item.quantity}</TableCell>
+                                        <TableCell>{item.item_cost}</TableCell>
+                                        <TableCell>{item.person}</TableCell>
                                     </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {row.items.map((itemsRow) => (
-                                        <TableRow key={itemsRow.date}>
-                                            <TableCell>{itemsRow.Amount}</TableCell>
-                                            <TableCell>{itemsRow.Item}</TableCell>
-                                            <TableCell>{itemsRow.Receiver}</TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </Box>
+                                ))}
+                            </TableBody>
+                        </Table>
                     </Collapse>
                 </TableCell>
             </TableRow>
@@ -69,19 +101,7 @@ const Transaction = (props) => {
 };
 
 Transaction.propTypes = {
-    row: PropTypes.shape({
-        date: PropTypes.number.isRequired,
-        owed_by: PropTypes.number.isRequired,
-        amount: PropTypes.number.isRequired,
-        items: PropTypes.arrayOf(
-            PropTypes.shape({
-                Item: PropTypes.number.isRequired,
-                Amount: PropTypes.string.isRequired,
-                date: PropTypes.string.isRequired
-            })
-        ).isRequired,
-        title: PropTypes.string.isRequired
-    }).isRequired
+    id: PropTypes.number.isRequired
 };
 
 export default Transaction;
