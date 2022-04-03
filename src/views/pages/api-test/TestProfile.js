@@ -11,8 +11,8 @@ const TestProfile = () => {
 
     useEffect(() => {
         user.request("token", "sub");
+        // eslint-disable-next-line
     }, []);
-    // console.log(user);
 
     const retry = () => {
         user.requestSlow("token", "sub");

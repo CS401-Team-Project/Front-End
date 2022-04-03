@@ -26,8 +26,7 @@ const MainCard = forwardRef(
             shadow,
             sx = {},
             title,
-            component,
-            component_props,
+            contentProps,
             ...others
         },
         ref
@@ -58,7 +57,7 @@ const MainCard = forwardRef(
 
                 {/* card content */}
                 {content && (
-                    <CardContent sx={contentSX} className={contentClass} component={component} {...component_props}>
+                    <CardContent sx={contentSX} className={contentClass} {...contentProps}>
                         {children}
                     </CardContent>
                 )}
@@ -80,8 +79,7 @@ MainCard.propTypes = {
     shadow: PropTypes.string,
     sx: PropTypes.object,
     title: PropTypes.oneOfType([PropTypes.node, PropTypes.string, PropTypes.object]),
-    component: PropTypes.oneOfType([PropTypes.object]),
-    component_props: PropTypes.object
+    contentProps: PropTypes.oneOfType([PropTypes.object])
 };
 
 export default MainCard;

@@ -2,9 +2,8 @@ import { Grid } from "@mui/material";
 
 // project imports
 import GroupInformation from "./components/GroupInformation";
-//import GroupMembers from "./components/GroupMembers";
 import QuickAction from "./components/QuickAction";
-import Transactions from "./components/Transactions";
+import TransactionTable from "./components/TransactionTable";
 
 // ==============================|| TYPOGRAPHY ||============================== //
 
@@ -18,7 +17,7 @@ const Group = () => {
                 <GroupInformation />
             </Grid>
             <Grid item xs={12}>
-                <Transactions />
+                <TransactionTable />
             </Grid>
         </Grid>
     );

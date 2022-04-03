@@ -1,5 +1,5 @@
 // assets
-import { IconPalette, IconShadow, IconTypography, IconWindmill } from "@tabler/icons";
+import { IconPalette, IconShadow, IconTestPipe, IconTypography, IconWindmill } from "@tabler/icons";
 
 // ==============================|| SAMPLE PAGE & DOCUMENTATION MENU ITEMS ||============================== //
 
@@ -8,6 +8,14 @@ const other = {
     type: "group",
     title: "Other",
     children: [
+        {
+            id: "other-api-test",
+            title: "API Client Tests",
+            type: "item",
+            url: "/app/api-test",
+            icon: IconTestPipe,
+            breadcrumbs: true
+        },
         {
             id: "other-typography",
             title: "Typography",

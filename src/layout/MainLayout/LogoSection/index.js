@@ -6,13 +6,18 @@ import { ButtonBase } from "@mui/material";
 // project imports
 import config from "config";
 import Logo from "ui-component/Logo";
+import { useTheme } from "@mui/material/styles";
 
 // ==============================|| MAIN LOGO ||============================== //
 
-const LogoSection = () => (
-    <ButtonBase disableRipple component={Link} to={config.paths.landing}>
-        <Logo />
-    </ButtonBase>
-);
+const LogoSection = () => {
+    const theme = useTheme();
+
+    return (
+        <ButtonBase disableRipple component={Link} to={config.paths.landing} color={theme.palette.secondary.main}>
+            <Logo />
+        </ButtonBase>
+    );
+};
 
 export default LogoSection;
