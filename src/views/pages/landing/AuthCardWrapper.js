@@ -1,17 +1,17 @@
 import PropTypes from "prop-types";
 
-// material-ui
+// material-views
 import { Box } from "@mui/material";
 
 // project import
-import MainCard from "ui-component/cards/MainCard";
+import MainCard from "src/ui-component/cards/MainCard";
 
 // ==============================|| AUTHENTICATION CARD WRAPPER ||============================== //
 
 const AuthCardWrapper = ({ children, ...other }) => (
     <MainCard
         sx={{
-            maxWidth: { xs: 400, lg: 475 },
+            maxWidth: { xs: 500, lg: 500 },
             margin: { xs: 2.5, md: 3 },
             "& > *": {
                 flexGrow: 1,
