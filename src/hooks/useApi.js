@@ -6,7 +6,7 @@ import { useState } from "react";
  - don't use export defaults, because default imports are hard to search for
  - axios already support generic request in one parameter, no need to call specialized ones
  **/
-export default (apiFunc) => {
+export default (apiFunc, callback) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(false);
@@ -19,8 +19,10 @@ export default (apiFunc) => {
             const result = await apiFunc(...args);
             setData(result.data);
             console.log("RESULT:", result);
-            console.log(result.data);
             setError(null);
+            if (callback) {
+                callback(result);
+            }
         } catch (err) {
             setError(err.name + ": " + err.message || "Unexpected error!");
             console.log("ERROR:", err.message);

@@ -22,7 +22,7 @@ import {
 } from "@mui/material";
 
 // third-party
-import { GoogleLogout, useGoogleLogin } from "react-google-login";
+import { GoogleLogout } from "react-google-login";
 
 // project imports
 import MainCard from "ui/components/cards/MainCard";
@@ -45,32 +45,14 @@ const ProfileSection = () => {
     // const [notification, setNotification] = useState(false);
     const [selectedIndex, setSelectedIndex] = useState(-1);
     const [open, setOpen] = useState(false);
-    const [auth, setAuth] = useState({});
     /**
      * anchorRef is used on different componets and specifying one type leads to misc components throwing an error
      * */
     const anchorRef = useRef(null);
 
-    const { signIn } = useGoogleLogin({
-        clientId: config.googleClientId,
-        onSuccess: (response) => {
-            console.log("Login Success");
-            // TODO: Remove this printout of the response
-            console.log(response);
-            setAuth(response);
-        },
-        onFailure: (response) => {
-            console.log("Login Failure");
-            // TODO: Remove this printout of the response
-            console.log(response);
-            setAuth(response);
-        },
-        isSignedIn: true
-    });
-
     const onLogoutSuccess = async () => {
         console.log("Logout Success");
-        setAuth({});
+        localStorage.removeItem("isLoggedIn");
         navigate(config.basename + config.paths.landing);
     };
 
