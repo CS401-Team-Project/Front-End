@@ -1,14 +1,14 @@
 import { lazy } from "react";
 
 // project imports
-import Loadable from "ui-component/Loadable";
-import MinimalLayout from "../layout/MinimalLayout";
+import Loadable from "ui/components/Loadable";
+import MinimalLayout from "ui/layout/MinimalLayout";
 
-const LandingPage = Loadable(lazy(() => import("views/pages/landing")));
+const LandingPage = Loadable(lazy(() => import("ui/pages/landing")));
 // login option 3 routing
-const AuthLogin3 = Loadable(lazy(() => import("views/pages/authentication/authentication3/Login3")));
-const AuthRegister3 = Loadable(lazy(() => import("views/pages/authentication/authentication3/Register3")));
-const ApiTest = Loadable(lazy(() => import("views/pages/api-test")));
+const AuthLogin3 = Loadable(lazy(() => import("ui/pages/authentication/authentication3/Login3")));
+const AuthRegister3 = Loadable(lazy(() => import("ui/pages/authentication/authentication3/Register3")));
+const ApiTest = Loadable(lazy(() => import("ui/pages/misc/api-test")));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 
