@@ -7,24 +7,24 @@ import MainLayout from "layout/MainLayout";
 import Loadable from "ui-component/Loadable";
 
 // overview routing
-const Dashboard = Loadable(lazy(() => import("src/views/pages/dashboard")));
-const Activity = Loadable(lazy(() => import("src/views/pages/activity")));
-const Groups = Loadable(lazy(() => import("src/views/pages/groups")));
-const Group = Loadable(lazy(() => import("src/views/pages/group")));
-const Settings = Loadable(lazy(() => import("src/views/pages/settings")));
+const Dashboard = Loadable(lazy(() => import("views/pages/dashboard")));
+const Activity = Loadable(lazy(() => import("views/pages/activity")));
+const Groups = Loadable(lazy(() => import("views/pages/groups")));
+const Group = Loadable(lazy(() => import("views/pages/group")));
+const Settings = Loadable(lazy(() => import("views/pages/settings")));
 
 // management routing
-const UtilsTypography = Loadable(lazy(() => import("src/views/other/Typography")));
-const UtilsColor = Loadable(lazy(() => import("src/views/other/Color")));
-const UtilsShadow = Loadable(lazy(() => import("src/views/other/Shadow")));
-const UtilsMaterialIcons = Loadable(lazy(() => import("src/views/other/MaterialIcons")));
-const UtilsTablerIcons = Loadable(lazy(() => import("src/views/other/TablerIcons")));
+const UtilsTypography = Loadable(lazy(() => import("views/other/Typography")));
+const UtilsColor = Loadable(lazy(() => import("views/other/Color")));
+const UtilsShadow = Loadable(lazy(() => import("views/other/Shadow")));
+const UtilsMaterialIcons = Loadable(lazy(() => import("views/other/MaterialIcons")));
+const UtilsTablerIcons = Loadable(lazy(() => import("views/other/TablerIcons")));
 
 // sample page routing
-const SamplePage = Loadable(lazy(() => import("src/views/other/sample-page")));
+const SamplePage = Loadable(lazy(() => import("views/other/sample-page")));
 
 // api test page routing
-const ApiTest = Loadable(lazy(() => import("src/views/pages/api-test")));
+const ApiTest = Loadable(lazy(() => import("views/pages/api-test")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
