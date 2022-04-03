@@ -1,6 +1,6 @@
 // material-views
 import { Button, Grid } from "@mui/material";
-import SubCard from "src/ui-component/cards/SubCard";
+import SubCard from "ui-component/cards/SubCard";
 
 // ==============================|| CUSTOM SUB CARD ||============================== //
 

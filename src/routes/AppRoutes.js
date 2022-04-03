@@ -4,7 +4,7 @@ import { lazy } from "react";
 
 // project imports
 import MainLayout from "layout/MainLayout";
-import Loadable from "src/ui-component/Loadable";
+import Loadable from "ui-component/Loadable";
 
 // overview routing
 const Dashboard = Loadable(lazy(() => import("src/views/pages/dashboard")));

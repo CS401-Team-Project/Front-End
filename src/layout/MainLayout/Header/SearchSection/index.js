@@ -9,7 +9,7 @@ import { Avatar, Box, ButtonBase, Card, Grid, InputAdornment, OutlinedInput, Pop
 import PopupState, { bindPopper, bindToggle } from "material-views-popup-state";
 
 // project imports
-import Transitions from "src/ui-component/extended/Transitions";
+import Transitions from "ui-component/extended/Transitions";
 
 // assets
 import { IconAdjustmentsHorizontal, IconSearch, IconX } from "@tabler/icons";

@@ -3,7 +3,7 @@ import { Button, Chip, MenuItem, Select, Stack, TextField } from "@mui/material"
 
 import useApi from "hooks/useApi";
 import testApi from "api/test";
-import StateHandler from "src/ui-component/StateHandler";
+import StateHandler from "ui-component/StateHandler";
 import MainCard from "../../../ui-component/cards/MainCard";
 import SubCard from "../../../ui-component/cards/SubCard";
 

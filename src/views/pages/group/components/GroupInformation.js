@@ -1,7 +1,7 @@
 // material-views
 import { Grid, Typography } from "@mui/material";
 import GroupData from "../GroupData";
-import SubCard from "src/ui-component/cards/SubCard";
+import SubCard from "ui-component/cards/SubCard";
 
 // ==============================|| CUSTOM SUB CARD ||============================== //
 

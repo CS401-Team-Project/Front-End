@@ -1,6 +1,6 @@
 // a
 // project imports
-import MainCard from "src/ui-component/cards/MainCard";
+import MainCard from "ui-component/cards/MainCard";
 import Group1 from "./components/Group1";
 import Group2 from "./components/Group2";
 

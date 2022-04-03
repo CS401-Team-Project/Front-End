@@ -25,8 +25,8 @@ import {
 import { GoogleLogout } from "react-google-login";
 
 // project imports
-import MainCard from "src/ui-component/cards/MainCard";
-import Transitions from "src/ui-component/extended/Transitions";
+import MainCard from "ui-component/cards/MainCard";
+import Transitions from "ui-component/extended/Transitions";
 import User1 from "assets/images/users/user-round.svg";
 import config from "config";
 

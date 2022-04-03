@@ -7,8 +7,8 @@ import { Avatar, Button, CardActions, CardContent, Divider, Grid, Menu, MenuItem
 
 // project imports
 import BajajAreaChartCard from "./BajajAreaChartCard";
-import MainCard from "src/ui-component/cards/MainCard";
-import SkeletonPopularCard from "src/ui-component/cards/Skeleton/PopularCard";
+import MainCard from "ui-component/cards/MainCard";
+import SkeletonPopularCard from "ui-component/cards/Skeleton/PopularCard";
 import { gridSpacing } from "store/constant";
 
 // assets

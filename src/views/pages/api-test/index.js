@@ -4,8 +4,8 @@ import useApi from "hooks/useApi";
 import testApi from "api/test";
 import TestProfile from "./TestProfile";
 import TestPost from "./TestPost";
-import MainCard from "src/ui-component/cards/MainCard";
-import StateHandler from "src/ui-component/StateHandler";
+import MainCard from "ui-component/cards/MainCard";
+import StateHandler from "ui-component/StateHandler";
 
 const ApiTest = () => {
     // This API simply returns a string

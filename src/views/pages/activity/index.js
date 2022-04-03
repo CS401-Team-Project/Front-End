@@ -1,7 +1,7 @@
 import { Typography } from "@mui/material";
 
 // project imports
-import MainCard from "src/ui-component/cards/MainCard";
+import MainCard from "ui-component/cards/MainCard";
 
 // ==============================|| TYPOGRAPHY ||============================== //
 

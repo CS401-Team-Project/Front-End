@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 
 // project imports
-import MainCard from "src/ui-component/cards/MainCard";
+import MainCard from "ui-component/cards/MainCard";
 import useApi from "hooks/useApi";
 import userApi from "api/user";
-import StateHandler from "src/ui-component/StateHandler";
+import StateHandler from "ui-component/StateHandler";
 
 const TestProfile = () => {
     const user = useApi(userApi.user_info);
