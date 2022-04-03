@@ -56,7 +56,7 @@ const removeItem = (token, id, data) =>
         data: data
     });
 
-/* Doc: https://github.com/CS401-Team-Project/Back-End/blob/main/API-DOCS/TRANSACTION.md#transactionremove-item-1 */
+/* Doc: https://github.com/CS401-Team-Project/Back-End/blob/main/API-DOCS/TRANSACTION.md#iteminfo-1 */
 const getItem = (token, id) =>
     client.post("/item/info", {
         token: token,
