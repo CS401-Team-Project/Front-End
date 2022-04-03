@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-// material-views
+// material-ui
 import { Box, Card, Grid } from "@mui/material";
 
 // project imports

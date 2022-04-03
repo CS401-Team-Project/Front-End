@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-// material-views
+// material-ui
 import { useTheme } from "@mui/material/styles";
 import { Box, Drawer, useMediaQuery } from "@mui/material";
 

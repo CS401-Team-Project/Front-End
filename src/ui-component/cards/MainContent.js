@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-// material-views
+// material-ui
 import { Grid, Typography } from "@mui/material";
 import SubCard from "./SubCard";
 

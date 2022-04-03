@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import { Link, Typography, Stack } from "@mui/material";
 
 import config from "config";

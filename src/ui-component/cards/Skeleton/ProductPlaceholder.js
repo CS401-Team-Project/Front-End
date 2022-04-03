@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import { CardContent, Grid, Skeleton, Stack } from "@mui/material";
 
 // project import

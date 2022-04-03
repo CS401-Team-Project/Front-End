@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-// material-views
+// material-ui
 import { useTheme, styled } from "@mui/material/styles";
 import { Avatar, Box, Button, Grid, Typography } from "@mui/material";
 

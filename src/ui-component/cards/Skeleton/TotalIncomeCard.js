@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import { Card, List, ListItem, ListItemAvatar, ListItemText, Skeleton } from "@mui/material";
 
 // ==============================|| SKELETON - TOTAL INCOME DARK/LIGHT CARD ||============================== //

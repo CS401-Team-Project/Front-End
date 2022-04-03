@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import LinearProgress from "@mui/material/LinearProgress";
 import { styled } from "@mui/material/styles";
 

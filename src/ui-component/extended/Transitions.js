@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
-// material-views
+// material-ui
 import { Collapse, Fade, Box, Grow, Slide, Zoom } from "@mui/material";
 
 // ==============================|| TRANSITIONS ||============================== //

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 
-// material-views
+// material-ui
 import { styled, useTheme } from "@mui/material/styles";
 import { AppBar, Box, CssBaseline, Toolbar, useMediaQuery } from "@mui/material";
 

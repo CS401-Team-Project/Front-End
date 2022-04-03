@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-// material-views
+// material-ui
 import { useTheme } from "@mui/material/styles";
 import MuiAvatar from "@mui/material/Avatar";
 

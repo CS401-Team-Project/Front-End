@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import { Grid, Typography } from "@mui/material";
 import GroupData from "../GroupData";
 import SubCard from "ui-component/cards/SubCard";

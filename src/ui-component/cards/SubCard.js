@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { forwardRef } from "react";
 
-// material-views
+// material-ui
 import { useTheme } from "@mui/material/styles";
 import { Card, CardContent, CardHeader, Divider, Typography } from "@mui/material";
 

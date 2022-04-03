@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-// material-views
+// material-ui
 import { useTheme } from "@mui/material/styles";
 import { Grid, MenuItem, TextField, Typography } from "@mui/material";
 

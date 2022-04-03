@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import { Button, Grid } from "@mui/material";
 import SubCard from "ui-component/cards/SubCard";
 

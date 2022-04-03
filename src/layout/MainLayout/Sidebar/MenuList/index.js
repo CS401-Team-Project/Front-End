@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import { Typography } from "@mui/material";
 
 // project imports

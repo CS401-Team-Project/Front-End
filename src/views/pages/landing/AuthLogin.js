@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-// material-views
+// material-ui
 import { GoogleLogin } from "react-google-login";
 
 // project imports

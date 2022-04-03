@@ -1,4 +1,4 @@
-// material-views
+// material-ui
 import Skeleton from "@mui/material/Skeleton";
 
 // ==============================|| SKELETON IMAGE CARD ||============================== //
