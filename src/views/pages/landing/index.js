@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-// material-views
+// material-ui
 import { useTheme } from "@mui/material/styles";
 import { Divider, Grid, Stack, Typography, useMediaQuery } from "@mui/material";
 
