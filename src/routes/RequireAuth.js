@@ -13,6 +13,7 @@ const RequireAuth = ({ children }) => {
         if (!isLoggedIn) {
             navigate("/");
         }
+        // eslint-disable-next-line
     }, [isLoggedIn]);
 
     return children;

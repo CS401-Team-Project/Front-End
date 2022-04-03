@@ -31,6 +31,7 @@ const AuthLogin = () => {
             localStorage.setItem("isLoggedIn", "true");
             navigate("/app");
         }
+        // eslint-disable-next-line
     }, [isLoggedIn]);
 
     const onGoogleFailure = (res) => {
