@@ -7,7 +7,7 @@ const Logo = () => {
     const theme = useTheme();
 
     return (
-        <Stack direction="row" spacing={1}>
+        <Stack direction="row" spacing={1} justifyContent="center">
             <IconReceipt size={32} color={theme.palette.secondary.main} />
             <MuiTypography align="center" noWrap={true} fontWeight={500} fontSize={24} color="black">
                 Smart Ledger
