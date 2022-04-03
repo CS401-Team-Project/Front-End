@@ -1,5 +1,5 @@
 /**
- * Password validator for login views
+ * Password validator for login pages
  */
 import value from "assets/scss/_themes-vars.module.scss";
 

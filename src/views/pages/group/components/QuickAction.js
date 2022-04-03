@@ -6,7 +6,7 @@ import SubCard from "ui-component/cards/SubCard";
 
 const QuickAction = () => {
     return (
-        <SubCard title="Quick Actions">
+        <SubCard title="Quick Action">
             <Grid container spacing={3}>
                 <Grid item>
                     <Button variant="contained">Create Transaction</Button>
