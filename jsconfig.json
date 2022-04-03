@@ -2,7 +2,15 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "commonjs",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "paths": {
+      "*": [
+        "*.js"
+      ],
+      "*.svg": [
+        "*.svg"
+      ]
+    }
   },
   "include": [
     "src/**/*"

@@ -10,7 +10,7 @@ import App from "App";
 import { store } from "store";
 
 // style + assets
-import "assets/scss/style.scss";
+import "ui/assets/scss/style.scss";
 
 require("dotenv").config();
 

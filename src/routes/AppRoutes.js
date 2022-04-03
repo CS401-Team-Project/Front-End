@@ -3,28 +3,28 @@
 import { lazy } from "react";
 
 // project imports
-import MainLayout from "layout/MainLayout";
-import Loadable from "ui-component/Loadable";
+import MainLayout from "ui/layout/MainLayout";
+import Loadable from "ui/components/Loadable";
 
 // overview routing
-const Dashboard = Loadable(lazy(() => import("views/pages/dashboard")));
-const Activity = Loadable(lazy(() => import("views/pages/activity")));
-const Groups = Loadable(lazy(() => import("views/pages/groups")));
-const Group = Loadable(lazy(() => import("views/pages/group")));
-const Settings = Loadable(lazy(() => import("views/pages/settings")));
+const Dashboard = Loadable(lazy(() => import("ui/pages/dashboard")));
+const Activity = Loadable(lazy(() => import("ui/pages/activity")));
+const Groups = Loadable(lazy(() => import("ui/pages/groups")));
+const Group = Loadable(lazy(() => import("ui/pages/group")));
+const Settings = Loadable(lazy(() => import("ui/pages/settings")));
 
 // management routing
-const UtilsTypography = Loadable(lazy(() => import("views/other/Typography")));
-const UtilsColor = Loadable(lazy(() => import("views/other/Color")));
-const UtilsShadow = Loadable(lazy(() => import("views/other/Shadow")));
-const UtilsMaterialIcons = Loadable(lazy(() => import("views/other/MaterialIcons")));
-const UtilsTablerIcons = Loadable(lazy(() => import("views/other/TablerIcons")));
+const UtilsTypography = Loadable(lazy(() => import("ui/pages/misc/Typography")));
+const UtilsColor = Loadable(lazy(() => import("ui/pages/misc/Color")));
+const UtilsShadow = Loadable(lazy(() => import("ui/pages/misc/Shadow")));
+const UtilsMaterialIcons = Loadable(lazy(() => import("ui/pages/misc/MaterialIcons")));
+const UtilsTablerIcons = Loadable(lazy(() => import("ui/pages/misc/TablerIcons")));
 
 // sample page routing
-const SamplePage = Loadable(lazy(() => import("views/other/sample-page")));
+const SamplePage = Loadable(lazy(() => import("ui/pages/misc/sample-page")));
 
 // api test page routing
-const ApiTest = Loadable(lazy(() => import("views/pages/api-test")));
+const ApiTest = Loadable(lazy(() => import("ui/pages/api-test")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 

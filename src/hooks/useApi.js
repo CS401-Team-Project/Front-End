@@ -19,7 +19,6 @@ export default (apiFunc, callback) => {
             const result = await apiFunc(...args);
             setData(result.data);
             console.log("RESULT:", result);
-            setError(null);
             if (callback) {
                 callback(result);
             }
@@ -35,9 +34,15 @@ export default (apiFunc, callback) => {
     const requestSlow = async (...args) => {
         setLoading(true);
         // simulate a slow request
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
         request(...args);
     };
 
-    return { data, error, loading, request, requestSlow };
+    const reset = () => {
+        setData(null);
+        setError(null);
+        setLoading(false);
+    };
+
+    return { data, error, loading, request, requestSlow, reset };
 };

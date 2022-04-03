@@ -1,11 +1,11 @@
 name: Front-End - Version Bump
-   
+
 on:
   push:
   pull_request:
     branches:
       - main
-   
+
 jobs:
   bump-ver:
     runs-on: ubuntu-latest
