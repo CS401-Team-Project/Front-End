@@ -1,10 +1,10 @@
 import { lazy } from "react";
 
 // project imports
-import Loadable from "ui/components/Loadable";
-import MinimalLayout from "ui/layout/MinimalLayout";
+import Loadable from "src/ui-component/Loadable";
+import MinimalLayout from "layout/MinimalLayout";
 
-const LandingPage = Loadable(lazy(() => import("ui/pages/landing")));
+const LandingPage = Loadable(lazy(() => import("src/views/pages/landing")));
 
 // ==============================|| AUTHENTICATION ROUTING ||============================== //
 

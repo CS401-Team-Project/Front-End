@@ -3,28 +3,28 @@
 import { lazy } from "react";
 
 // project imports
-import MainLayout from "ui/layout/MainLayout";
-import Loadable from "ui/components/Loadable";
+import MainLayout from "layout/MainLayout";
+import Loadable from "src/ui-component/Loadable";
 
 // overview routing
-const Dashboard = Loadable(lazy(() => import("ui/pages/dash")));
-const Activity = Loadable(lazy(() => import("ui/pages/activity")));
-const Groups = Loadable(lazy(() => import("ui/pages/groups")));
-const Group = Loadable(lazy(() => import("ui/pages/group")));
-const Settings = Loadable(lazy(() => import("ui/pages/prefs")));
+const Dashboard = Loadable(lazy(() => import("src/views/pages/dashboard")));
+const Activity = Loadable(lazy(() => import("src/views/pages/activity")));
+const Groups = Loadable(lazy(() => import("src/views/pages/groups")));
+const Group = Loadable(lazy(() => import("src/views/pages/group")));
+const Settings = Loadable(lazy(() => import("src/views/pages/settings")));
 
 // management routing
-const UtilsTypography = Loadable(lazy(() => import("ui/pages/misc/Typography")));
-const UtilsColor = Loadable(lazy(() => import("ui/pages/misc/Color")));
-const UtilsShadow = Loadable(lazy(() => import("ui/pages/misc/Shadow")));
-const UtilsMaterialIcons = Loadable(lazy(() => import("ui/pages/misc/MaterialIcons")));
-const UtilsTablerIcons = Loadable(lazy(() => import("ui/pages/misc/TablerIcons")));
+const UtilsTypography = Loadable(lazy(() => import("src/views/other/Typography")));
+const UtilsColor = Loadable(lazy(() => import("src/views/other/Color")));
+const UtilsShadow = Loadable(lazy(() => import("src/views/other/Shadow")));
+const UtilsMaterialIcons = Loadable(lazy(() => import("src/views/other/MaterialIcons")));
+const UtilsTablerIcons = Loadable(lazy(() => import("src/views/other/TablerIcons")));
 
 // sample page routing
-const SamplePage = Loadable(lazy(() => import("ui/pages/misc/sample-page")));
+const SamplePage = Loadable(lazy(() => import("src/views/other/sample-page")));
 
 // api test page routing
-const ApiTest = Loadable(lazy(() => import("ui/pages/misc/api-test")));
+const ApiTest = Loadable(lazy(() => import("src/views/pages/api-test")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -49,7 +49,7 @@ const AppRoutes = {
             element: <Group />
         },
         {
-            path: "/prefs",
+            path: "/settings",
             element: <Settings />
         },
         {
