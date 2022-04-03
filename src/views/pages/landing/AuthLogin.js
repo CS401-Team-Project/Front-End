@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
 
 // project imports
-import AnimateButton from "src/ui-component/extended/AnimateButton";
+import AnimateButton from "ui-component/extended/AnimateButton";
 import config from "config";
 import useApi from "hooks/useApi";
 import userApi from "api/user";
