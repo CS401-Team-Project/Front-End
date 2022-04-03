@@ -13,6 +13,7 @@ const ApiTest = () => {
 
     useEffect(() => {
         getTest.request();
+        // eslint-disable-next-line
     }, []);
 
     const load = () => {

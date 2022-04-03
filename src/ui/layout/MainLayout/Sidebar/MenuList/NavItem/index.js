@@ -61,6 +61,7 @@ const NavItem = ({ item, level }) => {
         if (currentIndex > -1) {
             dispatch({ type: MENU_OPEN, id: item.id });
         }
+        // eslint-disable-next-line
     }, []);
 
     return (

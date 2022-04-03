@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 // material-ui
@@ -9,7 +8,6 @@ import { GoogleLogin } from "react-google-login";
 
 // project imports
 import AnimateButton from "ui/components/extended/AnimateButton";
-import { strengthColor, strengthIndicator } from "utils/password-strength";
 import config from "config";
 // import Google from 'assets/images/icons/social-google.svg';
 
@@ -17,9 +15,6 @@ import config from "config";
 
 const FirebaseRegister = () => {
     const navigate = useNavigate();
-
-    const [strength, setStrength] = useState(0);
-    const [level, setLevel] = useState();
 
     const onGoogleSuccess = (res) => {
         console.log("[Google Signup Success] currentUser: ", res.profileObj);
@@ -42,16 +37,6 @@ const FirebaseRegister = () => {
         // TODO: Error Handling
         alert("Google OAuth Failed");
     };
-
-    const changePassword = (value) => {
-        const temp = strengthIndicator(value);
-        setStrength(temp);
-        setLevel(strengthColor(temp));
-    };
-
-    useEffect(() => {
-        changePassword("123456");
-    }, []);
 
     return (
         <>

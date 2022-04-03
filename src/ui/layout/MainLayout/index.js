@@ -77,6 +77,7 @@ const MainLayout = () => {
 
     useEffect(() => {
         dispatch({ type: SET_MENU, opened: !matchDownMd });
+        // eslint-disable-next-line
     }, [matchDownMd]);
 
     return (
