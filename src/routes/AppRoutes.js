@@ -1,3 +1,5 @@
+// noinspection JSCheckFunctionSignatures
+
 import { lazy } from "react";
 
 // project imports
@@ -20,6 +22,9 @@ const UtilsTablerIcons = Loadable(lazy(() => import("views/other/TablerIcons")))
 
 // sample page routing
 const SamplePage = Loadable(lazy(() => import("views/other/sample-page")));
+
+// api test page routing
+const ApiTest = Loadable(lazy(() => import("views/pages/api-test")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -70,6 +75,10 @@ const AppRoutes = {
         {
             path: "/sample-page",
             element: <SamplePage />
+        },
+        {
+            path: "/api-test",
+            element: <ApiTest />
         }
     ]
 };
