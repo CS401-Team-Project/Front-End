@@ -1,9 +1,9 @@
 import { createStore } from "redux";
-import reducer from "./reducer";
+import rootReducer from "./rootReducer";
 
 // ==============================|| REDUX - MAIN STORE ||============================== //
 
-const store = createStore(reducer);
+const store = createStore(rootReducer);
 const persister = "Free";
 
 export { store, persister };
