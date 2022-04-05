@@ -6,9 +6,6 @@ import PropTypes from "prop-types";
 import NothingHere from "ui/components/NothingHere";
 
 const StateHandler = ({ api, retryHandler, NoDataComponent, ...props }) => {
-    console.log("DATA", api.data);
-    console.log("ERROR", api.error);
-
     if (api.loading) {
         return <CircularProgress />;
     }
@@ -18,6 +15,7 @@ const StateHandler = ({ api, retryHandler, NoDataComponent, ...props }) => {
     }
 
     if (!api.data) {
+        if (NoDataComponent) return <NoDataComponent />;
         return <NothingHere />;
     }
 
@@ -27,7 +25,7 @@ const StateHandler = ({ api, retryHandler, NoDataComponent, ...props }) => {
 StateHandler.propTypes = {
     api: PropTypes.oneOfType([PropTypes.object]),
     retryHandler: PropTypes.func,
-    NoDataComponent: PropTypes.oneOfType([PropTypes.object]),
+    NoDataComponent: PropTypes.elementType,
     children: PropTypes.oneOfType([PropTypes.object])
 };
 
