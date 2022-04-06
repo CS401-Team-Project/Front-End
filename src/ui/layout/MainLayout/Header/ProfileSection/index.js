@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 // material-ui
 import { useTheme } from "@mui/material/styles";
@@ -32,6 +32,7 @@ import config from "config";
 
 // assets
 import { IconLogout, IconSettings } from "@tabler/icons";
+import { googleOAuth2 } from "store/actions";
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -39,6 +40,7 @@ const ProfileSection = () => {
     const theme = useTheme();
     const customization = useSelector((state) => state.customization);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     // const [sdm, setSdm] = useState(true);
     // const [value, setValue] = useState("");
@@ -49,17 +51,6 @@ const ProfileSection = () => {
      * anchorRef is used on different componets and specifying one type leads to other views-components throwing an error
      * */
     const anchorRef = useRef(null);
-
-    const onLogoutSuccess = async () => {
-        console.log("Logout Success");
-        localStorage.removeItem("token");
-        navigate(config.basename + config.paths.landing);
-    };
-
-    const onLogoutFailure = async () => {
-        console.log("ERROR: Logout Failure");
-        alert("Logout Failure");
-    };
 
     const handleClose = (event) => {
         if (anchorRef.current && anchorRef.current.contains(event.target)) {
@@ -88,6 +79,10 @@ const ProfileSection = () => {
 
         prevOpen.current = open;
     }, [open]);
+
+    const onLogoutSuccess = () => {
+        googleOAuth2(dispatch, {});
+    };
 
     return (
         <>
@@ -305,7 +300,6 @@ const ProfileSection = () => {
                                                 clientId={config.googleClientId}
                                                 buttonText="Logout"
                                                 onLogoutSuccess={onLogoutSuccess}
-                                                onFailure={onLogoutFailure}
                                                 render={(renderProps) => (
                                                     <ListItemButton
                                                         sx={{ borderRadius: `${customization.borderRadius}px` }}

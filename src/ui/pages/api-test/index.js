@@ -26,7 +26,7 @@ const ApiTest = () => {
             <MainCard title="API URL Base">{process.env.REACT_APP_API_ENDPOINT}</MainCard>
 
             <MainCard title="/test_get" contentProps={{ component: Stack, spacing: 2 }}>
-                <StateHandler api={getTest} retryHandler={load} noDataComponent={NothingHere}>
+                <StateHandler api={getTest} retryHandler={load} NoDataComponent={NothingHere}>
                     <Typography>{getTest.data}</Typography>
                 </StateHandler>
                 <Button variant="contained" onClick={load}>

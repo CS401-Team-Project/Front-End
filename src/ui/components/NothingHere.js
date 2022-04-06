@@ -1,7 +1,11 @@
 import { Alert } from "@mui/material";
 
-const NothingHere = () => {
-    return <Alert severity="info">Nothing here yet!</Alert>;
+const NothingHere = ({ ...props }) => {
+    return (
+        <Alert severity="info" {...props}>
+            Nothing here yet!
+        </Alert>
+    );
 };
 
 export default NothingHere;

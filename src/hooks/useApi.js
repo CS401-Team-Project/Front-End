@@ -14,20 +14,29 @@ export default (apiFunc, callback) => {
     const request = async (...args) => {
         setLoading(true);
         try {
-            console.log("===================================>");
-            console.log("API CALL:", apiFunc.name, args);
+            if (process.env.REACT_APP_API_ENDPOINT) {
+                console.log("===================================>");
+                console.log("API CALL:", apiFunc.name, args);
+            }
+
             const result = await apiFunc(...args);
             setData(result.data);
-            console.log("RESULT:", result);
+            if (process.env.REACT_APP_API_ENDPOINT) {
+                console.log("RESULT:", result);
+            }
             if (callback) {
                 callback(result);
             }
         } catch (err) {
             setError(err.name + ": " + err.message || "Unexpected error!");
-            console.log("ERROR:", err.message);
+            if (process.env.REACT_APP_API_ENDPOINT) {
+                console.log("ERROR:", err.message);
+            }
         } finally {
             setLoading(false);
-            console.log("<===================================");
+            if (process.env.REACT_APP_API_ENDPOINT) {
+                console.log("<===================================");
+            }
         }
     };
 

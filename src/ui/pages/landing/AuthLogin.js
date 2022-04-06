@@ -6,54 +6,27 @@ import { GoogleLogin } from "react-google-login";
 // project imports
 import AnimateButton from "ui/components/extended/AnimateButton";
 import config from "config";
-
-// import Google from 'assets/images/icons/social-google.svg';
+import { useDispatch } from "react-redux";
+import { googleOAuth2 } from "store/actions";
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
-    // const authApi = useApi(userApi.register);
     const navigate = useNavigate();
-
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-    // useEffect(() => {
-    //     console.log("HERE");
-    //     if (isLoggedIn) {
-    //         console.log("HERE logged in");
-    //         if (authApi.data && !authApi.error) {
-    //             // save login state to local storage
-    //             console.log("Successfully authenticated with API server.");
-    //             localStorage.setItem("token", "true");
-    //             navigate("/app");
-    //         } else if (authApi.error) {
-    //             console.log("Failed to authenticate with API server.");
-    //             localStorage.removeItem("isLoggedIn");
-    //             setIsLoggedIn(false);
-    //         }
-    //     }
-    // }, [authApi.data, authApi.error, isLoggedIn]);
+    const dispatch = useDispatch();
 
     const onGoogleSuccess = (res) => {
-        console.log("[Google Login Success]");
-        // await authApi.requestSlow(res.tokenId);
-        localStorage.setItem("token", res.tokenId);
+        console.log("[Google OAuth] => Success");
+        googleOAuth2(dispatch, res);
         navigate("/app");
     };
 
     const onGoogleFailure = (res) => {
-        console.log("[Google Login Failure] Error: ", res);
-        // TODO: Error Handling
-        alert("Google OAuth Failed");
+        console.log("[Google OAuth] => Failure");
+        googleOAuth2(dispatch, res);
     };
 
-    // const retryAuth = () => {
-    //     console.log("[Google Login Retry]");
-    //     authApi.reset();
-    // };
-
     return (
-        // <StateHandler api={authApi} retryHandler={retryAuth}>
         <AnimateButton>
             <GoogleLogin
                 clientId={config.googleClientId}
@@ -65,7 +38,6 @@ const AuthLogin = () => {
                 isSignedIn={true}
             />
         </AnimateButton>
-        // </StateHandler>
     );
 };
 
