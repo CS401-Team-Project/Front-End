@@ -7,13 +7,14 @@ import { useGoogleLogout } from "react-google-login";
 import config from "config";
 import { useDispatch } from "react-redux";
 import { googleOAuth2 } from "store/actions";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { store } from "store/index";
 
 const RequireAuth = ({ children }) => {
     // const auth = useSelector((state) => state.auth);
     const auth = store.getState().auth;
     const dispatch = useDispatch();
+    const lastLocation = useLocation();
     const navigate = useNavigate();
     const authApi = useApi(userApi.register);
 
@@ -26,11 +27,12 @@ const RequireAuth = ({ children }) => {
 
     useEffect(() => {
         if (!auth.tokenId) {
-            console.log("[RequireAuth] - No token, redirecting to login");
-            navigate("/");
+            const navigateTo = `/?redirectTo=${lastLocation.pathname}`;
+            console.log("[RequireAuth] - No token, redirecting to login ->", navigateTo);
+            navigate(navigateTo);
         } else {
             console.log("[RequireAuth] - Token found, authenticating with backend server");
-            authApi.requestSlow();
+            authApi.request();
         }
         // eslint-disable-next-line
     }, [auth.tokenId]);
