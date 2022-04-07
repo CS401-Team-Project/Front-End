@@ -1,3 +1,7 @@
+/*
+TODO: Remove this and use the API calls instead.
+*/
+
 const TransactionData = [
     {
         id: 1,

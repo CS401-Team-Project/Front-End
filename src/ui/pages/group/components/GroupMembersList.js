@@ -4,7 +4,7 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { FixedSizeList } from "react-window";
-import GroupData from "../GroupData";
+import GroupData from "../old_data/GroupData";
 
 function renderRow(props) {
     const { index, style } = props;

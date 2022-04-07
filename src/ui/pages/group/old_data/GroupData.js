@@ -1,3 +1,6 @@
+/*
+TODO: Remove this and use the API calls instead.
+*/
 const GroupData = [
     {
         id: 1,

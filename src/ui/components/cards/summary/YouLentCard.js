@@ -56,7 +56,11 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 
 // ===========================|| DASHBOARD DEFAULT - EARNING CARD ||=========================== //
 
-const YouOweCard = ({ isLoading }) => {
+const YouLentCard = ({ isLoading }) => {
+    // TODO: Add props for the card to be able to change the number
+    // TODO: Change the color of the card to be different from the other 2 cards
+    // TODO: Clean up the unneeded buttons and drop-down at the top of the card
+    // TODO: Fix the width to look better
     const theme = useTheme();
 
     const [anchorEl, setAnchorEl] = useState(null);
@@ -144,7 +148,7 @@ const YouOweCard = ({ isLoading }) => {
                                 <Grid container alignItems="center">
                                     <Grid item>
                                         <Typography sx={{ fontSize: "2.125rem", fontWeight: 500, mr: 1, mt: 1.75, mb: 0.75 }}>
-                                            $152.20
+                                            $500.00
                                         </Typography>
                                     </Grid>
                                     <Grid item>
@@ -169,7 +173,7 @@ const YouOweCard = ({ isLoading }) => {
                                         color: theme.palette.secondary[200]
                                     }}
                                 >
-                                    You Owe This Overall
+                                    You Lent
                                 </Typography>
                             </Grid>
                         </Grid>
@@ -180,8 +184,8 @@ const YouOweCard = ({ isLoading }) => {
     );
 };
 
-YouOweCard.propTypes = {
+YouLentCard.propTypes = {
     isLoading: PropTypes.bool
 };
 
-export default YouOweCard;
+export default YouLentCard;
