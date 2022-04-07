@@ -1,4 +1,3 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -24,7 +23,11 @@ function renderRow(props) {
     );
 }
 
-export default function VirtualizedList() {
+export default function GroupMembersList() {
+    /*
+    TODO: This component needs to be included within the ManageGroup dialog.
+    Pass props from that dialog to this component to get any information needed within here.
+    */
     return (
         <>
             {GroupData.map((values) => {
