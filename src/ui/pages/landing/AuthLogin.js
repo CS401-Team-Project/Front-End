@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 // material-ui
 import { GoogleLogin } from "react-google-login";
@@ -14,11 +14,13 @@ import { googleOAuth2 } from "store/actions";
 const AuthLogin = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const [searchParams] = useSearchParams();
 
     const onGoogleSuccess = (res) => {
-        console.log("[Google OAuth] => Success");
+        const redirectTo = searchParams.get("redirectTo");
         googleOAuth2(dispatch, res);
-        navigate("/app");
+        console.log("[Google OAuth] => Success => Redirecting to:", redirectTo);
+        navigate(redirectTo == null ? "/app" : redirectTo);
     };
 
     const onGoogleFailure = (res) => {
