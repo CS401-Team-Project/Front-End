@@ -1,41 +1,34 @@
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { useState } from "react";
+import BaseDialog from "ui/components/BaseDialog";
+import AddIcon from "@mui/icons-material/Add";
+import { Stack, Typography } from "@mui/material";
 
 const EditTransactionDialog = () => {
-    const [open, setOpen] = useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
+    const handleSave = () => {
+        console.log("[EditTransactionDialog] => handleSave");
+        // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
+        return { success: true, message: "Transaction saved" };
     };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
-
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open form dialog
-            </Button>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Subscribe</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We will send updates occasionally.
-                    </DialogContentText>
-                    <TextField margin="dense" id="name" label="Email Address" type="email" fullWidth variant="standard" />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Subscribe</Button>
-                </DialogActions>
-            </Dialog>
+            <BaseDialog name="Edit Transaction" IconComponent={AddIcon} actionButtons={{ Save: handleSave }}>
+                <Stack spacing={2}>
+                    <Typography variant="body1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
+                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas.
+                    </Typography>
+                    <Typography variant="body1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
+                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas.
+                    </Typography>
+                    <Typography variant="body1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
+                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas.
+                    </Typography>
+                </Stack>
+            </BaseDialog>
         </div>
     );
 };

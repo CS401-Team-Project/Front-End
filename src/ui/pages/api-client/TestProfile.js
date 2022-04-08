@@ -5,29 +5,26 @@ import MainCard from "ui/components/cards/MainCard";
 import useApi from "hooks/useApi";
 import userApi from "api/user";
 import StateHandler from "ui/components/StateHandler";
-import NothingHere from "ui/components/NothingHere";
 import { store } from "store/index";
-import { Typography } from "@mui/material";
+import TableFromDictionary from "ui/components/TableFromDictionary";
 
 const TestProfile = () => {
-    const user = useApi(userApi.getUser);
+    const userProfileApi = useApi(userApi.getUser, "data");
     const sub = store.getState().auth.Ba;
 
     useEffect(() => {
-        user.request(sub);
+        userProfileApi.requestSlow(sub);
         // eslint-disable-next-line
     }, []);
 
     const retry = () => {
-        user.requestSlow(sub);
+        userProfileApi.requestSlow(sub);
     };
-
-    console.log(user.data);
 
     return (
         <MainCard title="/user/info">
-            <StateHandler api={user} retryHandler={retry} NoDataComponent={NothingHere}>
-                {user.data && <Typography>{user.data.email}</Typography>}
+            <StateHandler api={userProfileApi} retryHandler={retry}>
+                {userProfileApi.data && <TableFromDictionary dict={userProfileApi.data} maxDepth={3} />}
             </StateHandler>
         </MainCard>
     );
