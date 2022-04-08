@@ -27,7 +27,7 @@ const ApiTest = () => {
 
     return (
         <Stack spacing={2}>
-            <MainCard title="API Details" contentProps={{ component: Stack, spacing: 2 }}>
+            <MainCard title="Details" contentProps={{ component: Stack, spacing: 2 }}>
                 <SubCard title="API URL">
                     <Typography>{process.env.REACT_APP_API_ENDPOINT}</Typography>
                 </SubCard>
