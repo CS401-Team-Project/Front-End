@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="start" type="js.build_tools.npm" nameIsGenerated="true">
+  <configuration default="false" name="client_start" type="js.build_tools.npm">
     <package-json value="$PROJECT_DIR$/package.json" />
     <command value="start" />
     <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" />
