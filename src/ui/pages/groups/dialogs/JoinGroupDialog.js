@@ -1,6 +1,6 @@
 import BaseDialog from "ui/components/BaseDialog";
-import AddIcon from "@mui/icons-material/Add";
 import { Stack, Typography } from "@mui/material";
+import GroupIcon from "@mui/icons-material/Group";
 
 const JoinGroupDialog = () => {
     const handleJoin = () => {
@@ -8,9 +8,10 @@ const JoinGroupDialog = () => {
 
         return { success: true, message: "You have joined the group!" };
     };
+
     return (
         <div>
-            <BaseDialog name="Join Group" IconComponent={AddIcon} actionButtons={{ Join: handleJoin }}>
+            <BaseDialog name="Join Group" IconComponent={GroupIcon} actionButtons={{ Join: handleJoin }}>
                 <Stack spacing={2}>
                     <Typography variant="body1">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero

@@ -1,6 +1,6 @@
 import BaseDialog from "ui/components/BaseDialog";
-import AddIcon from "@mui/icons-material/Add";
 import { Stack, Typography } from "@mui/material";
+import GroupAddIcon from "@mui/icons-material/GroupAdd";
 
 const CreateGroupDialog = () => {
     const handleCreate = () => {
@@ -10,7 +10,7 @@ const CreateGroupDialog = () => {
     };
     return (
         <div>
-            <BaseDialog name="Create Group" IconComponent={AddIcon} actionButtons={{ Create: handleCreate }}>
+            <BaseDialog name="Create Group" IconComponent={GroupAddIcon} actionButtons={{ Create: handleCreate }}>
                 <Stack spacing={2}>
                     <Typography variant="body1">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero

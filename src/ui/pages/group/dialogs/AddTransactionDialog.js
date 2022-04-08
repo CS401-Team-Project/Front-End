@@ -8,6 +8,7 @@ const AddTransactionDialog = () => {
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
         return { success: true, message: "Transaction added" };
     };
+
     return (
         <div>
             <BaseDialog name="Add Transaction" IconComponent={AddIcon} actionButtons={{ Add: handleAdd }}>
