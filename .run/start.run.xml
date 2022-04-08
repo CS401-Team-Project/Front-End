@@ -5,6 +5,8 @@
     <node-interpreter value="$USER_HOME$/.nvm/versions/node/v16.13.0/bin/node" />
     <package-manager value="npm" />
     <envs />
-    <method v="2" />
+    <method v="2">
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="rebuild &amp; start API" run_configuration_type="docker-deploy" />
+    </method>
   </configuration>
 </component>
