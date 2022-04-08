@@ -48,6 +48,7 @@ const SubCard = forwardRef(
                         {children}
                     </CardContent>
                 )}
+
                 {!content && children}
             </Card>
         );
