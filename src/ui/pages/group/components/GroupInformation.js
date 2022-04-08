@@ -1,6 +1,6 @@
 // material-ui
 import { Grid, Typography } from "@mui/material";
-import GroupData from "../GroupData";
+import GroupData from "../old_data/GroupData";
 import SubCard from "ui/components/cards/SubCard";
 
 // ==============================|| CUSTOM SUB CARD ||============================== //

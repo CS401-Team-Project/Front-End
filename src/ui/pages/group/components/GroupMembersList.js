@@ -1,10 +1,9 @@
-import * as React from "react";
 import Box from "@mui/material/Box";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { FixedSizeList } from "react-window";
-import GroupData from "../GroupData";
+import GroupData from "../old_data/GroupData";
 
 function renderRow(props) {
     const { index, style } = props;
@@ -24,7 +23,11 @@ function renderRow(props) {
     );
 }
 
-export default function VirtualizedList() {
+export default function GroupMembersList() {
+    /*
+    TODO: This component needs to be included within the ManageGroup dialog.
+    Pass props from that dialog to this component to get any information needed within here.
+    */
     return (
         <>
             {GroupData.map((values) => {

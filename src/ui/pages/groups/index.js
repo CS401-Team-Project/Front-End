@@ -1,17 +1,20 @@
-// a
 // project imports
-import MainCard from "ui/components/cards/MainCard";
-import Group1 from "./components/Group1";
-import Group2 from "./components/Group2";
+import OverallSummary from "ui/pages/groups/components/OverallSummary";
+import { Grid } from "@mui/material";
+import GroupsList from "ui/pages/groups/components/GroupsList";
 
 // ==============================|| TYPOGRAPHY ||============================== //
 
 const Groups = () => {
     return (
-        <MainCard>
-            <Group1 />
-            <Group2 />
-        </MainCard>
+        <Grid container spacing={2}>
+            <Grid item xs={12}>
+                <OverallSummary />
+            </Grid>
+            <Grid item xs={12}>
+                <GroupsList />
+            </Grid>
+        </Grid>
     );
 };
 
