@@ -16,7 +16,7 @@ const GroupBalanceSummary = () => {
     return (
         <SubCard
             title="Balance Summary"
-            contentProps={{ component: Stack, spacing: 1, direction: "row" }}
+            contentProps={{ component: Stack, spacing: 2, direction: "row" }}
             secondary={<SettleBalancesDialog />}
         >
             <BalanceCard />

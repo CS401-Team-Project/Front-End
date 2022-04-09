@@ -9,7 +9,7 @@ const CopyToClipboard = ({ text }) => {
     const [copied, setCopied] = useState(false);
 
     const handleClick = () => {
-        copy(text).then((r) => {
+        copy(text).then(() => {
             setCopied(true);
             // in 1 second reset the copied state
             setTimeout(() => {

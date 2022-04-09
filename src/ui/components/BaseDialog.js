@@ -9,7 +9,6 @@ import { Alert, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { withStyles } from "@mui/styles";
 import Snackbar from "@mui/material/Snackbar";
-import { useTheme } from "@mui/material/styles";
 
 const styles = (theme) => ({
     root: {
@@ -52,7 +51,7 @@ const DialogActions = withStyles((theme) => ({
 }))(MuiDialogActions);
 
 const BaseDialog = ({ name, IconComponent, actionButtons, iconOnly, ...props }) => {
-    const theme = useTheme();
+    // const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [snackbarState, setSnackbarState] = useState({
         message: "",
@@ -105,7 +104,7 @@ const BaseDialog = ({ name, IconComponent, actionButtons, iconOnly, ...props }) 
                     }
                 </IconButton>
             ) : (
-                <Button variant="contained" onClick={handleDialogOpen} startIcon={<IconComponent />}>
+                <Button variant="outlined" onClick={handleDialogOpen} startIcon={<IconComponent />}>
                     {name}
                 </Button>
             )}
@@ -130,7 +129,7 @@ const BaseDialog = ({ name, IconComponent, actionButtons, iconOnly, ...props }) 
                 onClose={handleSnackbarClose}
                 anchorOrigin={{
                     vertical: "bottom",
-                    horizontal: "right"
+                    horizontal: "center"
                 }}
             >
                 <Alert onClose={handleSnackbarClose} severity={snackbarState.severity}>
