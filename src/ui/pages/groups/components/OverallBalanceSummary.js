@@ -7,7 +7,7 @@ import { Stack } from "@mui/material";
 
 // ==============================|| CUSTOM SUB CARD ||============================== //
 
-const OverallSummary = () => {
+const OverallBalanceSummary = () => {
     /*
     Will display the overall summary of the user.
     These are totals for the user's account (balance, loans, and debts).
@@ -16,7 +16,7 @@ const OverallSummary = () => {
     Check which API will give you the data you need.
     */
     return (
-        <SubCard title="Overall Summary" contentProps={{ component: Stack, spacing: 2, direction: "row" }}>
+        <SubCard title="Overall Balance Summary" contentProps={{ component: Stack, spacing: 2, direction: "row" }}>
             <BalanceCard />
             <YouOweCard />
             <YouLentCard />
@@ -24,4 +24,4 @@ const OverallSummary = () => {
     );
 };
 
-export default OverallSummary;
+export default OverallBalanceSummary;

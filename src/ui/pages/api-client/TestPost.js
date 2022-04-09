@@ -6,7 +6,6 @@ import testApi from "api/test";
 import StateHandler from "ui/components/StateHandler";
 import MainCard from "ui/components/cards/MainCard";
 import SubCard from "ui/components/cards/SubCard";
-import NothingHere from "ui/components/NothingHere";
 
 const TestPost = () => {
     // This API performs an operation between two numbers
@@ -70,7 +69,7 @@ const TestPost = () => {
                 />
             </SubCard>
             <SubCard title="Results" contentProps={{ component: Stack, spacing: 2 }}>
-                <StateHandler api={calcApi} retryHandler={makeRequest} NoDataComponent={NothingHere}>
+                <StateHandler api={calcApi} retryHandler={makeRequest}>
                     <Chip label={calcState.n1 + " " + calcState.op + " " + calcState.n2 + " = " + calcApi.data} />
                 </StateHandler>
                 <Button variant="contained" onClick={makeRequest}>
