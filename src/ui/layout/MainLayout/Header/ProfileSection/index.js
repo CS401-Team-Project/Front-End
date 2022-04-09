@@ -82,6 +82,7 @@ const ProfileSection = () => {
 
     const onLogoutSuccess = () => {
         googleOAuth2(dispatch, {});
+        navigate("/");
     };
 
     return (
