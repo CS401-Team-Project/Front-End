@@ -3,30 +3,41 @@
 import { CircularProgress } from "@mui/material";
 import ActionAlertError from "ui/components/ActionAlertError";
 import PropTypes from "prop-types";
-import NothingHere from "ui/components/NothingHere";
+import NothingHereBanner from "ui/components/NothingHereBanner";
 
-const StateHandler = ({ api, retryHandler, NoDataComponent, ...props }) => {
-    if (api.loading) {
+const StateHandler = ({ api, children, retryHandler, Component, NoDataComponent }) => {
+    const d = api.data;
+    const e = api.error;
+    const l = api.loading;
+
+    if (l) {
+        // console.log("StateHandler => Loading:", api);
         return <CircularProgress />;
     }
 
-    if (api.error) {
-        return <ActionAlertError msg={api.error} onRefresh={retryHandler} />;
+    if (e) {
+        // console.log("StateHandler => Error:", api);
+        return <ActionAlertError msg={e} onRefresh={retryHandler} />;
     }
 
-    if (!api.data) {
+    if (!d) {
+        // console.log("StateHandler => NoData:", api);
         if (NoDataComponent) return <NoDataComponent />;
-        return <NothingHere />;
+        return <NothingHereBanner />;
     }
 
-    return props.children;
+    // console.log("StateHandler => OK:", api);
+    if (Component) return <Component {...children} />;
+    if (children) return children;
+    return null;
 };
 
 StateHandler.propTypes = {
-    api: PropTypes.oneOfType([PropTypes.object]),
+    api: PropTypes.oneOfType([PropTypes.object]).isRequired,
+    children: PropTypes.oneOfType([PropTypes.object]),
     retryHandler: PropTypes.func,
-    NoDataComponent: PropTypes.elementType,
-    children: PropTypes.oneOfType([PropTypes.object])
+    Component: PropTypes.oneOfType([PropTypes.object]),
+    NoDataComponent: PropTypes.elementType
 };
 
 export default StateHandler;

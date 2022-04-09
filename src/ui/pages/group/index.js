@@ -1,11 +1,10 @@
 import { Grid } from "@mui/material";
 
 // project imports
-import GroupInformation from "./components/GroupInformation";
-import QuickAction from "./components/QuickAction";
+import GroupInfo from "./components/GroupInfo";
 import TransactionTable from "./components/TransactionTable";
-import GroupSummary from "ui/pages/group/components/GroupSummary";
-
+import GroupBalanceSummary from "ui/pages/group/components/GroupBalanceSummary";
+import GroupData from "ui/pages/group/old_data/GroupData";
 // ==============================|| TYPOGRAPHY ||============================== //
 
 const Group = () => {
@@ -31,16 +30,15 @@ const Group = () => {
     TODO: The group summary cards need to be cleaned up according to the TODOs in their respective components.
     The group summary cards should also be less tall (they currently have unnecessary buttons and icons at the top).
     */
+
+    const groupData = GroupData[0];
     return (
         <Grid container spacing={2}>
-            <Grid item xs={12}>
-                <GroupSummary />
+            <Grid item xs={12} md={8}>
+                <GroupBalanceSummary />
             </Grid>
-            <Grid item xs={6}>
-                <QuickAction />
-            </Grid>
-            <Grid item xs={6}>
-                <GroupInformation />
+            <Grid item xs={12} md={4}>
+                <GroupInfo group={groupData} />
             </Grid>
             <Grid item xs={12}>
                 <TransactionTable />

@@ -24,7 +24,7 @@ const UtilsTablerIcons = Loadable(lazy(() => import("ui/pages/misc/TablerIcons")
 const SamplePage = Loadable(lazy(() => import("ui/pages/misc/sample-page")));
 
 // api test page routing
-const ApiTest = Loadable(lazy(() => import("ui/pages/api-test")));
+const ApiTest = Loadable(lazy(() => import("ui/pages/api-client/index")));
 
 // ==============================|| MAIN ROUTING ||============================== //
 

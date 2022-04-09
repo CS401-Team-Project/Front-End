@@ -1,6 +1,6 @@
 {
   "name": "smart-ledger",
-  "version": "0.2.23",
+  "version": "0.3.3",
   "private": true,
   "homepage": "/",
   "dependencies": {
@@ -22,6 +22,7 @@
     "@types/react-dom": "^17.0.13",
     "apexcharts": "^3.26.1",
     "axios": "^0.26.1",
+    "clipboard-copy": "^4.0.1",
     "clsx": "^1.1.1",
     "formik": "^2.2.6",
     "framer-motion": "^4.1.13",

@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 
 // material-ui
 import { styled, useTheme } from "@mui/material/styles";
-import { Avatar, Box, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
+import { Avatar, Link, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 
 // project imports
 import MainCard from "ui/components/cards/MainCard";
@@ -10,6 +10,7 @@ import TotalIncomeCard from "ui/components/cards/Skeleton/TotalIncomeCard";
 
 // assets
 import TableChartOutlinedIcon from "@mui/icons-material/TableChartOutlined";
+import ManageGroupDialog from "ui/pages/group/dialogs/ManageGroupDialog";
 
 // styles
 const CardWrapper = styled(MainCard)(({ theme }) => ({
@@ -24,8 +25,8 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
         height: 210,
         background: `linear-gradient(210.04deg, ${theme.palette.primary[200]} -50.94%, rgba(144, 202, 249, 0) 83.49%)`,
         borderRadius: "50%",
-        top: -30,
-        right: -180
+        top: -20,
+        right: -165
     },
     "&:before": {
         content: '""',
@@ -35,7 +36,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
         background: `linear-gradient(140.9deg, ${theme.palette.primary[200]} -14.02%, rgba(144, 202, 249, 0) 77.58%)`,
         borderRadius: "50%",
         top: -160,
-        right: -130
+        right: -110
     }
 }));
 
@@ -44,15 +45,18 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
 const GroupCard = ({ isLoading }) => {
     const theme = useTheme();
 
+    const onClickGroup = () => {
+        console.log("Clicked Group");
+    };
     return (
         <>
             {isLoading ? (
                 <TotalIncomeCard />
             ) : (
-                <CardWrapper border={false} content={false}>
-                    <Box sx={{ p: 2 }}>
-                        <List sx={{ py: 0 }}>
-                            <ListItem alignItems="center" disableGutters sx={{ py: 0 }}>
+                <CardWrapper border={false} content={true}>
+                    <Link onClick={onClickGroup}>
+                        <List>
+                            <ListItem sx={{ py: 0 }} secondaryAction={<ManageGroupDialog iconOnly />}>
                                 <ListItemAvatar>
                                     <Avatar
                                         variant="rounded"
@@ -68,9 +72,7 @@ const GroupCard = ({ isLoading }) => {
                                 </ListItemAvatar>
                                 <ListItemText
                                     sx={{
-                                        py: 0,
-                                        mt: 0.45,
-                                        mb: 0.45
+                                        py: 0
                                     }}
                                     primary={
                                         <Typography variant="h4" sx={{ color: "#fff" }}>
@@ -78,14 +80,14 @@ const GroupCard = ({ isLoading }) => {
                                         </Typography>
                                     }
                                     secondary={
-                                        <Typography variant="subtitle2" sx={{ color: "primary.light", mt: 0.25 }}>
+                                        <Typography variant="subtitle2" sx={{ color: "primary.light", mt: 0.5 }}>
                                             You owe XX
                                         </Typography>
                                     }
                                 />
                             </ListItem>
                         </List>
-                    </Box>
+                    </Link>
                 </CardWrapper>
             )}
         </>

@@ -1,43 +1,37 @@
-import Button from "@mui/material/Button";
-import TextField from "@mui/material/TextField";
-import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { useState } from "react";
+import BaseDialog from "ui/components/BaseDialog";
+import { Stack, Typography } from "@mui/material";
+import GroupIcon from "@mui/icons-material/Group";
 
-const AddTransactionDialog = () => {
-    const [open, setOpen] = useState(false);
+const JoinGroupDialog = ({ ...props }) => {
+    const handleJoin = () => {
+        console.log("[JoinGroupDialog] => handleJoin");
 
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
+        return { success: true, message: "You have joined the group!" };
     };
 
     return (
         <div>
-            <Button variant="outlined" onClick={handleClickOpen}>
-                Open form dialog
-            </Button>
-            <Dialog open={open} onClose={handleClose}>
-                <DialogTitle>Subscribe</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        To subscribe to this website, please enter your email address here. We will send updates occasionally.
-                    </DialogContentText>
-                    <TextField margin="dense" id="name" label="Email Address" type="email" fullWidth variant="standard" />
-                </DialogContent>
-                <DialogActions>
-                    <Button onClick={handleClose}>Cancel</Button>
-                    <Button onClick={handleClose}>Subscribe</Button>
-                </DialogActions>
-            </Dialog>
+            <BaseDialog name="Join Group" IconComponent={GroupIcon} actionButtons={{ Join: handleJoin }} {...props}>
+                <Stack spacing={2}>
+                    <Typography variant="body1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
+                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas.
+                    </Typography>
+                    <Typography variant="body1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
+                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas.
+                    </Typography>
+                    <Typography variant="body1">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
+                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
+                        fames ac turpis egestas.
+                    </Typography>
+                </Stack>
+            </BaseDialog>
         </div>
     );
 };
 
-export default AddTransactionDialog;
+export default JoinGroupDialog;

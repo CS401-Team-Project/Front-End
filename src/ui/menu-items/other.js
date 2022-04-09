@@ -10,7 +10,7 @@ const other = {
     children: [
         {
             id: "other-api-test",
-            title: "API Client Tests",
+            title: "API Client",
             type: "item",
             url: "/app/api-test",
             icon: IconTestPipe,
