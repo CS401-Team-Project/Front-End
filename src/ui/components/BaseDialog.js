@@ -1,6 +1,5 @@
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import * as React from "react";
 import { useState } from "react";
 import PropTypes from "prop-types";
 import MuiDialogTitle from "@mui/material/DialogTitle";
@@ -10,6 +9,7 @@ import { Alert, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { withStyles } from "@mui/styles";
 import Snackbar from "@mui/material/Snackbar";
+import { useTheme } from "@mui/material/styles";
 
 const styles = (theme) => ({
     root: {
@@ -51,7 +51,8 @@ const DialogActions = withStyles((theme) => ({
     }
 }))(MuiDialogActions);
 
-const BaseDialog = ({ name, IconComponent, actionButtons, ...props }) => {
+const BaseDialog = ({ name, IconComponent, actionButtons, iconOnly, ...props }) => {
+    const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [snackbarState, setSnackbarState] = useState({
         message: "",
@@ -95,9 +96,20 @@ const BaseDialog = ({ name, IconComponent, actionButtons, ...props }) => {
 
     return (
         <div>
-            <Button variant="contained" onClick={handleDialogOpen} startIcon={<IconComponent />}>
-                {name}
-            </Button>
+            {iconOnly ? (
+                <IconButton onClick={handleDialogOpen}>
+                    {
+                        <IconComponent
+                        // sx={{ color: theme.palette.primary.contrastText }}
+                        />
+                    }
+                </IconButton>
+            ) : (
+                <Button variant="contained" onClick={handleDialogOpen} startIcon={<IconComponent />}>
+                    {name}
+                </Button>
+            )}
+
             <Dialog open={open} onClose={handleDialogClose}>
                 <DialogTitle onClose={handleDialogClose}>{name}</DialogTitle>
                 <DialogContent dividers>
@@ -112,8 +124,16 @@ const BaseDialog = ({ name, IconComponent, actionButtons, ...props }) => {
                     ))}
                 </DialogActions>
             </Dialog>
-            <Snackbar open={snackbarState.open} autoHideDuration={3000} onClose={handleDialogClose}>
-                <Alert onClose={handleSnackbarClose} severity={snackbarState.severity} sx={{ width: "100%" }}>
+            <Snackbar
+                open={snackbarState.open}
+                autoHideDuration={1000}
+                onClose={handleSnackbarClose}
+                anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right"
+                }}
+            >
+                <Alert onClose={handleSnackbarClose} severity={snackbarState.severity}>
                     {snackbarState.message}
                 </Alert>
             </Snackbar>
@@ -124,7 +144,8 @@ BaseDialog.propTypes = {
     name: PropTypes.string.isRequired,
     IconComponent: PropTypes.oneOfType([PropTypes.object]).isRequired,
     actionButtons: PropTypes.oneOfType([PropTypes.object]),
-    children: PropTypes.oneOfType([PropTypes.object]).isRequired
+    children: PropTypes.oneOfType([PropTypes.object]).isRequired,
+    iconOnly: PropTypes.bool
 };
 
 export default BaseDialog;

@@ -1,16 +1,17 @@
 import BaseDialog from "ui/components/BaseDialog";
 import { Stack, Typography } from "@mui/material";
-import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
-const CreateGroupDialog = ({ ...props }) => {
-    const handleCreate = () => {
-        console.log("[CreateGroupDialog] => handleCreate");
+const SettleBalancesDialog = ({ ...props }) => {
+    const handleDone = () => {
+        console.log("[SettleBalancesDialog] => handleDone");
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
-        return { success: true, message: "Group created" };
+        return { success: true, message: "Done" };
     };
+
     return (
         <div>
-            <BaseDialog name="Create Group" IconComponent={GroupAddIcon} actionButtons={{ Create: handleCreate }} {...props}>
+            <BaseDialog name="Settle Balances" IconComponent={InfoOutlinedIcon} actionButtons={{ Save: handleDone }} {...props}>
                 <Stack spacing={2}>
                     <Typography variant="body1">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
@@ -33,4 +34,4 @@ const CreateGroupDialog = ({ ...props }) => {
     );
 };
 
-export default CreateGroupDialog;
+export default SettleBalancesDialog;

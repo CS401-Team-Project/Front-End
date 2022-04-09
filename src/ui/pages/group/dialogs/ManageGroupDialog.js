@@ -2,16 +2,16 @@ import BaseDialog from "ui/components/BaseDialog";
 import { Stack, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 
-const ManageGroupDialog = () => {
+const ManageGroupDialog = ({ ...props }) => {
     const handleSave = () => {
-        console.log("[ManageGroupDialog] => handleSave");
+        console.log("[SettleBalancesDialog] => handleSave");
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
         return { success: true, message: "Group saved" };
     };
 
     return (
         <div>
-            <BaseDialog name="Manage Group" IconComponent={InfoOutlinedIcon} actionButtons={{ Save: handleSave }}>
+            <BaseDialog name="Manage Group" IconComponent={InfoOutlinedIcon} actionButtons={{ Save: handleSave }} {...props}>
                 <Stack spacing={2}>
                     <Typography variant="body1">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero

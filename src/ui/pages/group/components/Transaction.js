@@ -4,12 +4,12 @@ import TableCell from "@mui/material/TableCell";
 import IconButton from "@mui/material/IconButton";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import { Button } from "@mui/material";
 import Collapse from "@mui/material/Collapse";
 import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableBody from "@mui/material/TableBody";
 import PropTypes from "prop-types";
+import EditTransactionDialog from "ui/pages/group/dialogs/EditTransactionDialog";
 
 const Transaction = (id) => {
     const [open, setOpen] = React.useState(false);
@@ -66,7 +66,7 @@ const Transaction = (id) => {
                 <TableCell>{info.created_by}</TableCell>
                 <TableCell>{info.total_price}</TableCell>
                 <TableCell>
-                    <Button variant="contained">Edit</Button>
+                    <EditTransactionDialog iconOnly />
                 </TableCell>
             </TableRow>
             <TableRow>

@@ -2,7 +2,7 @@ import BaseDialog from "ui/components/BaseDialog";
 import { Stack, Typography } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 
-const EditTransactionDialog = () => {
+const EditTransactionDialog = ({ ...props }) => {
     const handleSave = () => {
         console.log("[EditTransactionDialog] => handleSave");
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
@@ -11,7 +11,7 @@ const EditTransactionDialog = () => {
 
     return (
         <div>
-            <BaseDialog name="Edit Transaction" IconComponent={EditIcon} actionButtons={{ Save: handleSave }}>
+            <BaseDialog name="Edit Transaction" IconComponent={EditIcon} actionButtons={{ Save: handleSave }} {...props}>
                 <Stack spacing={2}>
                     <Typography variant="body1">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero

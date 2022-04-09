@@ -2,7 +2,7 @@ import AddIcon from "@mui/icons-material/Add";
 import BaseDialog from "ui/components/BaseDialog";
 import { Stack, Typography } from "@mui/material";
 
-const AddTransactionDialog = () => {
+const AddTransactionDialog = ({ ...props }) => {
     const handleAdd = () => {
         console.log("[AddTransactionDialog] => handleAdd");
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
@@ -11,7 +11,7 @@ const AddTransactionDialog = () => {
 
     return (
         <div>
-            <BaseDialog name="Add Transaction" IconComponent={AddIcon} actionButtons={{ Add: handleAdd }}>
+            <BaseDialog name="Add Transaction" IconComponent={AddIcon} actionButtons={{ Add: handleAdd }} {...props}>
                 <Stack spacing={2}>
                     <Typography variant="body1">
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero

@@ -17,7 +17,7 @@ const GroupsList = () => {
      Instead, they should be made in the GroupCard component based on the Group's ID.
     */
     return (
-        <SubCard title="Groups List" contentProps={{ component: Stack, spacing: 2 }}>
+        <SubCard title="My Groups" contentProps={{ component: Stack, spacing: 2 }}>
             <GroupCard />
             <GroupCard />
             <GroupCard />
