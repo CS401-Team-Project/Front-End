@@ -1,33 +1,125 @@
+import { useState } from "react";
 import BaseDialog from "ui/components/BaseDialog";
-import { Stack, Typography } from "@mui/material";
+import { Button, Divider, Stack } from "@mui/material";
+import { Box } from "@mui/system";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
+import { TextField } from "@mui/material";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import PropTypes from "prop-types";
+
+import useApi from "hooks/useApi";
+import groupApi from "api/group";
+
+const InviteEntry = ({ ...props }) => {
+    return (
+        <Stack direction="row" spacing={0} alignItems="center">
+            <Button
+                color="error"
+                style={{ width: "1%" }}
+                size="large"
+                fullWidth={false}
+                startIcon={<RemoveCircleOutlineIcon />}
+                onClick={props.rmFunc}
+            />
+            <TextField
+                label="Invite Email"
+                variant="outlined"
+                style={{ width: "100%" }}
+                onChange={(event) => props.uptFunc(event.target.value)}
+            />
+        </Stack>
+    );
+};
+
+InviteEntry.propTypes = {
+    rmFunc: PropTypes.func.isRequired,
+    uptFunc: PropTypes.func.isRequired
+};
 
 const CreateGroupDialog = ({ ...props }) => {
+    const groupCreateApi = useApi(groupApi.createGroup);
+
+    const [invites, setInvites] = useState([]);
+    const [groupName, setGroupName] = useState("");
+    const [groupDesc, setGroupDesc] = useState("");
+
     const handleCreate = () => {
         console.log("[CreateGroupDialog] => handleCreate");
-        // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
-        return { success: true, message: "Group created" };
+        if (groupName !== "") {
+            groupCreateApi.request(
+                groupName,
+                groupDesc,
+                invites.map((item) => item.content)
+            );
+            return { success: true, message: "Group created" };
+        } else {
+            return { success: false, message: "Name required" };
+        }
     };
+
+    function addInvite() {
+        setInvites((prevInvites) => {
+            return [...prevInvites, { id: Math.random(), content: "" }];
+        });
+    }
+
+    function removeInvite(id) {
+        setInvites((prevInvites) => {
+            return prevInvites.filter((invite) => invite.id !== id);
+        });
+    }
+
+    function updateInvite(id, updateText) {
+        setInvites(
+            invites.map((item) => {
+                return item.id === id ? { ...item, content: updateText } : item;
+            })
+        );
+    }
+
+    function updateName(event) {
+        setGroupName(event.target.value);
+    }
+
+    function updateDesc(event) {
+        setGroupDesc(event.target.value);
+    }
+
+    const inviteComponents = invites.map((item) => {
+        return (
+            <InviteEntry key={"invite" + item.id} rmFunc={() => removeInvite(item.id)} uptFunc={(text) => updateInvite(item.id, text)} />
+        );
+    });
+
     return (
         <div>
             <BaseDialog name="Create Group" IconComponent={GroupAddIcon} actionButtons={{ Create: handleCreate }} {...props}>
-                <Stack spacing={2}>
-                    <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                        fames ac turpis egestas.
-                    </Typography>
-                    <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                        fames ac turpis egestas.
-                    </Typography>
-                    <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                        fames ac turpis egestas.
-                    </Typography>
-                </Stack>
+                <Box sx={{ width: 400 }}>
+                    <Stack spacing={2}>
+                        <TextField
+                            id="group-name"
+                            label="Group Name"
+                            onChange={updateName}
+                            variant="outlined"
+                            inputProps={{ maxLength: 60 }}
+                            required
+                        />
+                        <TextField
+                            id="group-description"
+                            label="Group Description"
+                            onChange={updateDesc}
+                            multiline
+                            rows={4}
+                            inputProps={{ maxLength: 255 }}
+                        />
+                        <Divider />
+                        {inviteComponents}
+                        <Button startIcon={<AddCircleOutlineIcon />} onClick={addInvite}>
+                            Add Invite
+                        </Button>
+                    </Stack>
+                </Box>
             </BaseDialog>
         </div>
     );
