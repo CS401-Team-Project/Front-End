@@ -25,10 +25,16 @@ export default (apiFunc) => {
             if (process.env.REACT_APP_API_ENDPOINT) {
                 console.log("RESULT:", result);
             }
+            if (error) {
+                setError(null);
+            }
         } catch (err) {
             setError(err.name + ": " + err.message || "Unexpected error!");
             if (process.env.REACT_APP_API_ENDPOINT) {
                 console.log("ERROR:", err.message);
+            }
+            if (data) {
+                setData(null);
             }
         } finally {
             setLoading(false);

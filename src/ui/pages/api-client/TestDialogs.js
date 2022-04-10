@@ -6,6 +6,7 @@ import AddTransactionDialog from "ui/pages/group/dialogs/AddTransactionDialog";
 import EditTransactionDialog from "ui/pages/group/dialogs/EditTransactionDialog";
 import ManageGroupDialog from "ui/pages/group/dialogs/ManageGroupDialog";
 import { Grid } from "@mui/material";
+import TestPost from "ui/pages/api-client/TestPost";
 
 const TestDialogs = () => {
     return (
@@ -28,6 +29,11 @@ const TestDialogs = () => {
                     </Grid>
                     <Grid item>
                         <EditTransactionDialog />
+                    </Grid>
+                </Grid>
+                <Grid container item xs={12} spacing={2}>
+                    <Grid item>
+                        <TestPost />
                     </Grid>
                 </Grid>
             </Grid>
