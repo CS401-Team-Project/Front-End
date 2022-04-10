@@ -15,9 +15,11 @@ const getGroup = (group_id) =>
 /* Doc: https://github.com/CS401-Team-Project/Back-End/blob/main/API-DOCS/GROUP.md#groupcreate-1 */
 const createGroup = (group_id, description, member_list) =>
     client.post("/group/create", {
-        id: group_id,
-        description: description,
-        members: member_list
+        data: {
+            name: group_id,
+            desc: description,
+            invites: member_list
+        }
     });
 
 /* Doc: https://github.com/CS401-Team-Project/Back-End/blob/main/API-DOCS/GROUP.md#groupupdate-1
