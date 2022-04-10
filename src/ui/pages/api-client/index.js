@@ -42,7 +42,7 @@ const ApiClient = () => {
 
             <MainCard title="/test_get" contentProps={{ component: Stack, spacing: 2 }}>
                 <StateHandler api={getTest} retryHandler={load}>
-                    <Typography>{getTest.data}</Typography>
+                    <Typography>{JSON.stringify(getTest.data)}</Typography>
                 </StateHandler>
                 <Button variant="contained" onClick={load}>
                     Refresh
