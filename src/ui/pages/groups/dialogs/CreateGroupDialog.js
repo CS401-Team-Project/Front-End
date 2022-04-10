@@ -101,14 +101,18 @@ const CreateGroupDialog = ({ ...props }) => {
                             id="group-name"
                             label="Group Name"
                             onChange={updateName}
+                            value={groupName}
                             variant="outlined"
                             inputProps={{ maxLength: 60 }}
                             required
+                            helperText={groupName.length ? false : "Required"}
+                            error={!groupName.length}
                         />
                         <TextField
                             id="group-description"
                             label="Group Description"
                             onChange={updateDesc}
+                            value={groupDesc}
                             multiline
                             rows={4}
                             inputProps={{ maxLength: 255 }}
