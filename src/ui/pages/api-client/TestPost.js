@@ -70,7 +70,7 @@ const TestPost = () => {
             </SubCard>
             <SubCard title="Results" contentProps={{ component: Stack, spacing: 2 }}>
                 <StateHandler api={calcApi} retryHandler={makeRequest}>
-                    <Chip label={calcState.n1 + " " + calcState.op + " " + calcState.n2 + " = " + calcApi.data} />
+                    {calcApi.data && <Chip label={calcState.n1 + " " + calcState.op + " " + calcState.n2 + " = " + calcApi.data.ans} />}
                 </StateHandler>
                 <Button variant="contained" onClick={makeRequest}>
                     Get Answer
