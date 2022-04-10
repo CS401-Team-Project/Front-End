@@ -47,7 +47,7 @@ const TableFromDictionaryRec = ({ dict, depth, maxDepth }) => {
     }
 
     if (depth >= maxDepth) {
-        return <Typography>JSON.stringify(dict)</Typography>;
+        return <Typography>{JSON.stringify(dict)}</Typography>;
     }
 
     // if subDict is an object, return a table
