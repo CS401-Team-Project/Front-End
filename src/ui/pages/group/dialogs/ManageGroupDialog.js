@@ -1,37 +1,164 @@
+import { useState } from "react";
+import { useEffect } from "react";
 import BaseDialog from "ui/components/BaseDialog";
-import { Stack, Typography } from "@mui/material";
+import { Button, IconButton, Divider, Stack, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
+import { Box } from "@mui/system";
+import { TextField } from "@mui/material";
+import MainCard from "ui/components/cards/MainCard";
+import SubCard from "ui/components/cards/SubCard";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import ShieldIcon from "@mui/icons-material/Shield";
+import RefreshIcon from "@mui/icons-material/Refresh";
+import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import PropTypes from "prop-types";
+
+import useApi from "hooks/useApi";
+import userApi from "api/user";
+import groupApi from "api/group";
+
+const UserComponent = ({ ...props }) => {
+    return (
+        <Stack direction="row" spacing={0} alignItems="center">
+            {props.adminUser ? (
+                <Button
+                    color="success"
+                    style={{ width: "1%", backgroundColor: "transparent" }}
+                    size="large"
+                    fullWidth={false}
+                    startIcon={<ShieldIcon />}
+                    disableRipple
+                />
+            ) : (
+                <Button
+                    color="error"
+                    style={{ width: "1%" }}
+                    size="large"
+                    fullWidth={false}
+                    startIcon={props.isAdmin ? <RemoveCircleOutlineIcon /> : false}
+                    disabled={!props.isAdmin}
+                />
+            )}
+            <Typography>{props.username}</Typography>
+        </Stack>
+    );
+};
+
+UserComponent.propTypes = {
+    username: PropTypes.string.isRequired,
+    userid: PropTypes.string.isRequired,
+    isAdmin: PropTypes.bool.isRequired,
+    adminUser: PropTypes.bool.isRequired
+};
 
 const ManageGroupDialog = ({ ...props }) => {
-    const handleSave = () => {
-        console.log("[SettleBalancesDialog] => handleSave");
+    const userProfileApi = useApi(userApi.getUser, "data");
+    const groupInfoApi = useApi(groupApi.getGroup, "data");
+
+    const [isAdmin, setIsAdmin] = useState(true);
+
+    const [groupName, setGroupName] = useState("DEFAULT GROUP NAME");
+    const [groupDesc, setGroupDesc] = useState("DEFAULT GROUP DESCRIPTION");
+
+    const handleUpdate = () => {
+        console.log("[SettleBalancesDialog] => handleUpdate");
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
-        return { success: true, message: "Group saved" };
+        return { success: true, message: "Group updated" };
     };
+
+    const handleLeave = () => {
+        console.log("[SettleBalancesDialog] => handleLeave");
+    };
+
+    const handleDelete = () => {
+        console.log("[SettleBalancesDialog] => handleDelete");
+    };
+
+    function updateName(event) {
+        setGroupName(event.target.value);
+    }
+
+    function updateDesc(event) {
+        setGroupDesc(event.target.value);
+    }
 
     return (
         <div>
-            <BaseDialog name="Manage Group" IconComponent={InfoOutlinedIcon} actionButtons={{ Save: handleSave }} {...props}>
-                <Stack spacing={2}>
-                    <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                        fames ac turpis egestas.
-                    </Typography>
-                    <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                        fames ac turpis egestas.
-                    </Typography>
-                    <Typography variant="body1">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                        aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada
-                        fames ac turpis egestas.
-                    </Typography>
-                </Stack>
+            <BaseDialog
+                name="Manage Group"
+                IconComponent={InfoOutlinedIcon}
+                actionButtons={
+                    isAdmin ? { "Delete Group": handleDelete, Update: handleUpdate } : { "Leave Group": handleLeave, Update: handleUpdate }
+                }
+                {...props}
+            >
+                <Box sx={{ width: 400 }}>
+                    <Stack spacing={2}>
+                        <MainCard title="Group ID" contentProps={{ component: Stack, spacing: 2, alignItems: "center" }}>
+                            <Typography align="center" sx={{ fontWeight: "bold" }}>
+                                reallylongstringthatwillmakeupthegroupid
+                            </Typography>
+                            {isAdmin && (
+                                <Stack direction="row" spacing={0} alignItems="center">
+                                    <IconButton color="success" size="large" fullWidth={false}>
+                                        <RefreshIcon />
+                                    </IconButton>
+                                    <IconButton color="success" size="large" fullWidth={false}>
+                                        <ContentCopyIcon />
+                                    </IconButton>
+                                </Stack>
+                            )}
+                        </MainCard>
+                        <MainCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }}>
+                            {isAdmin ? (
+                                <TextField
+                                    id="group-name"
+                                    label="Group Name"
+                                    onChange={updateName}
+                                    value={groupName}
+                                    variant="outlined"
+                                    inputProps={{ maxLength: 60 }}
+                                    required
+                                    helperText={groupName.length ? false : "Required"}
+                                    error={!groupName.length}
+                                />
+                            ) : (
+                                <Typography>{groupName}</Typography>
+                            )}
+                            {isAdmin ? (
+                                <TextField
+                                    id="group-description"
+                                    label="Group Description"
+                                    onChange={updateDesc}
+                                    value={groupDesc}
+                                    multiline
+                                    rows={4}
+                                    inputProps={{ maxLength: 255 }}
+                                />
+                            ) : (
+                                <Typography>{groupDesc}</Typography>
+                            )}
+                        </MainCard>
+                        <Divider />
+                        <MainCard title="Group Members" contentProps={{ component: Stack, spacing: 2 }}>
+                            <UserComponent username="User 1" userid="asdasd" isAdmin={isAdmin} adminUser={true} />
+                            <UserComponent username="User 2" userid="asdasd" isAdmin={isAdmin} adminUser={false} />
+                            {isAdmin && (
+                                <Button startIcon={<AddCircleOutlineIcon />} disabled={!isAdmin}>
+                                    Invite Member
+                                </Button>
+                            )}
+                        </MainCard>
+                    </Stack>
+                </Box>
             </BaseDialog>
         </div>
     );
+};
+
+ManageGroupDialog.propTypes = {
+    groupid: PropTypes.string.isRequired
 };
 
 export default ManageGroupDialog;
