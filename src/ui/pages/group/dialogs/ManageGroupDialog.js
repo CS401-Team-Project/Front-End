@@ -1,12 +1,8 @@
 import { useState } from "react";
-import { useEffect } from "react";
 import BaseDialog from "ui/components/BaseDialog";
-import { Button, IconButton, Divider, Stack, Typography } from "@mui/material";
+import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import { Box } from "@mui/system";
-import { TextField } from "@mui/material";
-import MainCard from "ui/components/cards/MainCard";
-import SubCard from "ui/components/cards/SubCard";
+import SubCard from "ui/components/cards/MainCard";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import ShieldIcon from "@mui/icons-material/Shield";
@@ -84,76 +80,76 @@ const ManageGroupDialog = ({ ...props }) => {
     }
 
     return (
-        <div>
-            <BaseDialog
-                name="Manage Group"
-                IconComponent={InfoOutlinedIcon}
-                actionButtons={
-                    isAdmin ? { "Delete Group": handleDelete, Update: handleUpdate } : { "Leave Group": handleLeave, Update: handleUpdate }
-                }
-                {...props}
-            >
-                <Box sx={{ width: 400 }}>
-                    <Stack spacing={2}>
-                        <MainCard title="Group ID" contentProps={{ component: Stack, spacing: 2, alignItems: "center" }}>
-                            <Typography align="center" sx={{ fontWeight: "bold" }}>
-                                reallylongstringthatwillmakeupthegroupid
-                            </Typography>
-                            {isAdmin && (
-                                <Stack direction="row" spacing={0} alignItems="center">
-                                    <IconButton color="success" size="large" fullWidth={false}>
-                                        <RefreshIcon />
-                                    </IconButton>
-                                    <IconButton color="success" size="large" fullWidth={false}>
-                                        <ContentCopyIcon />
-                                    </IconButton>
-                                </Stack>
-                            )}
-                        </MainCard>
-                        <MainCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }}>
-                            {isAdmin ? (
-                                <TextField
-                                    id="group-name"
-                                    label="Group Name"
-                                    onChange={updateName}
-                                    value={groupName}
-                                    variant="outlined"
-                                    inputProps={{ maxLength: 60 }}
-                                    required
-                                    helperText={groupName.length ? false : "Required"}
-                                    error={!groupName.length}
-                                />
-                            ) : (
-                                <Typography>{groupName}</Typography>
-                            )}
-                            {isAdmin ? (
-                                <TextField
-                                    id="group-description"
-                                    label="Group Description"
-                                    onChange={updateDesc}
-                                    value={groupDesc}
-                                    multiline
-                                    rows={4}
-                                    inputProps={{ maxLength: 255 }}
-                                />
-                            ) : (
-                                <Typography>{groupDesc}</Typography>
-                            )}
-                        </MainCard>
-                        <Divider />
-                        <MainCard title="Group Members" contentProps={{ component: Stack, spacing: 2 }}>
-                            <UserComponent username="User 1" userid="asdasd" isAdmin={isAdmin} adminUser={true} />
-                            <UserComponent username="User 2" userid="asdasd" isAdmin={isAdmin} adminUser={false} />
-                            {isAdmin && (
-                                <Button startIcon={<AddCircleOutlineIcon />} disabled={!isAdmin}>
-                                    Invite Member
-                                </Button>
-                            )}
-                        </MainCard>
-                    </Stack>
-                </Box>
-            </BaseDialog>
-        </div>
+        <BaseDialog
+            name="Manage Group"
+            IconComponent={InfoOutlinedIcon}
+            actionButtons={
+                isAdmin
+                    ? { "Delete Group": handleDelete, Update: handleUpdate }
+                    : {
+                          "Leave Group": handleLeave,
+                          Update: handleUpdate
+                      }
+            }
+            {...props}
+        >
+            <Stack minWidth={450} spacing={1}>
+                <SubCard title="Group ID" contentProps={{ component: Stack, spacing: 2, alignItems: "center" }}>
+                    <Typography align="center" sx={{ fontWeight: "bold" }}>
+                        reallylongstringthatwillmakeupthegroupid
+                    </Typography>
+                    {isAdmin && (
+                        <Stack direction="row" spacing={0} alignItems="center">
+                            <IconButton color="success" size="large" fullWidth={false}>
+                                <RefreshIcon />
+                            </IconButton>
+                            <IconButton color="success" size="large" fullWidth={false}>
+                                <ContentCopyIcon />
+                            </IconButton>
+                        </Stack>
+                    )}
+                </SubCard>
+                <SubCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }}>
+                    {isAdmin ? (
+                        <TextField
+                            id="group-name"
+                            label="Group Name"
+                            onChange={updateName}
+                            value={groupName}
+                            variant="outlined"
+                            inputProps={{ maxLength: 60 }}
+                            required
+                            helperText={groupName.length ? false : "Required"}
+                            error={!groupName.length}
+                        />
+                    ) : (
+                        <Typography>{groupName}</Typography>
+                    )}
+                    {isAdmin ? (
+                        <TextField
+                            id="group-description"
+                            label="Group Description"
+                            onChange={updateDesc}
+                            value={groupDesc}
+                            multiline
+                            rows={4}
+                            inputProps={{ maxLength: 255 }}
+                        />
+                    ) : (
+                        <Typography>{groupDesc}</Typography>
+                    )}
+                </SubCard>
+                <SubCard title="Group Members" contentProps={{ component: Stack, spacing: 2 }}>
+                    <UserComponent username="User 1" userid="asdasd" isAdmin={isAdmin} adminUser={true} />
+                    <UserComponent username="User 2" userid="asdasd" isAdmin={isAdmin} adminUser={false} />
+                    {isAdmin && (
+                        <Button startIcon={<AddCircleOutlineIcon />} disabled={!isAdmin}>
+                            Invite Member
+                        </Button>
+                    )}
+                </SubCard>
+            </Stack>
+        </BaseDialog>
     );
 };
 
