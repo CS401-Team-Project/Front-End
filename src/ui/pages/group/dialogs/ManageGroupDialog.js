@@ -1,8 +1,8 @@
 import { useState } from "react";
 import BaseDialog from "ui/components/BaseDialog";
-import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
+import { Button, Divider, IconButton, Stack, TextField, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
-import SubCard from "ui/components/cards/MainCard";
+import SubCard from "ui/components/cards/SubCard";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import ShieldIcon from "@mui/icons-material/Shield";
@@ -16,7 +16,7 @@ import groupApi from "api/group";
 
 const UserComponent = ({ ...props }) => {
     return (
-        <Stack direction="row" spacing={0} alignItems="center">
+        <Stack direction="row" alignItems="center">
             {props.adminUser ? (
                 <Button
                     color="success"
@@ -94,12 +94,17 @@ const ManageGroupDialog = ({ ...props }) => {
             {...props}
         >
             <Stack minWidth={450} spacing={1}>
-                <SubCard title="Group ID" contentProps={{ component: Stack, spacing: 2, alignItems: "center" }}>
+                <SubCard
+                    title="Group ID"
+                    contentProps={{ component: Stack, alignItems: "center" }}
+                    contentSX={{ p: 1.5 }}
+                    headerSX={{ padding: 0 }}
+                >
                     <Typography align="center" sx={{ fontWeight: "bold" }}>
                         reallylongstringthatwillmakeupthegroupid
                     </Typography>
                     {isAdmin && (
-                        <Stack direction="row" spacing={0} alignItems="center">
+                        <Stack direction="row" alignItems="center">
                             <IconButton color="success" size="large" fullWidth={false}>
                                 <RefreshIcon />
                             </IconButton>
@@ -109,7 +114,7 @@ const ManageGroupDialog = ({ ...props }) => {
                         </Stack>
                     )}
                 </SubCard>
-                <SubCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }}>
+                <SubCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }} contentSX={{ p: 1.5 }}>
                     {isAdmin ? (
                         <TextField
                             id="group-name"
@@ -139,9 +144,11 @@ const ManageGroupDialog = ({ ...props }) => {
                         <Typography>{groupDesc}</Typography>
                     )}
                 </SubCard>
-                <SubCard title="Group Members" contentProps={{ component: Stack, spacing: 2 }}>
+                <SubCard title="Group Members" contentProps={{ component: Stack, spacing: 1 }} contentSX={{ p: 1.5 }}>
                     <UserComponent username="User 1" userid="asdasd" isAdmin={isAdmin} adminUser={true} />
+                    <Divider light />
                     <UserComponent username="User 2" userid="asdasd" isAdmin={isAdmin} adminUser={false} />
+                    <Divider light />
                     {isAdmin && (
                         <Button startIcon={<AddCircleOutlineIcon />} disabled={!isAdmin}>
                             Invite Member
