@@ -1,9 +1,8 @@
 import { useState } from "react";
 import BaseDialog from "ui/components/BaseDialog";
-import { Button, Divider, Stack } from "@mui/material";
+import { Button, Divider, Stack, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import GroupAddIcon from "@mui/icons-material/GroupAdd";
-import { TextField } from "@mui/material";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import PropTypes from "prop-types";
@@ -93,39 +92,37 @@ const CreateGroupDialog = ({ ...props }) => {
     });
 
     return (
-        <div>
-            <BaseDialog name="Create Group" IconComponent={GroupAddIcon} actionButtons={{ Create: handleCreate }} {...props}>
-                <Box sx={{ width: 400 }}>
-                    <Stack spacing={2}>
-                        <TextField
-                            id="group-name"
-                            label="Group Name"
-                            onChange={updateName}
-                            value={groupName}
-                            variant="outlined"
-                            inputProps={{ maxLength: 60 }}
-                            required
-                            helperText={groupName.length ? false : "Required"}
-                            error={!groupName.length}
-                        />
-                        <TextField
-                            id="group-description"
-                            label="Group Description"
-                            onChange={updateDesc}
-                            value={groupDesc}
-                            multiline
-                            rows={4}
-                            inputProps={{ maxLength: 255 }}
-                        />
-                        <Divider />
-                        {inviteComponents}
-                        <Button startIcon={<AddCircleOutlineIcon />} onClick={addInvite}>
-                            Add Invite
-                        </Button>
-                    </Stack>
-                </Box>
-            </BaseDialog>
-        </div>
+        <BaseDialog name="Create Group" IconComponent={GroupAddIcon} actionButtons={{ Create: handleCreate }} {...props}>
+            <Box sx={{ width: 400 }}>
+                <Stack spacing={2}>
+                    <TextField
+                        id="group-name"
+                        label="Group Name"
+                        onChange={updateName}
+                        value={groupName}
+                        variant="outlined"
+                        inputProps={{ maxLength: 60 }}
+                        required
+                        helperText={groupName.length ? false : "Required"}
+                        error={!groupName.length}
+                    />
+                    <TextField
+                        id="group-description"
+                        label="Group Description"
+                        onChange={updateDesc}
+                        value={groupDesc}
+                        multiline
+                        rows={4}
+                        inputProps={{ maxLength: 255 }}
+                    />
+                    <Divider />
+                    {inviteComponents}
+                    <Button startIcon={<AddCircleOutlineIcon />} onClick={addInvite}>
+                        Add Invite
+                    </Button>
+                </Stack>
+            </Box>
+        </BaseDialog>
     );
 };
 
