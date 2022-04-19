@@ -34,6 +34,8 @@ import config from "config";
 import { IconLogout, IconSettings } from "@tabler/icons";
 import { googleOAuth2 } from "store/actions";
 
+import UserPreferencesDialog from "ui/components/UserPreferencesDialog";
+
 // ==============================|| PROFILE MENU ||============================== //
 
 const ProfileSection = () => {
@@ -258,6 +260,7 @@ const ProfileSection = () => {
                                                 }
                                             }}
                                         >
+                                            <UserPreferencesDialog />
                                             <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 0}
