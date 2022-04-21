@@ -1,6 +1,6 @@
 import BaseDialog from "ui/components/BaseDialog";
 import { Stack, Typography } from "@mui/material";
-import SettingsIcon from "@mui/icons-material/Settings";
+import { IconSettings } from "@tabler/icons";
 
 const UserPreferencesDialog = ({ ...props }) => {
     const handleDone = () => {
@@ -9,8 +9,17 @@ const UserPreferencesDialog = ({ ...props }) => {
         return { success: true, message: "Done" };
     };
 
+    const buttonIcon = () => <IconSettings stroke={1.5} size="1.3rem" />;
+
     return (
-        <BaseDialog name="User Preferences" IconComponent={SettingsIcon} actionButtons={{ Save: handleDone }} {...props}>
+        <BaseDialog
+            name="User Preferences"
+            IconComponent={buttonIcon}
+            buttonVarient="text"
+            actionButtons={{ Save: handleDone }}
+            typographyWeight="400"
+            {...props}
+        >
             <Stack spacing={2}>
                 <Typography variant="body1">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero

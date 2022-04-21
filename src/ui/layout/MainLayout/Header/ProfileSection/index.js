@@ -12,6 +12,7 @@ import {
     ClickAwayListener,
     Divider,
     List,
+    ListItem,
     ListItemButton,
     ListItemIcon,
     ListItemText,
@@ -260,7 +261,14 @@ const ProfileSection = () => {
                                                 }
                                             }}
                                         >
-                                            <UserPreferencesDialog />
+                                            <ListItem>
+                                                <UserPreferencesDialog
+                                                    buttonSx={{
+                                                        borderRadius: `${customization.borderRadius}px`,
+                                                        color: "text.primary"
+                                                    }}
+                                                />
+                                            </ListItem>
                                             <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 0}
