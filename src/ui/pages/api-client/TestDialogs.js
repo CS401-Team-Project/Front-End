@@ -5,6 +5,7 @@ import JoinGroupDialog from "ui/pages/groups/dialogs/JoinGroupDialog";
 import AddTransactionDialog from "ui/pages/group/dialogs/AddTransactionDialog";
 import EditTransactionDialog from "ui/pages/group/dialogs/EditTransactionDialog";
 import ManageGroupDialog from "ui/pages/group/dialogs/ManageGroupDialog";
+import UserPreferencesDialog from "../../components/UserPreferencesDialog";
 import { Grid } from "@mui/material";
 
 const TestDialogs = () => {
@@ -28,6 +29,9 @@ const TestDialogs = () => {
                     </Grid>
                     <Grid item>
                         <EditTransactionDialog />
+                    </Grid>
+                    <Grid item>
+                        <UserPreferencesDialog />
                     </Grid>
                 </Grid>
             </Grid>

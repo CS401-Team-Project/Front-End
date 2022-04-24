@@ -9,6 +9,7 @@ import { Alert, IconButton, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { withStyles } from "@mui/styles";
 import Snackbar from "@mui/material/Snackbar";
+import { Box } from "@mui/system";
 
 const styles = (theme) => ({
     root: {
@@ -52,7 +53,17 @@ const DialogActions = withStyles((theme) => ({
     }
 }))(MuiDialogActions);
 
-const BaseDialog = ({ name, IconComponent, actionButtons, iconOnly, ...props }) => {
+const BaseDialog = ({
+    name,
+    IconComponent,
+    actionButtons,
+    iconOnly,
+    buttonVarient,
+    buttonSx,
+    typographyVarient,
+    typographyWeight,
+    ...props
+}) => {
     // const theme = useTheme();
     const [open, setOpen] = useState(false);
     const [snackbarState, setSnackbarState] = useState({
@@ -98,7 +109,7 @@ const BaseDialog = ({ name, IconComponent, actionButtons, iconOnly, ...props }) 
     return (
         <div>
             {iconOnly ? (
-                <IconButton onClick={handleDialogOpen}>
+                <IconButton onClick={handleDialogOpen} sx={buttonSx}>
                     {
                         <IconComponent
                         // sx={{ color: theme.palette.primary.contrastText }}
@@ -106,8 +117,12 @@ const BaseDialog = ({ name, IconComponent, actionButtons, iconOnly, ...props }) 
                     }
                 </IconButton>
             ) : (
-                <Button variant="outlined" onClick={handleDialogOpen} startIcon={<IconComponent />}>
-                    {name}
+                <Button variant={buttonVarient} onClick={handleDialogOpen} startIcon={<IconComponent />} sx={buttonSx}>
+                    <Typography varient={typographyVarient}>
+                        <Box component="span" sx={{ fontWeight: typographyWeight }}>
+                            {name}
+                        </Box>
+                    </Typography>
                 </Button>
             )}
 
@@ -146,7 +161,18 @@ BaseDialog.propTypes = {
     IconComponent: PropTypes.oneOfType([PropTypes.object]).isRequired,
     actionButtons: PropTypes.oneOfType([PropTypes.object]),
     children: PropTypes.oneOfType([PropTypes.object]).isRequired,
+    buttonVarient: PropTypes.string,
+    buttonSx: PropTypes.object,
+    typographyVarient: PropTypes.string,
+    typographyWeight: PropTypes.string,
     iconOnly: PropTypes.bool
+};
+
+BaseDialog.defaultProps = {
+    buttonVarient: "outlined",
+    buttonSx: {},
+    typographyVarient: "body2",
+    typographyWeight: "500"
 };
 
 export default BaseDialog;
