@@ -35,3 +35,4 @@ yarn.lock
 
 # Mac OS
 .DS_Store
+.env.development
