@@ -10,6 +10,7 @@ import { store } from "store/index";
 import SubCard from "ui/components/cards/SubCard";
 import CopyToClipboard from "ui/components/CopyToClipboard";
 import TestDialogs from "ui/pages/api-client/TestDialogs";
+import TestPay from "ui/pages/api-client/TestPay";
 
 const ApiClient = () => {
     // This API simply returns a string
