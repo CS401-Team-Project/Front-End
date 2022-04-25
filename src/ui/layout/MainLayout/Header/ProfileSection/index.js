@@ -106,9 +106,9 @@ const ProfileSection = () => {
     };
 
     return (
-        <>
-            <StateHandler api={userProfileApi} retryHandler={retry}>
-                {userProfileApi.data && (
+        <StateHandler api={userProfileApi} retryHandler={retry}>
+            {userProfileApi.data && (
+                <>
                     <Chip
                         sx={{
                             height: "48px",
@@ -151,10 +151,6 @@ const ProfileSection = () => {
                         onClick={handleToggle}
                         color="primary"
                     />
-                )}
-            </StateHandler>
-            <StateHandler api={userProfileApi} retryHandler={retry}>
-                {userProfileApi.data && (
                     <Popper
                         placement="bottom-end"
                         open={open}
@@ -385,9 +381,9 @@ const ProfileSection = () => {
                             </Transitions>
                         )}
                     </Popper>
-                )}
-            </StateHandler>
-        </>
+                </>
+            )}
+        </StateHandler>
     );
 };
 
