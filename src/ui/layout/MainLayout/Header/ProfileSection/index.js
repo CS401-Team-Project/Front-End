@@ -12,6 +12,7 @@ import {
     ClickAwayListener,
     Divider,
     List,
+    ListItem,
     ListItemButton,
     ListItemIcon,
     ListItemText,
@@ -33,6 +34,8 @@ import config from "config";
 // assets
 import { IconLogout, IconSettings } from "@tabler/icons";
 import { googleOAuth2 } from "store/actions";
+
+import UserPreferencesDialog from "ui/components/UserPreferencesDialog";
 
 // ==============================|| PROFILE MENU ||============================== //
 
@@ -258,6 +261,14 @@ const ProfileSection = () => {
                                                 }
                                             }}
                                         >
+                                            <ListItem>
+                                                <UserPreferencesDialog
+                                                    buttonSx={{
+                                                        borderRadius: `${customization.borderRadius}px`,
+                                                        color: "text.primary"
+                                                    }}
+                                                />
+                                            </ListItem>
                                             <ListItemButton
                                                 sx={{ borderRadius: `${customization.borderRadius}px` }}
                                                 selected={selectedIndex === 0}
