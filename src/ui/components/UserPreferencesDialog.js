@@ -104,13 +104,6 @@ const UserPreferencesDialog = ({ ...props }) => {
                     {userProfileApi.data && (
                         <Stack spacing={2}>
                             <TextField
-                                id="venmo-username"
-                                label="Venmo Username"
-                                onChange={updateVenmo}
-                                value={services.venmo}
-                                variant="outlined"
-                            />
-                            <TextField
                                 id="cashapp-username"
                                 label="Cash App Username"
                                 onChange={updateCashapp}
@@ -118,10 +111,17 @@ const UserPreferencesDialog = ({ ...props }) => {
                                 variant="outlined"
                             />
                             <TextField
-                                id="venmo-username"
-                                label="Venmo Username"
+                                id="paypal-username"
+                                label="PayPal Username"
                                 onChange={updatePaypal}
                                 value={services.paypal}
+                                variant="outlined"
+                            />
+                            <TextField
+                                id="venmo-username"
+                                label="Venmo Username"
+                                onChange={updateVenmo}
+                                value={services.venmo}
                                 variant="outlined"
                             />
                             <Select
