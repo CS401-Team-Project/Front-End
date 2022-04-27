@@ -8,12 +8,15 @@ import AnimateButton from "ui/components/extended/AnimateButton";
 import config from "config";
 import { useDispatch } from "react-redux";
 import { googleOAuth2 } from "store/actions";
+import useApi from "hooks/useApi";
+import userApi from "api/user";
 
 // ============================|| FIREBASE - LOGIN ||============================ //
 
 const AuthLogin = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const userProfileApi = useApi(userApi.getUser);
     const [searchParams] = useSearchParams();
 
     const onGoogleSuccess = (res) => {
