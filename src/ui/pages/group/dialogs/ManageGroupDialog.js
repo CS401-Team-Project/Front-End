@@ -14,6 +14,9 @@ import useApi from "hooks/useApi";
 import userApi from "api/user";
 import groupApi from "api/group";
 
+import StateHandler from "ui/components/StateHandler";
+import { store } from "store/index";
+
 const UserComponent = ({ ...props }) => {
     return (
         <Stack direction="row" alignItems="center">
@@ -51,6 +54,7 @@ UserComponent.propTypes = {
 const ManageGroupDialog = ({ ...props }) => {
     const userProfileApi = useApi(userApi.getUser, "data");
     const groupInfoApi = useApi(groupApi.getGroup, "data");
+    const sub = store.getState().auth.Ba;
 
     const [isAdmin, setIsAdmin] = useState(true);
 
