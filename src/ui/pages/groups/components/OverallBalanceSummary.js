@@ -3,7 +3,7 @@ import SubCard from "ui/components/cards/SubCard";
 import YouOweCard from "ui/components/cards/summary/YouOweCard";
 import YouLentCard from "ui/components/cards/summary/YouLentCard";
 import BalanceCard from "ui/components/cards/summary/BalanceCard";
-import { Stack } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
 
 // ==============================|| CUSTOM SUB CARD ||============================== //
 
@@ -17,9 +17,17 @@ const OverallBalanceSummary = () => {
     */
     return (
         <SubCard title="Overall Balance Summary" contentProps={{ component: Stack, spacing: 2, direction: "row" }}>
-            <BalanceCard />
-            <YouOweCard />
-            <YouLentCard />
+            <Grid container spacing={2}>
+                <Grid item xs={4}>
+                    <BalanceCard />
+                </Grid>
+                <Grid item xs={4}>
+                    <YouOweCard />
+                </Grid>
+                <Grid item xs={4}>
+                    <YouLentCard />
+                </Grid>
+            </Grid>
         </SubCard>
     );
 };
