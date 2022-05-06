@@ -62,48 +62,52 @@ const MobileSearch = ({ value, setValue, popupState }) => {
     const theme = useTheme();
 
     return (
-        <OutlineInputStyle
-            id="input-search-header"
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-            placeholder="Search"
-            startAdornment={
-                <InputAdornment position="start">
-                    <IconSearch stroke={1.5} size="1rem" color={theme.palette.grey[500]} />
-                </InputAdornment>
-            }
-            endAdornment={
-                <InputAdornment position="end">
-                    <ButtonBase sx={{ borderRadius: "12px" }}>
-                        <HeaderAvatarStyle variant="rounded">
-                            <IconAdjustmentsHorizontal stroke={1.5} size="1.3rem" />
-                        </HeaderAvatarStyle>
-                    </ButtonBase>
-                    <Box sx={{ ml: 2 }}>
+        <>
+            {/*{" "}
+            <OutlineInputStyle
+                id="input-search-header"
+                value={value}
+                onChange={(e) => setValue(e.target.value)}
+                placeholder="Search"
+                startAdornment={
+                    <InputAdornment position="start">
+                        <IconSearch stroke={1.5} size="1rem" color={theme.palette.grey[500]} />
+                    </InputAdornment>
+                }
+                endAdornment={
+                    <InputAdornment position="end">
                         <ButtonBase sx={{ borderRadius: "12px" }}>
-                            <Avatar
-                                variant="rounded"
-                                sx={{
-                                    ...theme.typography.commonAvatar,
-                                    ...theme.typography.mediumAvatar,
-                                    background: theme.palette.orange.light,
-                                    color: theme.palette.orange.dark,
-                                    "&:hover": {
-                                        background: theme.palette.orange.dark,
-                                        color: theme.palette.orange.light
-                                    }
-                                }}
-                                {...bindToggle(popupState)}
-                            >
-                                <IconX stroke={1.5} size="1.3rem" />
-                            </Avatar>
+                            <HeaderAvatarStyle variant="rounded">
+                                <IconAdjustmentsHorizontal stroke={1.5} size="1.3rem" />
+                            </HeaderAvatarStyle>
                         </ButtonBase>
-                    </Box>
-                </InputAdornment>
-            }
-            aria-describedby="search-helper-text"
-            inputProps={{ "aria-label": "weight" }}
-        />
+                        <Box sx={{ ml: 2 }}>
+                            <ButtonBase sx={{ borderRadius: "12px" }}>
+                                <Avatar
+                                    variant="rounded"
+                                    sx={{
+                                        ...theme.typography.commonAvatar,
+                                        ...theme.typography.mediumAvatar,
+                                        background: theme.palette.orange.light,
+                                        color: theme.palette.orange.dark,
+                                        "&:hover": {
+                                            background: theme.palette.orange.dark,
+                                            color: theme.palette.orange.light
+                                        }
+                                    }}
+                                    {...bindToggle(popupState)}
+                                >
+                                    <IconX stroke={1.5} size="1.3rem" />
+                                </Avatar>
+                            </ButtonBase>
+                        </Box>
+                    </InputAdornment>
+                }
+                aria-describedby="search-helper-text"
+                inputProps={{ "aria-label": "weight" }}
+            />{" "}
+            */}
+        </>
     );
 };
 
@@ -121,7 +125,7 @@ const SearchSection = () => {
 
     return (
         <>
-            <Box sx={{ display: { xs: "block", md: "none" } }}>
+            {/* <Box sx={{ display: { xs: "block", md: "none" } }}>
                 <PopupState variant="popper" popupId="demo-popup-popper">
                     {(popupState) => (
                         <>
@@ -184,7 +188,7 @@ const SearchSection = () => {
                     aria-describedby="search-helper-text"
                     inputProps={{ "aria-label": "weight" }}
                 />
-            </Box>
+            </Box> */}
         </>
     );
 };

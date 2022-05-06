@@ -8,7 +8,7 @@ const overview = {
     title: "Overview",
     type: "group",
     children: [
-        {
+        /*         {
             id: "overview-default",
             title: "Dashboard",
             type: "item",
@@ -23,7 +23,7 @@ const overview = {
             url: "/app/activity",
             icon: IconActivity,
             breadcrumbs: true
-        },
+        }, */
         {
             id: "overview-groups",
             title: "My Groups",

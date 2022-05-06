@@ -5,7 +5,7 @@ import other from "./other";
 // ==============================|| MENU ITEMS ||============================== //
 
 const menuItems = {
-    items: [overview, groups, other]
+    items: [overview, groups]
 };
 
 export default menuItems;
