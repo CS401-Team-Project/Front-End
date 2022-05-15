@@ -1,32 +1,44 @@
+import { useState } from "react";
 import BaseDialog from "ui/components/BaseDialog";
-import { Stack, Typography } from "@mui/material";
+import { Stack } from "@mui/material";
 import GroupIcon from "@mui/icons-material/Group";
+import { TextField } from "@mui/material";
+
+import useApi from "hooks/useApi";
+import groupApi from "api/group";
 
 const JoinGroupDialog = ({ ...props }) => {
+    const groupJoinApi = useApi(groupApi.joinGroup);
+
+    const [groupId, setGroupId] = useState("");
+
+    function updateId(event) {
+        setGroupId(event.target.value);
+    }
+
     const handleJoin = () => {
         console.log("[JoinGroupDialog] => handleJoin");
-
-        return { success: true, message: "You have joined the group!" };
+        if (groupId !== "") {
+            groupJoinApi.request(groupId);
+            return { success: true, message: "You have joined the group!" };
+        } else {
+            return { success: false, message: "ID required" };
+        }
     };
 
     return (
         <BaseDialog name="Join Group" IconComponent={GroupIcon} actionButtons={{ Join: handleJoin }} {...props}>
             <Stack spacing={2}>
-                <Typography variant="body1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                    aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.
-                </Typography>
-                <Typography variant="body1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                    aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.
-                </Typography>
-                <Typography variant="body1">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget consectetur sagittis, nisl libero
-                    aliquet nunc, eu aliquam nunc nisi eu nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames
-                    ac turpis egestas.
-                </Typography>
+                <TextField
+                    id="group-id"
+                    label="Group ID"
+                    onChange={updateId}
+                    value={groupId}
+                    variant="outlined"
+                    required
+                    helperText={groupId.length ? false : "Required"}
+                    error={!groupId.length}
+                />
             </Stack>
         </BaseDialog>
     );
