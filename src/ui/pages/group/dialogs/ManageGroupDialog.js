@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 import BaseDialog from "ui/components/BaseDialog";
 import { Button, Divider, IconButton, Stack, TextField, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
@@ -61,6 +62,15 @@ const ManageGroupDialog = ({ ...props }) => {
     const [groupName, setGroupName] = useState("DEFAULT GROUP NAME");
     const [groupDesc, setGroupDesc] = useState("DEFAULT GROUP DESCRIPTION");
 
+    useEffect(() => {
+        groupInfoApi.requestSlow(sub);
+        // eslint-disable-next-line
+    }, []);
+
+    const retry = () => {
+        groupInfoApi.requestSlow(sub);
+    };
+
     const handleUpdate = () => {
         console.log("[SettleBalancesDialog] => handleUpdate");
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
@@ -84,83 +94,87 @@ const ManageGroupDialog = ({ ...props }) => {
     }
 
     return (
-        <BaseDialog
-            name="Manage Group"
-            IconComponent={InfoOutlinedIcon}
-            actionButtons={
-                isAdmin
-                    ? { "Delete Group": handleDelete, Update: handleUpdate }
-                    : {
-                          "Leave Group": handleLeave,
-                          Update: handleUpdate
-                      }
-            }
-            {...props}
-        >
-            <Stack minWidth={450} spacing={1}>
-                <SubCard
-                    title="Group ID"
-                    contentProps={{ component: Stack, alignItems: "center" }}
-                    contentSX={{ p: 1.5 }}
-                    headerSX={{ padding: 0 }}
+        <StateHandler api={groupInfoApi} retryHandler={retry}>
+            {groupInfoApi.data && (
+                <BaseDialog
+                    name="Manage Group"
+                    IconComponent={InfoOutlinedIcon}
+                    actionButtons={
+                        isAdmin
+                            ? { "Delete Group": handleDelete, Update: handleUpdate }
+                            : {
+                                  "Leave Group": handleLeave,
+                                  Update: handleUpdate
+                              }
+                    }
+                    {...props}
                 >
-                    <Typography align="center" sx={{ fontWeight: "bold" }}>
-                        reallylongstringthatwillmakeupthegroupid
-                    </Typography>
-                    {isAdmin && (
-                        <Stack direction="row" alignItems="center">
-                            <IconButton color="success" size="large" fullWidth={false}>
-                                <RefreshIcon />
-                            </IconButton>
-                            <IconButton color="success" size="large" fullWidth={false}>
-                                <ContentCopyIcon />
-                            </IconButton>
-                        </Stack>
-                    )}
-                </SubCard>
-                <SubCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }} contentSX={{ p: 1.5 }}>
-                    {isAdmin ? (
-                        <TextField
-                            id="group-name"
-                            label="Group Name"
-                            onChange={updateName}
-                            value={groupName}
-                            variant="outlined"
-                            inputProps={{ maxLength: 60 }}
-                            required
-                            helperText={groupName.length ? false : "Required"}
-                            error={!groupName.length}
-                        />
-                    ) : (
-                        <Typography>{groupName}</Typography>
-                    )}
-                    {isAdmin ? (
-                        <TextField
-                            id="group-description"
-                            label="Group Description"
-                            onChange={updateDesc}
-                            value={groupDesc}
-                            multiline
-                            rows={4}
-                            inputProps={{ maxLength: 255 }}
-                        />
-                    ) : (
-                        <Typography>{groupDesc}</Typography>
-                    )}
-                </SubCard>
-                <SubCard title="Group Members" contentProps={{ component: Stack, spacing: 1 }} contentSX={{ p: 1.5 }}>
-                    <UserComponent username="User 1" userid="asdasd" isAdmin={isAdmin} adminUser={true} />
-                    <Divider light />
-                    <UserComponent username="User 2" userid="asdasd" isAdmin={isAdmin} adminUser={false} />
-                    <Divider light />
-                    {isAdmin && (
-                        <Button startIcon={<AddCircleOutlineIcon />} disabled={!isAdmin}>
-                            Invite Member
-                        </Button>
-                    )}
-                </SubCard>
-            </Stack>
-        </BaseDialog>
+                    <Stack minWidth={450} spacing={1}>
+                        <SubCard
+                            title="Group ID"
+                            contentProps={{ component: Stack, alignItems: "center" }}
+                            contentSX={{ p: 1.5 }}
+                            headerSX={{ padding: 0 }}
+                        >
+                            <Typography align="center" sx={{ fontWeight: "bold" }}>
+                                reallylongstringthatwillmakeupthegroupid
+                            </Typography>
+                            {isAdmin && (
+                                <Stack direction="row" alignItems="center">
+                                    <IconButton color="success" size="large" fullWidth={false}>
+                                        <RefreshIcon />
+                                    </IconButton>
+                                    <IconButton color="success" size="large" fullWidth={false}>
+                                        <ContentCopyIcon />
+                                    </IconButton>
+                                </Stack>
+                            )}
+                        </SubCard>
+                        <SubCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }} contentSX={{ p: 1.5 }}>
+                            {isAdmin ? (
+                                <TextField
+                                    id="group-name"
+                                    label="Group Name"
+                                    onChange={updateName}
+                                    value={groupName}
+                                    variant="outlined"
+                                    inputProps={{ maxLength: 60 }}
+                                    required
+                                    helperText={groupName.length ? false : "Required"}
+                                    error={!groupName.length}
+                                />
+                            ) : (
+                                <Typography>{groupName}</Typography>
+                            )}
+                            {isAdmin ? (
+                                <TextField
+                                    id="group-description"
+                                    label="Group Description"
+                                    onChange={updateDesc}
+                                    value={groupDesc}
+                                    multiline
+                                    rows={4}
+                                    inputProps={{ maxLength: 255 }}
+                                />
+                            ) : (
+                                <Typography>{groupDesc}</Typography>
+                            )}
+                        </SubCard>
+                        <SubCard title="Group Members" contentProps={{ component: Stack, spacing: 1 }} contentSX={{ p: 1.5 }}>
+                            <UserComponent username="User 1" userid="asdasd" isAdmin={isAdmin} adminUser={true} />
+                            <Divider light />
+                            <UserComponent username="User 2" userid="asdasd" isAdmin={isAdmin} adminUser={false} />
+                            <Divider light />
+                            {isAdmin && (
+                                <Button startIcon={<AddCircleOutlineIcon />} disabled={!isAdmin}>
+                                    Invite Member
+                                </Button>
+                            )}
+                        </SubCard>
+                    </Stack>
+                </BaseDialog>
+            )}
+        </StateHandler>
     );
 };
 
