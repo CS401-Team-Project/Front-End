@@ -20,7 +20,7 @@ const TestDialogs = () => {
                         <JoinGroupDialog />
                     </Grid>
                     <Grid item>
-                        <ManageGroupDialog groupid="TESTID" />
+                        <ManageGroupDialog groupid="6281dca426305f1dcef068a4" />
                     </Grid>
                 </Grid>
                 <Grid container item xs={12} spacing={2}>

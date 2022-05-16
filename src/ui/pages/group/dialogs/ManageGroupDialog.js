@@ -53,32 +53,51 @@ UserComponent.propTypes = {
 };
 
 const ManageGroupDialog = ({ ...props }) => {
-    const userProfileApi = useApi(userApi.getUser, "data");
     const groupInfoApi = useApi(groupApi.getGroup, "data");
+    const groupRefreshApi = useApi(groupApi.refreshID);
+    const groupUpdateApi = useApi(groupApi.updateGroup);
+    const groupRemoveMemberApi = useApi(groupApi.removeMember);
     const sub = store.getState().auth.Ba;
 
-    const [isAdmin, setIsAdmin] = useState(true);
+    const [isAdmin, setIsAdmin] = useState(false);
 
     const [groupName, setGroupName] = useState("DEFAULT GROUP NAME");
     const [groupDesc, setGroupDesc] = useState("DEFAULT GROUP DESCRIPTION");
 
     useEffect(() => {
-        groupInfoApi.requestSlow(sub);
+        groupInfoApi.requestSlow(props.groupid);
         // eslint-disable-next-line
     }, []);
 
     const retry = () => {
-        groupInfoApi.requestSlow(sub);
+        groupInfoApi.requestSlow(props.groupid);
     };
+
+    useEffect(() => {
+        if (groupInfoApi.data && sub) {
+            setIsAdmin(groupInfoApi.data.data.admin == sub);
+            setGroupName(groupInfoApi.data.data.name);
+            setGroupDesc(groupInfoApi.data.data.desc);
+        }
+    }, [groupInfoApi.data, sub]);
 
     const handleUpdate = () => {
         console.log("[SettleBalancesDialog] => handleUpdate");
         // Return true to close the dialog or false to keep it open when the user clicks the corresponding button
-        return { success: true, message: "Group updated" };
+        if (groupName !== "") {
+            groupUpdateApi.request(props.groupid, {
+                name: groupName,
+                desc: groupDesc
+            });
+            return { success: true, message: "Group updated" };
+        } else {
+            return { success: false, message: "Name required" };
+        }
     };
 
     const handleLeave = () => {
         console.log("[SettleBalancesDialog] => handleLeave");
+        groupRemoveMemberApi.requestSlow(props.groupid, sub);
     };
 
     const handleDelete = () => {
@@ -103,8 +122,7 @@ const ManageGroupDialog = ({ ...props }) => {
                         isAdmin
                             ? { "Delete Group": handleDelete, Update: handleUpdate }
                             : {
-                                  "Leave Group": handleLeave,
-                                  Update: handleUpdate
+                                  "Leave Group": handleLeave
                               }
                     }
                     {...props}
@@ -115,20 +133,47 @@ const ManageGroupDialog = ({ ...props }) => {
                             contentProps={{ component: Stack, alignItems: "center" }}
                             contentSX={{ p: 1.5 }}
                             headerSX={{ padding: 0 }}
-                        >
-                            <Typography align="center" sx={{ fontWeight: "bold" }}>
-                                reallylongstringthatwillmakeupthegroupid
-                            </Typography>
-                            {isAdmin && (
-                                <Stack direction="row" alignItems="center">
-                                    <IconButton color="success" size="large" fullWidth={false}>
-                                        <RefreshIcon />
-                                    </IconButton>
-                                    <IconButton color="success" size="large" fullWidth={false}>
+                            secondary={
+                                isAdmin ? (
+                                    <Stack direction="row" alignItems="center">
+                                        <IconButton
+                                            color="success"
+                                            size="large"
+                                            fullWidth={false}
+                                            onClick={() => {
+                                                groupRefreshApi.requestSlow(props.groupid);
+                                            }}
+                                        >
+                                            <RefreshIcon />
+                                        </IconButton>
+                                        <IconButton
+                                            color="success"
+                                            size="large"
+                                            fullWidth={false}
+                                            onClick={() => {
+                                                navigator.clipboard.writeText(props.groupid);
+                                            }}
+                                        >
+                                            <ContentCopyIcon />
+                                        </IconButton>
+                                    </Stack>
+                                ) : (
+                                    <IconButton
+                                        color="success"
+                                        size="large"
+                                        fullWidth={false}
+                                        onClick={() => {
+                                            navigator.clipboard.writeText(props.groupid);
+                                        }}
+                                    >
                                         <ContentCopyIcon />
                                     </IconButton>
-                                </Stack>
-                            )}
+                                )
+                            }
+                        >
+                            <Typography align="center" sx={{ fontWeight: "bold" }}>
+                                {props.groupid}
+                            </Typography>
                         </SubCard>
                         <SubCard title="Group Info" contentProps={{ component: Stack, spacing: 2 }} contentSX={{ p: 1.5 }}>
                             {isAdmin ? (
