@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import BaseDialog from "ui/components/BaseDialog";
-import { Button, Divider, IconButton, Stack, TextField, Typography } from "@mui/material";
+import { Button, IconButton, Stack, TextField, Typography } from "@mui/material";
 import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import SubCard from "ui/components/cards/SubCard";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -12,11 +12,11 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import PropTypes from "prop-types";
 
 import useApi from "hooks/useApi";
-import userApi from "api/user";
 import groupApi from "api/group";
 
 import StateHandler from "ui/components/StateHandler";
 import { store } from "store/index";
+import ConfirmationDialog from "ui/components/ConfirmationDialog";
 
 const UserComponent = ({ ...props }) => {
     return (
@@ -38,6 +38,7 @@ const UserComponent = ({ ...props }) => {
                     fullWidth={false}
                     startIcon={props.isAdmin ? <RemoveCircleOutlineIcon /> : false}
                     disabled={!props.isAdmin}
+                    onClick={props.removeFunc}
                 />
             )}
             <Typography>{props.username}</Typography>
@@ -49,7 +50,8 @@ UserComponent.propTypes = {
     username: PropTypes.string.isRequired,
     userid: PropTypes.string.isRequired,
     isAdmin: PropTypes.bool.isRequired,
-    adminUser: PropTypes.bool.isRequired
+    adminUser: PropTypes.bool.isRequired,
+    removeFunc: PropTypes.func.isRequired
 };
 
 const ManageGroupDialog = ({ ...props }) => {
@@ -57,6 +59,7 @@ const ManageGroupDialog = ({ ...props }) => {
     const groupRefreshApi = useApi(groupApi.refreshID);
     const groupUpdateApi = useApi(groupApi.updateGroup);
     const groupRemoveMemberApi = useApi(groupApi.removeMember);
+    const groupDeleteApi = useApi(groupApi.deleteGroup);
     const sub = store.getState().auth.Ba;
 
     const [isAdmin, setIsAdmin] = useState(false);
@@ -98,10 +101,13 @@ const ManageGroupDialog = ({ ...props }) => {
     const handleLeave = () => {
         console.log("[SettleBalancesDialog] => handleLeave");
         groupRemoveMemberApi.requestSlow(props.groupid, sub);
+        return { success: true, message: "Left the group" };
     };
 
     const handleDelete = () => {
         console.log("[SettleBalancesDialog] => handleDelete");
+        groupDeleteApi.requestSlow(props.groupid);
+        return { success: true, message: "Group deleted" };
     };
 
     function updateName(event) {
@@ -116,7 +122,7 @@ const ManageGroupDialog = ({ ...props }) => {
         <StateHandler api={groupInfoApi} retryHandler={retry}>
             {groupInfoApi.data && (
                 <BaseDialog
-                    name="Manage Group"
+                    name={isAdmin ? "Manage Group" : "Group Information"}
                     IconComponent={InfoOutlinedIcon}
                     actionButtons={
                         isAdmin
@@ -206,10 +212,20 @@ const ManageGroupDialog = ({ ...props }) => {
                             )}
                         </SubCard>
                         <SubCard title="Group Members" contentProps={{ component: Stack, spacing: 1 }} contentSX={{ p: 1.5 }}>
-                            <UserComponent username="User 1" userid="asdasd" isAdmin={isAdmin} adminUser={true} />
-                            <Divider light />
-                            <UserComponent username="User 2" userid="asdasd" isAdmin={isAdmin} adminUser={false} />
-                            <Divider light />
+                            {groupInfoApi.data.data.members.map((user) => {
+                                return (
+                                    <div key={user.sub}>
+                                        <UserComponent
+                                            username={`${user.first_name} ${user.last_name}`}
+                                            userid={user.sub}
+                                            isAdmin={isAdmin}
+                                            adminUser={user.sub == groupInfoApi.data.data.admin}
+                                            removeFunc={() => groupRemoveMemberApi.requestSlow(props.groupid, user.sub)}
+                                        />
+                                        {/* <Divider light /> */}
+                                    </div>
+                                );
+                            })}
                             {isAdmin && (
                                 <Button startIcon={<AddCircleOutlineIcon />} disabled={!isAdmin}>
                                     Invite Member

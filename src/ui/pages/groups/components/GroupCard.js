@@ -76,7 +76,7 @@ const GroupCard = ({ isLoading, ID }) => {
                     <CardWrapper border={false} content={true}>
                         <Link onClick={onClickGroup}>
                             <List>
-                                <ListItem sx={{ py: 0 }} secondaryAction={<ManageGroupDialog iconOnly />}>
+                                <ListItem sx={{ py: 0 }} secondaryAction={<ManageGroupDialog iconOnly groupid={groupID} />}>
                                     <ListItemAvatar>
                                         <Avatar
                                             variant="rounded"
