@@ -19,9 +19,12 @@ const TestDialogs = () => {
                     <Grid item>
                         <JoinGroupDialog />
                     </Grid>
+                    {/*
+                    This is commented out because since this relies on specific group IDs, testing it this way is difficult.
+                    Enough has been implemented in the UI that testing this way isn't needed.
                     <Grid item>
-                        <ManageGroupDialog groupid="TESTID" />
-                    </Grid>
+                        <ManageGroupDialog groupid="6281dca426305f1dcef068a4" />
+                    </Grid> */}
                 </Grid>
                 <Grid container item xs={12} spacing={2}>
                     <Grid item>
